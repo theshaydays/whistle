@@ -112,6 +112,3 @@ class NextPage extends StatelessWidget {
     );
   }
 }
-
-
-//hi 
