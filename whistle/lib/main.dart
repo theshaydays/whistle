@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'UploadAudioPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,7 +66,7 @@ class _MyAppExtensionState extends State<MyAppExtension> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const NextPage(),
+                            builder: (context) => const UploadAudioPage(),
                           ),
                         );
                       },
@@ -98,17 +99,6 @@ class _MyAppExtensionState extends State<MyAppExtension> {
           });
         },
       ),
-    );
-  }
-}
-
-class NextPage extends StatelessWidget {
-  const NextPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
     );
   }
 }
