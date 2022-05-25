@@ -1,16 +1,10 @@
-# whistle
+# Code Style and Design
 
-A new Flutter project.
+This README is for both main collaborators only (Shayer and Jody). Not to be confused with README required for Orbital
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Coding style implemented will be similar to Google coding style with the following key features:
+- Every class will have it's own Dart file
+- Every page will have it's own Dart file (except home page which will be designed in main.dart)
+- After creating new Dart file, create a widget tree (image from dart.io) according to the uplaoded dart file in the respective issue to make it more understandable to the other party 
+- As much as possible, create functions and classes privately (prefixed with an _ )
+- Since there's only 2 of use, discuss merge conflicts (privately if its a long conflict) and meet up to resolve conflicts
