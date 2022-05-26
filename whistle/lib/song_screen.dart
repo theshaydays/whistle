@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/models/constants.dart';
 
-class SongScreen extends StatelessWidget {
+class SongScreen extends StatefulWidget {
+  @override
+  _SongScreenState createState() => _SongScreenState();
+}
+
+class _SongScreenState extends State<SongScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -134,11 +139,16 @@ class SongScreen extends StatelessWidget {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  Icon(
-                    Icons.play_circle_outline,
-                    color: kPrimaryColor,
-                    size: 0.18 * size.width,
-                  ),
+                  IconButton(
+                      icon: const Icon(Icons.play_circle_outline),
+                      tooltip: 'Play Audio Sample',
+                      color: kPrimaryColor,
+                      iconSize: 0.17 * size.width,
+                      onPressed: () {
+                        setState(() {
+                          print('button pressed');
+                        });
+                      }),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,
