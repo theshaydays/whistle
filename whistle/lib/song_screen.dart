@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/models/constants.dart';
+import 'StaticPlayer.dart';
 
-class SongScreen extends StatelessWidget {
+class SongScreen extends StatefulWidget {
+  @override
+  _SongScreenState createState() => _SongScreenState();
+}
+
+class _SongScreenState extends State<SongScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -134,11 +140,7 @@ class SongScreen extends StatelessWidget {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  Icon(
-                    Icons.play_circle_outline,
-                    color: kPrimaryColor,
-                    size: 0.18 * size.width,
-                  ),
+                  StaticPlayer(),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,
