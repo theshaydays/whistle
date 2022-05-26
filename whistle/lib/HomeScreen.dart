@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:whistle/models/constants.dart';
 import 'models/playlist.dart';
