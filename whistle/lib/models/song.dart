@@ -1,0 +1,30 @@
+class Song {
+  final String songName;
+  final String artist;
+  final String image;
+  final int id;
+
+  Song(
+      {required this.id,
+      required this.songName,
+      required this.artist,
+      required this.image});
+}
+
+List<Song> songs = [
+  Song(
+      id: 1,
+      songName: 'Sample 1',
+      image: "images/whistle.jpg",
+      artist: 'Whistle Sample'),
+  Song(
+      id: 2,
+      songName: 'Sample 2',
+      image: "images/sample1.jpg",
+      artist: 'Whistle Sample'),
+  Song(
+      id: 3,
+      songName: 'Sample 3',
+      image: "images/sample2.jpg",
+      artist: 'Whistle Sample'),
+];

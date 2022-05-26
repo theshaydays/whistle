@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'UploadAudioPage.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'HomeScreen.dart';
+import 'song_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,89 +18,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Whistle',
+      theme: ThemeData(
+        textTheme: GoogleFonts.saralaTextTheme(Theme.of(context).textTheme),
+      ),
       debugShowCheckedModeBanner: false,
-      home: MyAppExtension(),
-    );
-  }
-}
-
-class MyAppExtension extends StatefulWidget {
-  const MyAppExtension({Key? key}) : super(key: key);
-
-  @override
-  State<MyAppExtension> createState() => _MyAppExtensionState();
-}
-
-class _MyAppExtensionState extends State<MyAppExtension> {
-  String buttonName = 'Click';
-  int currentIndex = 0;
-  bool isClicked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Whistle"),
-      ),
-      body: Center(
-        child: currentIndex == 0
-            ? Container(
-                width: double.infinity,
-                height: double.infinity,
-                color: Colors.yellow, //background colour
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        onPrimary: Colors.white,
-                        primary: Colors.orange,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          buttonName = 'Clicked';
-                        });
-                      },
-                      child: Text(buttonName),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const UploadAudioPage(),
-                          ),
-                        );
-                      },
-                      child: const Text('Next Page'),
-                    ),
-                  ],
-                ),
-              )
-            : GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isClicked = !isClicked; //to invert it everytime you click
-                  });
-                },
-                child: isClicked
-                    ? Image.asset('images/whistle.jpg')
-                    : Image.asset('images/whistle.jpg'),
-              ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-              label: 'Settings', icon: Icon(Icons.settings)),
-        ],
-        currentIndex: currentIndex,
-        onTap: (int index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-      ),
+      home: HomeScreen(),
+      routes: {'/song': (ctx) => SongScreen()},
     );
   }
 }
