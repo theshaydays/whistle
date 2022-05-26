@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/models/constants.dart';
+import 'StaticPlayer.dart';
 
 class SongScreen extends StatefulWidget {
   @override
@@ -139,16 +140,7 @@ class _SongScreenState extends State<SongScreen> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  IconButton(
-                      icon: const Icon(Icons.play_circle_outline),
-                      tooltip: 'Play Audio Sample',
-                      color: kPrimaryColor,
-                      iconSize: 0.17 * size.width,
-                      onPressed: () {
-                        setState(() {
-                          print('button pressed');
-                        });
-                      }),
+                  StaticPlayer(),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,
