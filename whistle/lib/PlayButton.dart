@@ -3,9 +3,9 @@ import 'package:just_audio/just_audio.dart';
 import 'package:whistle/models/constants.dart';
 
 class PlayButton extends StatelessWidget {
-  const PlayButton(this._audioPlayer, {Key? key}) : super(key: key);
-
   final AudioPlayer _audioPlayer;
+
+  const PlayButton(this._audioPlayer, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,12 @@ class PlayButton extends StatelessWidget {
         color: kPrimaryColor,
       );
     }
-    return Icon(Icons.close, size: 0.17 * size);
+    return IconButton(
+      icon: Icon(Icons.replay),
+      iconSize: 64.0,
+      onPressed: () => _audioPlayer.seek(Duration.zero,
+          index: _audioPlayer.effectiveIndices?.first),
+      color: kPrimaryColor,
+    );
   }
 }
