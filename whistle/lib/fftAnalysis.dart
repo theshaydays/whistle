@@ -10,8 +10,14 @@ class fftAnalysis {
   }
 
   void main() async {
-    final audio = await Wav.readFile('whistle/assets/audio/note1.wav');
-    List<double> myData = audio.toMono();
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    File file;
+    if (result != null) {
+      File file = File(result.files.single.path);
+    } else {}
+
+    //final audio = await Wav.readFile('whistle/assets/audio/note1.wav');
+    List<double> myData = file.readAsBytesSync();
     final fft = FFT(myData.length);
     final freq = fft.realFft(myData);
     print(freq);
