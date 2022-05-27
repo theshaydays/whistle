@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  fftea:
+    dependency: "direct main"
+    description:
+      name: fftea
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   file:
     dependency: transitive
     description:
@@ -322,6 +329,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  wav:
+    dependency: "direct main"
+    description:
+      name: wav
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   win32:
     dependency: transitive
     description:
