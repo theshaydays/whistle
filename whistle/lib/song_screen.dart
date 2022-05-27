@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/fftAnalysis.dart';
+import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/models/constants.dart';
 import 'StaticPlayer.dart';
 
@@ -134,7 +134,7 @@ class _SongScreenState extends State<SongScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    onPressed: () => fftAnalysis().main(),
+                    onPressed: () => FFTAnalysis().main(),
                     icon: Icon(Icons.playlist_add),
                     color: kLightColor,
                     iconSize: 0.09 * size.width,
