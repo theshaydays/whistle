@@ -30,7 +30,9 @@ class _SongScreenState extends State<SongScreen> {
               fontWeight: FontWeight.w800),
         ),
         actions: [
-          //how do i move the 3 dots inwards
+          SizedBox(
+            width: 10.0,
+          ),
           Icon(
             Icons.more_horiz,
             color: kPrimaryColor,
