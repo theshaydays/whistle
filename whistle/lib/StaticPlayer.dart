@@ -13,8 +13,7 @@ class _StaticPlayerState extends State<StaticPlayer> {
   @override
   void initState() {
     super.initState();
-    _audioPlayer = AudioPlayer();
-    _audioPlayer.setAsset('whistle/audio/royalty.mp3');
+    _audioPlayer.setAsset('audio/royalty.mp3');
   }
 
   @override
