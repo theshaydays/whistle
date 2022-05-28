@@ -22,7 +22,7 @@ class FFTAnalysis {
     //setting up stft
     final chunkSize = 2048;
     final stft = STFT(chunkSize, Window.hanning(chunkSize));
-    final spectrogram = <Float64List>[];
+    //final spectrogram = <Float64List>[];
 
     //finding peak frequency
     List<int> peaks = [];

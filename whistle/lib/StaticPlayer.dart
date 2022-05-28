@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'PlayButton.dart';
 
 class StaticPlayer extends StatefulWidget {
+  final String filePath;
+
+  const StaticPlayer(this.filePath);
+
   @override
   _StaticPlayerState createState() => _StaticPlayerState();
 }
@@ -13,7 +17,7 @@ class _StaticPlayerState extends State<StaticPlayer> {
   @override
   void initState() {
     super.initState();
-    _audioPlayer.setAsset('audio/royalty.mp3');
+    _audioPlayer.setAsset(widget.filePath);
   }
 
   @override

@@ -3,12 +3,16 @@ import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/models/constants.dart';
 import 'StaticPlayer.dart';
 
-class SongScreen extends StatefulWidget {
+class NewAudioPage extends StatefulWidget {
+  final String filePath;
+
+  const NewAudioPage(this.filePath);
+
   @override
-  _SongScreenState createState() => _SongScreenState();
+  _NewAudioPageState createState() => _NewAudioPageState();
 }
 
-class _SongScreenState extends State<SongScreen> {
+class _NewAudioPageState extends State<NewAudioPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -67,7 +71,7 @@ class _SongScreenState extends State<SongScreen> {
               child: Row(
                 children: [
                   Text(
-                    'Sample 1',
+                    widget.audioName,
                     style: TextStyle(
                         color: kPrimaryColor,
                         fontSize: 25.0,
@@ -118,7 +122,7 @@ class _SongScreenState extends State<SongScreen> {
                     child: Container(),
                   ),
                   Text(
-                    '06:30',
+                    widget.audioDuration,
                     style: TextStyle(
                         color: kLightColor,
                         fontSize: 15.0,
@@ -144,7 +148,7 @@ class _SongScreenState extends State<SongScreen> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  StaticPlayer('audio/royalty.mp3'),
+                  StaticPlayer(widget.filePath),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,
