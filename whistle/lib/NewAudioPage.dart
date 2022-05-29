@@ -5,8 +5,9 @@ import 'StaticPlayer.dart';
 
 class NewAudioPage extends StatefulWidget {
   final String filePath;
+  final String audioName;
 
-  const NewAudioPage(this.filePath);
+  const NewAudioPage(this.filePath, this.audioName);
 
   @override
   _NewAudioPageState createState() => _NewAudioPageState();
@@ -122,7 +123,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
                     child: Container(),
                   ),
                   Text(
-                    widget.audioDuration,
+                    '06:30',
                     style: TextStyle(
                         color: kLightColor,
                         fontSize: 15.0,
@@ -138,8 +139,21 @@ class _NewAudioPageState extends State<NewAudioPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    onPressed: () => FFTAnalysis().main(),
-                    icon: Icon(Icons.playlist_add),
+                    onPressed: () async {
+                      String note = await FFTAnalysis(widget.filePath).main();
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          content: Text('Your note is at ' + note + 'Hz'),
+                          actions: <Widget>[
+                            TextButton(
+                                onPressed: () => Navigator.pop(context, 'Yay!'),
+                                child: const Text('Yay')),
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.music_note),
                     color: kLightColor,
                     iconSize: 0.09 * size.width,
                   ),
@@ -148,7 +162,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  StaticPlayer(widget.filePath),
+                  StaticPlayer(widget.filePath, 'device file'),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,

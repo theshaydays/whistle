@@ -4,8 +4,9 @@ import 'PlayButton.dart';
 
 class StaticPlayer extends StatefulWidget {
   final String filePath;
+  final String pathType;
 
-  const StaticPlayer(this.filePath);
+  const StaticPlayer(this.filePath, this.pathType);
 
   @override
   _StaticPlayerState createState() => _StaticPlayerState();
@@ -17,7 +18,11 @@ class _StaticPlayerState extends State<StaticPlayer> {
   @override
   void initState() {
     super.initState();
-    _audioPlayer.setAsset(widget.filePath);
+    if (widget.pathType == 'asset') {
+      _audioPlayer.setAsset(widget.filePath);
+    } else if (widget.pathType == 'device file') {
+      _audioPlayer.setFilePath(widget.filePath);
+    }
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/models/constants.dart';
 import 'StaticPlayer.dart';
 
@@ -134,7 +133,7 @@ class _SongScreenState extends State<SongScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    onPressed: () => FFTAnalysis().main(),
+                    onPressed: () => null,
                     icon: Icon(Icons.playlist_add),
                     color: kLightColor,
                     iconSize: 0.09 * size.width,
@@ -144,7 +143,7 @@ class _SongScreenState extends State<SongScreen> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  StaticPlayer('audio/royalty.mp3'),
+                  StaticPlayer('audio/royalty.mp3', 'asset'),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,

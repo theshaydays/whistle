@@ -1,26 +1,34 @@
 import 'dart:typed_data';
 import 'package:fftea/fftea.dart';
 import 'package:wav/wav.dart';
-import 'package:file_picker/file_picker.dart';
+
+import 'dart:math';
 
 class FFTAnalysis {
-  void main() async {
+  final String filePath;
+
+  const FFTAnalysis(this.filePath);
+
+  Future<String> main() async {
     //user picking files
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(type: FileType.audio);
-    String filePath = '';
-    if (result != null) {
-      filePath = result.files.single.path as String;
-    } else {
-      // user cancelled picker
-    }
+    // FilePickerResult? result =
+    //     await FilePicker.platform.pickFiles(type: FileType.audio);
+    // String filePath = '';
+    // if (result != null) {
+    //   filePath = result.files.single.path as String;
+    // } else {
+    //   // user cancelled picker
+    // }
 
     //reading wav files
     final sound = await Wav.readFile(filePath);
     List<double> audio = sound.toMono();
 
+    // setting accuracy -> higher value leads to higher accuracy, dont go above 15 as it gets really laggy
+    int accuracy = 10;
+
     //setting up stft
-    final chunkSize = 2048;
+    final chunkSize = pow(2, accuracy) as int;
     final stft = STFT(chunkSize, Window.hanning(chunkSize));
     //final spectrogram = <Float64List>[];
 
@@ -72,6 +80,7 @@ class FFTAnalysis {
     print('final idx is ' + keyIdx.toString());
     print('Key frequency is ' + stft.frequency(keyIdx, 44100).toString());
 
+    return stft.frequency(keyIdx, 44100).toStringAsFixed(2);
     // final fft = FFT(myData.length);
     // final freq = fft.realFft(myData);
     // print(freq);
