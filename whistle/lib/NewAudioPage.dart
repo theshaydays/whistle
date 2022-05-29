@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/models/constants.dart';
 import 'StaticPlayer.dart';
 
-class SongScreen extends StatefulWidget {
+class NewAudioPage extends StatefulWidget {
+  final String filePath;
+  final String audioName;
+
+  const NewAudioPage(this.filePath, this.audioName);
+
   @override
-  _SongScreenState createState() => _SongScreenState();
+  _NewAudioPageState createState() => _NewAudioPageState();
 }
 
-class _SongScreenState extends State<SongScreen> {
+class _NewAudioPageState extends State<NewAudioPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -66,7 +72,7 @@ class _SongScreenState extends State<SongScreen> {
               child: Row(
                 children: [
                   Text(
-                    'Sample 1',
+                    widget.audioName,
                     style: TextStyle(
                         color: kPrimaryColor,
                         fontSize: 25.0,
@@ -133,8 +139,21 @@ class _SongScreenState extends State<SongScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    onPressed: () => null,
-                    icon: Icon(Icons.playlist_add),
+                    onPressed: () async {
+                      String note = await FFTAnalysis(widget.filePath).main();
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          content: Text('Your note is at ' + note + 'Hz'),
+                          actions: <Widget>[
+                            TextButton(
+                                onPressed: () => Navigator.pop(context, 'Yay!'),
+                                child: const Text('Yay')),
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.music_note),
                     color: kLightColor,
                     iconSize: 0.09 * size.width,
                   ),
@@ -143,7 +162,7 @@ class _SongScreenState extends State<SongScreen> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  StaticPlayer('audio/royalty.mp3', 'asset'),
+                  StaticPlayer(widget.filePath, 'device file'),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,

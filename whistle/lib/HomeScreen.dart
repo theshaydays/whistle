@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:whistle/NewAudioPage.dart';
+
 import 'package:whistle/models/constants.dart';
 import 'models/playlist.dart';
 import 'models/song.dart';
+import 'package:file_picker/file_picker.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -82,10 +85,31 @@ class _HomeScreenState extends State<HomeScreen> {
               Icons.search,
               color: kLightColor,
             ),
-            Icon(
-              Icons.playlist_play,
+            IconButton(
+              onPressed: () async {
+                FilePickerResult? result =
+                    await FilePicker.platform.pickFiles(type: FileType.audio);
+                if (result != null) {
+                  PlatformFile file = result.files.first;
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) =>
+                          NewAudioPage(file.path!, file.name))));
+                  // NewAudioPage(
+                  //   file.path!,
+                  //   file.name,
+                  // );
+                  // print(file.path!);
+                } else {
+                  // user cancelled picker
+                }
+              },
+              icon: Icon(Icons.playlist_play),
               color: kLightColor,
             ),
+            // Icon(
+            //   Icons.playlist_play,
+            //   color: kLightColor,
+            // ),
             Icon(
               Icons.favorite_border,
               color: kLightColor,
