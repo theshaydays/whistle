@@ -48,12 +48,12 @@ class FFTAnalysis {
 
       peaks += [idx];
       print(idx);
-      // print(freq
-      //     .discardConjugates()
-      //     .magnitudes()
-      //     .toList()
-      //     .reduce(max)
-      //     .toString());
+      //   print(freq
+      //       .discardConjugates()
+      //       .magnitudes()
+      //       .toList()
+      //       .reduce(max)
+      //       .toString());
     });
 
     //finding most popular index

@@ -62,7 +62,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 image: DecorationImage(
-                  image: AssetImage('images/whistle.jpg'),
+                  image: AssetImage('images/music.png'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -91,7 +91,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                'Whistle Sample',
+                'User Audio Input',
                 style: TextStyle(
                     color: kLightColor,
                     fontSize: 15.0,
@@ -147,8 +147,9 @@ class _NewAudioPageState extends State<NewAudioPage> {
                           content: Text('Your note is at ' + note + 'Hz'),
                           actions: <Widget>[
                             TextButton(
-                                onPressed: () => Navigator.pop(context, 'Yay!'),
-                                child: const Text('Yay')),
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Close'),
+                                child: const Text('Close')),
                           ],
                         ),
                       );
