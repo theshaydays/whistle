@@ -15,16 +15,16 @@ List<Song> songs = [
   Song(
       id: 1,
       songName: 'Sample 1',
-      image: "images/whistle.jpg",
-      artist: 'Whistle Sample'),
+      image: "images/beach photo.jpg",
+      artist: 'Whistle'),
   Song(
       id: 2,
       songName: 'Sample 2',
-      image: "images/sample1.jpg",
-      artist: 'Whistle Sample'),
+      image: "images/flowers.jpg",
+      artist: 'Whistle'),
   Song(
       id: 3,
       songName: 'Sample 3',
-      image: "images/sample2.jpg",
-      artist: 'Whistle Sample'),
+      image: "images/mountain.jpeg",
+      artist: 'Whistle'),
 ];

@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Text(
-                  'Whistle Sample',
+                  'Whistle',
                   style: TextStyle(
                     color: kLightColor2,
                     fontSize: 12,
@@ -262,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
           width: size.width * 0.8,
           child: ListView.builder(
             itemCount: playlists.length,
-            itemBuilder: (context, index) => _buildSonglistItem(
+            itemBuilder: (context, index) => _buildSongListItem(
               image: songs[index].image,
               title: songs[index].songName,
               subtitle: songs[index].artist,
@@ -273,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildSonglistItem(
+  Widget _buildSongListItem(
       {required String image,
       required String title,
       required String subtitle}) {
@@ -296,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
       width: 220,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: Colors.orange,
+        color: Colors.white,
         image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
       ),
       child: Align(

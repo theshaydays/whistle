@@ -10,16 +10,16 @@ List<Playlist> playlists = [
   Playlist(
     id: 1,
     playlistName: 'Sample 1',
-    image: "images/whistle.jpg",
+    image: "images/beach photo.jpg",
   ),
   Playlist(
     id: 2,
     playlistName: 'Sample 2',
-    image: "images/sample1.jpg",
+    image: "images/flowers.jpg",
   ),
   Playlist(
     id: 3,
     playlistName: 'Sample 3',
-    image: "images/sample2.jpg",
+    image: "images/mountain.jpeg",
   )
 ];

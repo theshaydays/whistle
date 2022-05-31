@@ -56,7 +56,7 @@ class _SongScreenState extends State<SongScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 image: DecorationImage(
-                  image: AssetImage('images/whistle.jpg'),
+                  image: AssetImage('images/beach photo.jpg'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -85,7 +85,7 @@ class _SongScreenState extends State<SongScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                'Whistle Sample',
+                'Whistle',
                 style: TextStyle(
                     color: kLightColor,
                     fontSize: 15.0,
