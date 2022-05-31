@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/FFTAnalysis.dart';
+import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
 import 'StaticPlayer.dart';
 
@@ -140,11 +141,12 @@ class _NewAudioPageState extends State<NewAudioPage> {
                 children: [
                   IconButton(
                     onPressed: () async {
-                      String note = await FFTAnalysis(widget.filePath).main();
+                      double freq = await FFTAnalysis(widget.filePath).main();
+                      String note = NoteFrequencies().getNote(freq);
                       showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          content: Text('Your note is at ' + note + 'Hz'),
+                          content: Text('Your note is ' + note),
                           actions: <Widget>[
                             TextButton(
                                 onPressed: () =>

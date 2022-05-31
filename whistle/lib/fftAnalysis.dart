@@ -9,7 +9,7 @@ class FFTAnalysis {
 
   const FFTAnalysis(this.filePath);
 
-  Future<String> main() async {
+  Future<double> main() async {
     //user picking files
     // FilePickerResult? result =
     //     await FilePicker.platform.pickFiles(type: FileType.audio);
@@ -80,7 +80,7 @@ class FFTAnalysis {
     print('final idx is ' + keyIdx.toString());
     print('Key frequency is ' + stft.frequency(keyIdx, 44100).toString());
 
-    return stft.frequency(keyIdx, 44100).toStringAsFixed(2);
+    return stft.frequency(keyIdx, 44100);
     // final fft = FFT(myData.length);
     // final freq = fft.realFft(myData);
     // print(freq);
