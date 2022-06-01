@@ -12,15 +12,15 @@ class PlayButton extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return StreamBuilder<PlayerState>(
       stream: _audioPlayer.playerStateStream,
-      builder: (_, snapshot) {
+      builder: (context, snapshot) {
         final playerState = snapshot.data;
-        return _playPauseButton(playerState!, size.width);
+        return _playPauseButton(playerState, size.width);
       },
     );
   }
 
-  Widget _playPauseButton(PlayerState playerState, size) {
-    final processingState = playerState.processingState;
+  Widget _playPauseButton(PlayerState? playerState, size) {
+    final processingState = playerState?.processingState;
     if (processingState == ProcessingState.loading ||
         processingState == ProcessingState.buffering) {
       return Container(
