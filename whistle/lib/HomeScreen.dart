@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whistle/LikedProjects.dart';
 import 'package:whistle/NewAudioPage.dart';
+import 'package:whistle/PreviousProjects.dart';
+import 'package:whistle/RecentProjects.dart';
 
 import 'package:whistle/models/constants.dart';
 import 'models/playlist.dart';
@@ -46,18 +49,23 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: size.height * 0.70,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [_buildNavigationRail(), _buildPlayListAndSongs(size)],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: size.height * 0.70,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildNavigationRail(),
+                  _buildPlayListAndSongs(size),
+                ],
+              ),
             ),
-          ),
-          _buildCurrentPlayingSong(size),
-          _buildBottomBar(size),
-        ],
+            _buildCurrentPlayingSong(size),
+            _buildBottomBar(size),
+          ],
+        ),
       ),
     );
   }
@@ -142,26 +150,28 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               width: 10.0,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Sample 1',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Sample 1',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
                   ),
-                ),
-                Text(
-                  'Whistle',
-                  style: TextStyle(
-                    color: kLightColor2,
-                    fontSize: 12,
+                  Text(
+                    'Whistle',
+                    style: TextStyle(
+                      color: kLightColor2,
+                      fontSize: 12,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Expanded(
               child: Container(),
@@ -201,30 +211,61 @@ class _HomeScreenState extends State<HomeScreen> {
       groupAlignment: -0.1,
       labelType: NavigationRailLabelType.all,
       selectedLabelTextStyle:
-          TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold),
+          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
       unselectedLabelTextStyle:
-          TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold),
-      leading: Column(
-        children: [
-          Icon(Icons.playlist_play, color: Colors.blue[700]),
-          SizedBox(height: 5.0),
-          RotatedBox(
+          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+      leading: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 5.0),
+            RotatedBox(
               quarterTurns: -1,
-              child: Text(
-                'Previous Projects',
-                style: TextStyle(
-                    color: Colors.blue[700], fontWeight: FontWeight.bold),
-              )),
-        ],
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                ),
+                child: Text(
+                  'Previous Projects',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PreviousProjects(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       destinations: [
         NavigationRailDestination(
           icon: SizedBox.shrink(),
           label: RotatedBox(
             quarterTurns: -1,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Recent Projects'),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: kPrimaryColor,
+              ),
+              child: Text(
+                'Recent Projects',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.0),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => RecentProjects(),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -233,43 +274,63 @@ class _HomeScreenState extends State<HomeScreen> {
           label: RotatedBox(
             quarterTurns: -1,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Liked Projects'),
+              padding: const EdgeInsets.all(5.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                ),
+                child: Text(
+                  'Liked Projects',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => LikedProjects(),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
 
   Widget _buildPlayListAndSongs(Size size) {
-    return Column(
-      children: [
-        Container(
-          height: 0.35 * size.height,
-          width: size.width * 0.8,
-          //color: Colors.purple,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: playlists.length,
-            itemBuilder: (context, index) => _buildPlayListItem(
-                image: playlists[index].image,
-                title: playlists[index].playlistName),
-          ),
-        ),
-        Container(
-          height: 0.35 * size.height,
-          width: size.width * 0.8,
-          child: ListView.builder(
-            itemCount: playlists.length,
-            itemBuilder: (context, index) => _buildSongListItem(
-              image: songs[index].image,
-              title: songs[index].songName,
-              subtitle: songs[index].artist,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 0.35 * size.height,
+            width: size.width * 0.8,
+            //color: Colors.purple,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: playlists.length,
+              itemBuilder: (context, index) => _buildPlayListItem(
+                  image: playlists[index].image,
+                  title: playlists[index].playlistName),
             ),
           ),
-        ),
-      ],
+          Container(
+            height: 0.35 * size.height,
+            width: size.width * 0.8,
+            child: ListView.builder(
+              itemCount: playlists.length,
+              itemBuilder: (context, index) => _buildSongListItem(
+                image: songs[index].image,
+                title: songs[index].songName,
+                subtitle: songs[index].artist,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
