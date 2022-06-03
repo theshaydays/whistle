@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:whistle/models/constants.dart';
 import 'HomeScreen.dart';
-import 'song_screen.dart';
+import 'SongScreen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: kPrimaryColor,
+  ));
 }
 
 class MyApp extends StatefulWidget {
