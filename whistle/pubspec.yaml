@@ -17,6 +17,8 @@ dependencies:
   wav: ^1.1.0
   fftea: ^1.0.1
   file_picker: ^4.6.0
+  piano: ^1.0.3+1
+  sheet_music: ^0.3.0
 
 dev_dependencies:
   flutter_test:

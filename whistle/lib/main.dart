@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:whistle/models/constants.dart';
 import 'HomeScreen.dart';
 import 'SongScreen.dart';
-import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
 
 void main() {
-  runApp(MyApp());
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: kPrimaryColor,
-  ));
+  _setTargetPlatformForDesktop();
+  return runApp(MyApp());
+}
+
+void _setTargetPlatformForDesktop() {
+  if (Platform.isMacOS) {
+  } else if (Platform.isLinux || Platform.isWindows) {}
 }
 
 class MyApp extends StatefulWidget {

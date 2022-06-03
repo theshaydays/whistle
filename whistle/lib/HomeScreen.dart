@@ -274,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
           label: RotatedBox(
             quarterTurns: -1,
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(2.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,
