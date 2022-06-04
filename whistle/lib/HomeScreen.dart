@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whistle/FFMPEGConvert.dart';
 import 'package:whistle/LikedProjects.dart';
 import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/PreviousProjects.dart';
@@ -99,6 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     await FilePicker.platform.pickFiles(type: FileType.audio);
                 if (result != null) {
                   PlatformFile file = result.files.first;
+                  print('file path is: ' + file.path!);
+                  FFmpegConvert(file.path!).main();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) =>
                           NewAudioPage(file.path!, file.name))));
