@@ -101,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (result != null) {
                   PlatformFile file = result.files.first;
                   print('file path is: ' + file.path!);
-                  FFmpegConvert(file.path!).main();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) =>
                           NewAudioPage(file.path!, file.name))));

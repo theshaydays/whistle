@@ -4,21 +4,17 @@ import 'package:wav/wav.dart';
 
 import 'dart:math';
 
+import 'package:whistle/FFMPEGConvert.dart';
+
 class FFTAnalysis {
   final String filePath;
 
   const FFTAnalysis(this.filePath);
 
   Future<double> main() async {
-    //user picking files
-    // FilePickerResult? result =
-    //     await FilePicker.platform.pickFiles(type: FileType.audio);
-    // String filePath = '';
-    // if (result != null) {
-    //   filePath = result.files.single.path as String;
-    // } else {
-    //   // user cancelled picker
-    // }
+    // Getting Sample rate
+    final double sampleRate =
+        await FFmpegConvert(this.filePath).getSampleRate();
 
     //reading wav files
     final sound = await Wav.readFile(filePath);
@@ -76,11 +72,13 @@ class FFTAnalysis {
         }
       },
     );
-    print(popular);
-    print('final idx is ' + keyIdx.toString());
-    print('Key frequency is ' + stft.frequency(keyIdx, 32000).toString());
 
-    return stft.frequency(keyIdx, 32000);
+    //Debugging and checking note prints DO NOT DELETE
+    // print(popular);
+    // print('final idx is ' + keyIdx.toString());
+    print('Key frequency is ' + stft.frequency(keyIdx, sampleRate).toString());
+
+    return stft.frequency(keyIdx, sampleRate);
     // final fft = FFT(myData.length);
     // final freq = fft.realFft(myData);
     // print(freq);
@@ -88,7 +86,5 @@ class FFTAnalysis {
     //String filePath = fftAnalysis().loadAudio();
     //final wav = await Wav.readFile(filePath);
     //print(wav.samplesPerSecond);
-
-    //creating alert dialog
   }
 }
