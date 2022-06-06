@@ -20,7 +20,7 @@ class FFmpegConvert {
         final duration = await session.getDuration();
         final output = await session.getOutput();
       }
-      print(information?.getFormat());
+      print(information?.getAllProperties());
     });
   }
 }

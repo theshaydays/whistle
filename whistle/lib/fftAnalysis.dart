@@ -70,7 +70,7 @@ class FFTAnalysis {
     int keyIdx = 0;
     popular.forEach(
       (key, value) {
-        if (v < value) {
+        if (v < value && key > 8) {
           keyIdx = key;
           v = value;
         }
@@ -78,9 +78,9 @@ class FFTAnalysis {
     );
     print(popular);
     print('final idx is ' + keyIdx.toString());
-    print('Key frequency is ' + stft.frequency(keyIdx, 44100).toString());
+    print('Key frequency is ' + stft.frequency(keyIdx, 32000).toString());
 
-    return stft.frequency(keyIdx, 44100);
+    return stft.frequency(keyIdx, 32000);
     // final fft = FFT(myData.length);
     // final freq = fft.realFft(myData);
     // print(freq);
