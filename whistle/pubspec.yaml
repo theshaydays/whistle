@@ -20,6 +20,7 @@ dependencies:
   piano: ^1.0.3+1
   sheet_music: ^0.3.0
   ffmpeg_kit_flutter: ^4.5.1
+  path_provider: ^2.0.10
 
 dev_dependencies:
   flutter_test:

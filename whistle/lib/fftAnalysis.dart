@@ -12,12 +12,21 @@ class FFTAnalysis {
   const FFTAnalysis(this.filePath);
 
   Future<double> main() async {
-    // Getting Sample rate
+    // getting sample rate
     final double sampleRate =
         await FFmpegConvert(this.filePath).getSampleRate();
 
-    //reading wav files
-    final sound = await Wav.readFile(filePath);
+    // checking file format
+    final format = FFmpegConvert(this.filePath).getFileType();
+
+    // reading wav files
+    Wav sound;
+    if (format == 'wav') {
+      sound = await Wav.readFile(filePath);
+    } else {
+      String convertPath = await FFmpegConvert(this.filePath).convertFile();
+      sound = await Wav.readFile(convertPath);
+    }
     List<double> audio = sound.toMono();
 
     // setting accuracy -> higher value leads to higher accuracy, dont go above 15 as it gets really laggy

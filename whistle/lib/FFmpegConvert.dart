@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
+import 'package:ffmpeg_kit_flutter/ffmpeg_session.dart';
 import 'package:ffmpeg_kit_flutter/ffprobe_kit.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:ffmpeg_kit_flutter/media_information_session.dart';
+import 'package:path_provider/path_provider.dart';
 
 class FFmpegConvert {
   final String filePath;
@@ -33,5 +37,25 @@ class FFmpegConvert {
         properties.getMediaInformation()?.getAllProperties();
     sampleRate = double.parse(infoMap!['streams'][0]['sample_rate']);
     return sampleRate;
+  }
+
+  Future<String> getFileType() async {
+    String fileType;
+    MediaInformationSession properties =
+        await FFprobeKit.getMediaInformation(this.filePath);
+    fileType = properties.getMediaInformation()!.getFormat()!;
+    return fileType;
+  }
+
+  Future<String> convertFile() async {
+    String path = this.filePath;
+    Directory appDocumentDir = await getApplicationDocumentsDirectory();
+    String rawDocumentPath = appDocumentDir.path;
+    String outputPath = rawDocumentPath + "/output.wav";
+    String command = '-i ' + path + ' ' + outputPath;
+    FFmpegSession sess = await FFmpegKit.execute(command);
+    print(await sess.getOutput());
+    print(outputPath);
+    return outputPath;
   }
 }
