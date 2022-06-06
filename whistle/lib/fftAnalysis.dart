@@ -4,24 +4,29 @@ import 'package:wav/wav.dart';
 
 import 'dart:math';
 
+import 'package:whistle/FFMPEGConvert.dart';
+
 class FFTAnalysis {
   final String filePath;
 
   const FFTAnalysis(this.filePath);
 
   Future<double> main() async {
-    //user picking files
-    // FilePickerResult? result =
-    //     await FilePicker.platform.pickFiles(type: FileType.audio);
-    // String filePath = '';
-    // if (result != null) {
-    //   filePath = result.files.single.path as String;
-    // } else {
-    //   // user cancelled picker
-    // }
+    // getting sample rate
+    final double sampleRate =
+        await FFmpegConvert(this.filePath).getSampleRate();
 
-    //reading wav files
-    final sound = await Wav.readFile(filePath);
+    // checking file format
+    final format = FFmpegConvert(this.filePath).getFileType();
+
+    // reading wav files
+    Wav sound;
+    if (format == 'wav') {
+      sound = await Wav.readFile(filePath);
+    } else {
+      String convertPath = await FFmpegConvert(this.filePath).convertFile();
+      sound = await Wav.readFile(convertPath);
+    }
     List<double> audio = sound.toMono();
 
     // setting accuracy -> higher value leads to higher accuracy, dont go above 15 as it gets really laggy
@@ -70,17 +75,19 @@ class FFTAnalysis {
     int keyIdx = 0;
     popular.forEach(
       (key, value) {
-        if (v < value) {
+        if (v < value && key > 8) {
           keyIdx = key;
           v = value;
         }
       },
     );
-    print(popular);
-    print('final idx is ' + keyIdx.toString());
-    print('Key frequency is ' + stft.frequency(keyIdx, 44100).toString());
 
-    return stft.frequency(keyIdx, 44100);
+    //Debugging and checking note prints DO NOT DELETE
+    // print(popular);
+    // print('final idx is ' + keyIdx.toString());
+    print('Key frequency is ' + stft.frequency(keyIdx, sampleRate).toString());
+
+    return stft.frequency(keyIdx, sampleRate);
     // final fft = FFT(myData.length);
     // final freq = fft.realFft(myData);
     // print(freq);
@@ -88,7 +95,5 @@ class FFTAnalysis {
     //String filePath = fftAnalysis().loadAudio();
     //final wav = await Wav.readFile(filePath);
     //print(wav.samplesPerSecond);
-
-    //creating alert dialog
   }
 }
