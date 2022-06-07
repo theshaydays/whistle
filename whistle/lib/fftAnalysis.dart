@@ -4,12 +4,13 @@ import 'package:wav/wav.dart';
 
 import 'dart:math';
 
-import 'package:whistle/FFMPEGConvert.dart';
+import 'package:whistle/FFmpegConvert.dart';
 
 class FFTAnalysis {
   final String filePath;
+  final String duration;
 
-  const FFTAnalysis(this.filePath);
+  const FFTAnalysis(this.filePath, this.duration);
 
   Future<double> main() async {
     // getting sample rate
@@ -19,16 +20,36 @@ class FFTAnalysis {
     // checking file format
     final format = FFmpegConvert(this.filePath).getFileType();
 
-    // reading wav files
-    Wav sound;
-    if (format == 'wav') {
-      sound = await Wav.readFile(filePath);
-    } else {
-      String convertPath = await FFmpegConvert(this.filePath).convertFile();
-      sound = await Wav.readFile(convertPath);
+    //converting from wav files
+    String newFilePath = this.filePath;
+    if (format != 'wav') {
+      newFilePath = await FFmpegConvert(this.filePath).convertFile();
     }
-    List<double> audio = sound.toMono();
 
+    //audio slicing
+    double resolution = 0.125;
+    int numOfSlices = double.parse(this.duration) ~/ 0.25;
+    List<String> splicedAudioFilePaths = [];
+    for (int i = 0; i < numOfSlices; i++) {
+      splicedAudioFilePaths.add(await FFmpegConvert(newFilePath)
+          .sliceAudio(i * resolution, (i + 1) * resolution, i));
+    }
+    print(splicedAudioFilePaths);
+
+    // analyse slices
+    List<Future<double>> frequencyList = [];
+    splicedAudioFilePaths.forEach((element) async {
+      Wav slice = await Wav.readFile(element);
+      frequencyList.add(analyse(slice, sampleRate));
+    });
+    List<double> frqs = [];
+    frequencyList.forEach((element) async => frqs.add(await element));
+    print('freq lsit is $frqs');
+    return 500.00;
+  }
+
+  Future<double> analyse(Wav slice, double sampleRate) async {
+    List<double> audio = slice.toMono();
     // setting accuracy -> higher value leads to higher accuracy, dont go above 15 as it gets really laggy
     int accuracy = 10;
 
@@ -53,12 +74,6 @@ class FFTAnalysis {
 
       peaks += [idx];
       print(idx);
-      //   print(freq
-      //       .discardConjugates()
-      //       .magnitudes()
-      //       .toList()
-      //       .reduce(max)
-      //       .toString());
     });
 
     //finding most popular index

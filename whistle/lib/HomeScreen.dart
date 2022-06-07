@@ -100,12 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     await FilePicker.platform.pickFiles(type: FileType.audio);
                 if (result != null) {
                   PlatformFile file = result.files.first;
-                  print('file path is: ' + file.path!);
-                  print('new filepath is: ' +
-                      await FFmpegConvert(file.path!).convertFile());
+                  String fileDuration =
+                      await FFmpegConvert(file.path!).getDuration();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) =>
-                          NewAudioPage(file.path!, file.name))));
+                          NewAudioPage(file.path!, file.name, fileDuration))));
                   // NewAudioPage(
                   //   file.path!,
                   //   file.name,
