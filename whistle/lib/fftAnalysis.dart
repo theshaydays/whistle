@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'package:fftea/fftea.dart';
 import 'package:wav/wav.dart';
-import 'package:whistle/FFTAnalysis.dart';
 
 import 'dart:math';
 
@@ -11,6 +10,8 @@ class FFTAnalysis {
   final String filePath;
   final String duration;
   static final double resolution = 0.25;
+  static final int accuracy = 12;
+  static final double volThreshold = 100.00;
 
   const FFTAnalysis(this.filePath, this.duration);
 
@@ -51,7 +52,7 @@ class FFTAnalysis {
   Future<double> analyse(Wav slice, double sampleRate) async {
     List<double> audio = slice.toMono();
     // setting accuracy -> higher value leads to higher accuracy, dont go above 15 as it gets really slow
-    int accuracy = 10;
+    accuracy; //alr set in final parameters
 
     //setting up stft
     final chunkSize = pow(2, accuracy) as int;
@@ -60,6 +61,7 @@ class FFTAnalysis {
 
     //finding peak frequency
     List<int> peaks = [];
+    bool loudEnough = true;
     stft.run(audio, (Float64x2List freq) {
       //spectrogram.add(freq.discardConjugates().magnitudes());
       List<double> list = freq.discardConjugates().magnitudes().toList();
@@ -72,8 +74,13 @@ class FFTAnalysis {
         }
       }
 
+      print(list[idx]);
+      if (list[idx] < volThreshold) {
+        loudEnough = false;
+      }
+
       peaks += [idx];
-      print(idx);
+      //print(idx);
     });
 
     //finding most popular index
@@ -103,7 +110,11 @@ class FFTAnalysis {
     // print('final idx is ' + keyIdx.toString());
     print('Key frequency is ' + stft.frequency(keyIdx, sampleRate).toString());
 
-    return stft.frequency(keyIdx, sampleRate);
+    if (loudEnough) {
+      return stft.frequency(keyIdx, sampleRate);
+    } else {
+      return 0.00;
+    }
   }
 
   double getResolution() {
