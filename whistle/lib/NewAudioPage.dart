@@ -143,14 +143,20 @@ class _NewAudioPageState extends State<NewAudioPage> {
                 children: [
                   IconButton(
                     onPressed: () async {
-                      double freq =
+                      List<double> freq =
                           await FFTAnalysis(widget.filePath, widget.duration)
                               .main();
-                      String note = NoteFrequencies().getNote(freq);
+                      double resolution =
+                          FFTAnalysis(widget.filePath, widget.duration)
+                              .getResolution();
+                      print(freq);
+                      //String note = NoteFrequencies().getNote(freq[0]);
+                      String notes =
+                          NoteFrequencies().getNoteList(freq, resolution);
                       showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          content: Text('Your note is ' + note),
+                          content: Text('Your note is ' + notes),
                           actions: <Widget>[
                             TextButton(
                                 onPressed: () =>
