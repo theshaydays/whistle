@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Formatting.dart';
 import 'StaticPlayer.dart';
 
 class NewAudioPage extends StatefulWidget {
   final String filePath;
   final String audioName;
+  final String duration;
 
-  const NewAudioPage(this.filePath, this.audioName);
+  const NewAudioPage(this.filePath, this.audioName, this.duration);
 
   @override
   _NewAudioPageState createState() => _NewAudioPageState();
@@ -114,7 +116,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
               child: Row(
                 children: [
                   Text(
-                    '04:30',
+                    '00:00',
                     style: TextStyle(
                         color: kLightColor,
                         fontSize: 15.0,
@@ -124,7 +126,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
                     child: Container(),
                   ),
                   Text(
-                    '06:30',
+                    formattedTime(double.parse(widget.duration).toInt()),
                     style: TextStyle(
                         color: kLightColor,
                         fontSize: 15.0,
@@ -141,12 +143,20 @@ class _NewAudioPageState extends State<NewAudioPage> {
                 children: [
                   IconButton(
                     onPressed: () async {
-                      double freq = await FFTAnalysis(widget.filePath).main();
-                      String note = NoteFrequencies().getNote(freq);
+                      List<double> freq =
+                          await FFTAnalysis(widget.filePath, widget.duration)
+                              .main();
+                      double resolution =
+                          FFTAnalysis(widget.filePath, widget.duration)
+                              .getResolution();
+                      print(freq);
+                      //String note = NoteFrequencies().getNote(freq[0]);
+                      String notes =
+                          NoteFrequencies().getNoteList(freq, resolution);
                       showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          content: Text('Your note is ' + note),
+                          content: Text('Your note is ' + notes),
                           actions: <Widget>[
                             TextButton(
                                 onPressed: () =>

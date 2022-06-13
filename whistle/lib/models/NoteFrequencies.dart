@@ -139,4 +139,28 @@ class NoteFrequencies {
     int idx = differenceList.indexOf(minVal);
     return _freqList[idx].values.first;
   }
+
+  String getNoteList(List<double> list, double resolution) {
+    List<String> notes = [];
+    for (int i = 0; i < list.length; i++) {
+      if (list[i] < 250.01 || list[i] > 2000.00) {
+        notes.add('rest');
+      } else {
+        notes.add(getNote(list[i]));
+      }
+    }
+    List<List<dynamic>> noteList = [];
+    for (int i = 0; i < notes.length; i++) {
+      if (noteList.isEmpty) {
+        noteList.add([notes[i], resolution]);
+      } else {
+        if (noteList[noteList.length - 1][0] != notes[i]) {
+          noteList.add([notes[i], resolution]);
+        } else {
+          noteList.last[1] += resolution;
+        }
+      }
+    }
+    return noteList.toString();
+  }
 }
