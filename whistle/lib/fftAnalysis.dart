@@ -9,9 +9,9 @@ import 'package:whistle/FFmpegConvert.dart';
 class FFTAnalysis {
   final String filePath;
   final String duration;
-  static final double resolution = 0.25;
+  static final double resolution = 0.125;
   static final int accuracy = 12;
-  static final double volThreshold = 100.00;
+  static final double volThreshold = 10.00;
 
   const FFTAnalysis(this.filePath, this.duration);
 
