@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:piano/piano.dart';
+import 'package:whistle/models/Notes.dart';
 
 class RecentProjects extends StatefulWidget {
   @override
@@ -12,20 +13,20 @@ class _RecentProjectsState extends State<RecentProjects> {
       clef: Clef.Treble,
       noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
           NotePosition(note: Note.C, octave: 10)),
-      noteImages: [
-        NoteImage(
-            notePosition: NotePosition(
-                note: Note.B, octave: 3, accidental: Accidental.Sharp),
-            offset: 0.25),
-        NoteImage(
-          notePosition: NotePosition(
-              note: Note.E, octave: 5, accidental: Accidental.Flat),
-          offset: 0.25,
-        )
-      ],
+      noteImages: [getNotes(List<List<dynamic>> notePosition)],
       clefColor: Colors.white,
       noteColor: Colors.white,
       size: Size.zero,
     );
   }
 }
+
+//function to get all the notes
+getNotes(List<List<dynamic>> notePosition) {
+  List<NoteImage> noteImages = [];
+  for (int i = 0; i < notePosition.length; i++) {
+  noteImages.add(notes![i]); 
+  }
+  return noteImages;
+}
+

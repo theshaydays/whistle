@@ -1,4 +1,119 @@
-void main() {
-  var notes = {'G,6,0.5': 'tom', 'Password': 'pass@123'};
-  print(notes);
-}
+  var notes = {
+    //0th octave
+    'C#0': ['C', 'Sharp', 0],
+    'D0': ['D', 'None', 0],
+    'D#0': ['D', 'Sharp', 0],
+    'E0': ['E', 'None', 0],
+    'F0': ['F', 'None', 0],
+    'F#0': ['F', 'Sharp', 0],
+    'G0': ['G', 'None', 0],
+    'G#0': ['G', 'Sharp', 0],
+    'A0': ['A', 'None', 0],
+    'A#0': ['A', 'Sharp', 0],
+    'B0': ['B', 'None', 0],
+
+    //1st Octave
+    'C1': ['C', 'None', 1],
+    'D1': ['D', 'None', 1],
+    'D#1': ['C', 'Sharp', 1],
+    'E1': ['E', 'None', 1],
+    'F1': ['F', 'None', 1],
+    'F#1': ['F', 'Sharp', 1],
+    'G1': ['G', 'None', 1],
+    'G#1': ['G', 'Sharp', 1],
+    'A1': ['A', 'None', 1],
+    'A#1': ['E', 'None', 1],
+    'B1': ['E', 'None', 1],
+
+    //2nd Octave
+    'C2': ['C', 'None', 2],
+    'D2': ['D', 'None', 2],
+    'D#2': ['C', 'Sharp', 2],
+    'E2': ['E', 'None', 2],
+    'F2': ['F', 'None', 2],
+    'F#2': ['F', 'Sharp', 2],
+    'G2': ['G', 'None', 2],
+    'G#2': ['G', 'Sharp', 2],
+    'A2': ['A', 'None', 2],
+    'A#2': ['E', 'None', 2],
+    'B2': ['E', 'None', 2],
+
+    //3rd Octave
+    'C3': ['C', 'None', 3],
+    'D3': ['D', 'None', 3],
+    'D#3': ['C', 'Sharp', 3],
+    'E3': ['E', 'None', 3],
+    'F3': ['F', 'None', 3],
+    'F#3': ['F', 'Sharp', 3],
+    'G3': ['G', 'None', 3],
+    'G#3': ['G', 'Sharp', 3],
+    'A3': ['A', 'None', 3],
+    'A#3': ['E', 'None', 3],
+    'B3': ['E', 'None', 3],
+
+    //4th Octave
+    'C4': ['C', 'None', 4],
+    'D4': ['D', 'None', 4],
+    'D#4': ['C', 'Sharp', 4],
+    'E4': ['E', 'None', 4],
+    'F4': ['F', 'None', 4],
+    'F#4': ['F', 'Sharp', 4],
+    'G4': ['G', 'None', 4],
+    'G#4': ['G', 'Sharp', 4],
+    'A4': ['A', 'None', 4],
+    'A#4': ['E', 'None', 4],
+    'B4': ['E', 'None', 4],
+
+    //5th Octave
+    'C5': ['C', 'None', 5],
+    'D5': ['D', 'None', 5],
+    'D#5': ['C', 'Sharp', 5],
+    'E5': ['E', 'None', 5],
+    'F5': ['F', 'None', 5],
+    'F#5': ['F', 'Sharp', 5],
+    'G5': ['G', 'None', 5],
+    'G#5': ['G', 'Sharp', 5],
+    'A5': ['A', 'None', 5],
+    'A#5': ['E', 'None', 5],
+    'B5': ['E', 'None', 5],
+
+    //6th Octave
+    'C6': ['C', 'None', 6],
+    'D6': ['D', 'None', 6],
+    'D#6': ['C', 'Sharp', 6],
+    'E6': ['E', 'None', 6],
+    'F6': ['F', 'None', 6],
+    'F#6': ['F', 'Sharp', 6],
+    'G6': ['G', 'None', 6],
+    'G#6': ['G', 'Sharp', 6],
+    'A6': ['A', 'None', 6],
+    'A#6': ['E', 'None', 6],
+    'B6': ['E', 'None', 6],
+
+    //7th Octave
+    'C7': ['C', 'None', 7],
+    'D7': ['D', 'None', 7],
+    'D#7': ['C', 'Sharp', 7],
+    'E7': ['E', 'None', 7],
+    'F7': ['F', 'None', 7],
+    'F#7': ['F', 'Sharp', 7],
+    'G7': ['G', 'None', 7],
+    'G#7': ['G', 'Sharp', 7],
+    'A7': ['A', 'None', 7],
+    'A#7': ['E', 'None', 7],
+    'B7': ['E', 'None', 7],
+
+    //8th Octave
+    'C8': ['C', 'None', 8],
+    'D8': ['D', 'None', 8],
+    'D#8': ['C', 'Sharp', 8],
+    'E8': ['E', 'None', 8],
+    'F8': ['F', 'None', 8],
+    'F#8': ['F', 'Sharp', 8],
+    'G8': ['G', 'None', 8],
+    'G#8': ['G', 'Sharp', 8],
+    'A8': ['A', 'None', 8],
+    'A#8': ['E', 'None', 8],
+    'B8': ['E', 'None', 8],
+  };
+  
