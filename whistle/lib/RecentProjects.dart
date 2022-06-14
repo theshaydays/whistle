@@ -34,7 +34,7 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
       noteImages.add(NoteImage(
           notePosition: NotePosition(
               note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
-          offset: (i + 1) * 0.1));
+          offset: (i) * 0.1));
     }
   }
   return noteImages;
