@@ -140,7 +140,7 @@ class NoteFrequencies {
     return _freqList[idx].values.first;
   }
 
-  String getNoteList(List<double> list, double resolution) {
+  List<List<dynamic>> getNoteList(List<double> list, double resolution) {
     List<String> notes = [];
     for (int i = 0; i < list.length; i++) {
       if (list[i] < 250.01 || list[i] > 2000.00) {
@@ -161,6 +161,6 @@ class NoteFrequencies {
         }
       }
     }
-    return noteList.toString();
+    return noteList;
   }
 }

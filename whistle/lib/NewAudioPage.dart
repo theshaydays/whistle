@@ -4,6 +4,7 @@ import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
 import 'package:whistle/models/Formatting.dart';
 import 'StaticPlayer.dart';
+import 'package:whistle/RecentProjects.dart';
 
 class NewAudioPage extends StatefulWidget {
   final String filePath;
@@ -151,20 +152,26 @@ class _NewAudioPageState extends State<NewAudioPage> {
                               .getResolution();
                       print(freq);
                       //String note = NoteFrequencies().getNote(freq[0]);
-                      String notes =
+                      List<List<dynamic>> notes =
                           NoteFrequencies().getNoteList(freq, resolution);
-                      showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          content: Text('Your note is ' + notes),
-                          actions: <Widget>[
-                            TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(context, 'Close'),
-                                child: const Text('Close')),
-                          ],
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(notes),
                         ),
                       );
+
+                      // showDialog<String>(
+                      //   context: context,
+                      //   builder: (BuildContext context) => AlertDialog(
+                      //     content: Text('Your note is ' + notes),
+                      //     actions: <Widget>[
+                      //       TextButton(
+                      //           onPressed: () =>
+                      //               Navigator.pop(context, 'Close'),
+                      //           child: const Text('Close')),
+                      //     ],
+                      //   ),
+                      // );
                     },
                     icon: Icon(Icons.music_note),
                     color: kLightColor,

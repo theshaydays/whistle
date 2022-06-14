@@ -3,6 +3,10 @@ import 'package:piano/piano.dart';
 import 'package:whistle/models/Notes.dart';
 
 class RecentProjects extends StatefulWidget {
+  final List<List<dynamic>> noteList;
+
+  const RecentProjects(this.noteList);
+
   @override
   _RecentProjectsState createState() => _RecentProjectsState();
 }
@@ -13,7 +17,7 @@ class _RecentProjectsState extends State<RecentProjects> {
       clef: Clef.Treble,
       noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
           NotePosition(note: Note.C, octave: 10)),
-      noteImages: getNotes(test),
+      noteImages: getNotes(widget.noteList),
       clefColor: Colors.white,
       noteColor: Colors.white,
       size: Size.zero,
@@ -35,13 +39,3 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
   }
   return noteImages;
 }
-
-// dummy note images
-List<List<dynamic>> test = [
-  ['rest', 0.5],
-  ['C5', 0.25],
-  ['E4', 0.5],
-  ['rest', 0.5],
-  ['G4', 0.5],
-  ['D5', 0.5]
-];
