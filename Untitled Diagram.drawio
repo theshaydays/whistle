@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-14T12:48:38.168Z" agent="5.0 (Windows)" etag="IVJVQZOJu2ZsDKfXXFrr" version="18.1.3" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-06-14T14:12:05.200Z" agent="5.0 (Windows)" etag="BYRSI4ag03-TisbEPgjy" version="18.1.3" type="github" pages="2">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
-    <mxGraphModel dx="1511" dy="815" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1099" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -171,7 +171,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="dkuVVzjnIN00It18_K1E" name="Page-2">
-    <mxGraphModel dx="1612" dy="869" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1099" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -209,17 +209,23 @@
             <mxPoint x="107.01999999999998" y="99.64999999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4Vu4bIPIjNSNtDpqAmY--27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.503;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#392C1C;" edge="1" parent="4Vu4bIPIjNSNtDpqAmY--20" source="4Vu4bIPIjNSNtDpqAmY--28" target="4Vu4bIPIjNSNtDpqAmY--30">
+        <mxCell id="v-4TCgZF4NUDFK8XeIvA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.499;entryY=-0.039;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="4Vu4bIPIjNSNtDpqAmY--20" source="4Vu4bIPIjNSNtDpqAmY--28" target="v-4TCgZF4NUDFK8XeIvA-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="4Vu4bIPIjNSNtDpqAmY--28" value="Run STFT on each&#xa;Audio Sample" style="" vertex="1" parent="4Vu4bIPIjNSNtDpqAmY--20">
           <mxGeometry x="48.5" y="260" width="130" height="50" as="geometry" />
         </mxCell>
         <mxCell id="4Vu4bIPIjNSNtDpqAmY--30" value="Return list of notes" style="" vertex="1" parent="4Vu4bIPIjNSNtDpqAmY--20">
-          <mxGeometry x="26" y="420" width="175" height="50" as="geometry" />
+          <mxGeometry x="26" y="462" width="175" height="50" as="geometry" />
         </mxCell>
         <mxCell id="4Vu4bIPIjNSNtDpqAmY--22" value="Check Audio Format" style="" vertex="1" parent="4Vu4bIPIjNSNtDpqAmY--20">
           <mxGeometry x="46" y="180" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v-4TCgZF4NUDFK8XeIvA-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.499;entryY=-0.069;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="4Vu4bIPIjNSNtDpqAmY--20" source="v-4TCgZF4NUDFK8XeIvA-1" target="4Vu4bIPIjNSNtDpqAmY--30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v-4TCgZF4NUDFK8XeIvA-1" value="High/low pass filter &amp;&#xa; min amplitude test" style="" vertex="1" parent="4Vu4bIPIjNSNtDpqAmY--20">
+          <mxGeometry x="31.5" y="360" width="164" height="50" as="geometry" />
         </mxCell>
         <mxCell id="4Vu4bIPIjNSNtDpqAmY--32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.484;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#392C1C;" edge="1" parent="1" source="4Vu4bIPIjNSNtDpqAmY--33" target="4Vu4bIPIjNSNtDpqAmY--37">
           <mxGeometry relative="1" as="geometry" />
@@ -305,7 +311,7 @@
           <mxGeometry x="541" y="410" width="224" height="230" as="geometry" />
         </mxCell>
         <mxCell id="4Vu4bIPIjNSNtDpqAmY--76" value="Print notes out" style="" vertex="1" parent="4Vu4bIPIjNSNtDpqAmY--72">
-          <mxGeometry x="57" y="80" width="110" height="50" as="geometry" />
+          <mxGeometry x="57" y="122" width="110" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
