@@ -13,7 +13,7 @@ class _RecentProjectsState extends State<RecentProjects> {
       clef: Clef.Treble,
       noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
           NotePosition(note: Note.C, octave: 10)),
-      noteImages: [getNotes(List<List<dynamic>> notePosition)],
+      noteImages: getNotes(test),
       clefColor: Colors.white,
       noteColor: Colors.white,
       size: Size.zero,
@@ -22,11 +22,26 @@ class _RecentProjectsState extends State<RecentProjects> {
 }
 
 //function to get all the notes
-getNotes(List<List<dynamic>> notePosition) {
+List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
   List<NoteImage> noteImages = [];
-  for (int i = 0; i < notePosition.length; i++) {
-  noteImages.add(notes![i]); 
+  for (int i = 0; i < noteResults.length; i++) {
+    List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
+    if (noteInfo.isNotEmpty) {
+      noteImages.add(NoteImage(
+          notePosition: NotePosition(
+              note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
+          offset: (i + 1) * 0.1));
+    }
   }
   return noteImages;
 }
 
+// dummy note images
+List<List<dynamic>> test = [
+  ['rest', 0.5],
+  ['C5', 0.25],
+  ['E4', 0.5],
+  ['rest', 0.5],
+  ['G4', 0.5],
+  ['D5', 0.5]
+];
