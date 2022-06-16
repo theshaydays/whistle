@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/models/constants.dart';
 
-class LikedProjects extends StatefulWidget {
+class NewProject extends StatefulWidget {
   @override
-  _LikedProjectsState createState() => _LikedProjectsState();
+  _NewProjectState createState() => _NewProjectState();
 }
 
-class _LikedProjectsState extends State<LikedProjects> {
+class _NewProjectState extends State<NewProject> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
@@ -42,7 +42,7 @@ class _LikedProjectsState extends State<LikedProjects> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'Score Sheet',
+              'New Project',
               style: TextStyle(
                   fontSize: 15.0,
                   color: Colors.white,
@@ -59,6 +59,15 @@ class _LikedProjectsState extends State<LikedProjects> {
                 ),
               )
             ],
+          ),
+          body: IconButton(
+            icon: Icon(
+              Icons.mic,
+              color: kSecondaryColor,
+              size: 100,
+            ),
+            onPressed: null,
+            visualDensity: VisualDensity(horizontal: 2, vertical: 3),
           ),
         ),
       );
