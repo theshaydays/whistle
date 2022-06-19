@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:whistle/RecordingPage.dart';
 import 'package:whistle/models/constants.dart';
+import 'package:whistle/NewAudioPage.dart';
+import 'package:whistle/FFMPEGConvert.dart';
+import 'package:file_picker/file_picker.dart';
 
 class NewProject extends StatefulWidget {
   @override
@@ -60,14 +64,85 @@ class _NewProjectState extends State<NewProject> {
               )
             ],
           ),
-          body: IconButton(
-            icon: Icon(
-              Icons.mic,
-              color: kSecondaryColor,
-              size: 100,
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 200, 10, 100),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Ink(
+                        height: 100,
+                        width: 100,
+                        decoration: const ShapeDecoration(
+                          color: kPrimaryColor,
+                          shape: CircleBorder(),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.mic),
+                          color: Colors.white,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RecordingPage(),
+                              ),
+                            );
+                          },
+                          iconSize: 80,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('Record Audio'),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Ink(
+                        width: 100,
+                        height: 100,
+                        decoration: const ShapeDecoration(
+                          color: kPrimaryColor,
+                          shape: CircleBorder(),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.folder),
+                          color: Colors.white,
+                          onPressed: () async {
+                            FilePickerResult? result = await FilePicker.platform
+                                .pickFiles(type: FileType.audio);
+                            if (result != null) {
+                              PlatformFile file = result.files.first;
+                              String fileDuration =
+                                  await FFmpegConvert(file.path!).getDuration();
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: ((context) => NewAudioPage(
+                                      file.path!, file.name, fileDuration))));
+                              // NewAudioPage(
+                              //   file.path!,
+                              //   file.name,
+                              // );
+                              // print(file.path!);
+                            } else {
+                              // user cancelled picker
+                            }
+                          },
+                          iconSize: 75,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('Select file from device'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            onPressed: null,
-            visualDensity: VisualDensity(horizontal: 2, vertical: 3),
           ),
         ),
       );
