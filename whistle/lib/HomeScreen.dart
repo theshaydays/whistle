@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/FFMPEGConvert.dart';
-import 'package:whistle/LikedProjects.dart';
+import 'package:whistle/NewProject.dart';
 import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/PreviousProjects.dart';
 import 'package:whistle/RecentProjects.dart';
@@ -283,7 +283,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   primary: kPrimaryColor,
                 ),
                 child: Text(
-                  'Liked Projects',
+                  'New Project',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -292,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => LikedProjects(),
+                      builder: (context) => NewProject(),
                     ),
                   );
                 },
