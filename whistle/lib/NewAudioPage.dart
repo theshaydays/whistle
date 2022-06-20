@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/FFTAnalysis.dart';
+import 'package:whistle/LoadingPage.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
 import 'package:whistle/models/Formatting.dart';
 import 'StaticPlayer.dart';
 import 'package:whistle/RecentProjects.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 class NewAudioPage extends StatefulWidget {
   final String filePath;
@@ -18,9 +21,37 @@ class NewAudioPage extends StatefulWidget {
 }
 
 class _NewAudioPageState extends State<NewAudioPage> {
+  bool _isLoading = false;
+  List<String>? images;
+  List<int>? randomList;
+
+  Future _initImages() async {
+    // >> To get paths you need these 2 lines
+    final manifestContent = await rootBundle.loadString('AssetManifest.json');
+
+    final Map<String, dynamic> manifestMap = json.decode(manifestContent);
+    // >> To get paths you need these 2 lines
+
+    final imagePaths = manifestMap.keys
+        .where((String key) => key.contains('images/LoadingScreen/'))
+        .where((String key) => key.contains('.jpg'))
+        .toList();
+
+    setState(() {
+      images = imagePaths;
+      randomList = List.generate(images!.length, (index) => index + 1);
+      randomList?.shuffle();
+    });
+    print('testing $images');
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    if (_isLoading) {
+      return LoadingPage(images!, randomList!);
+    }
 
     return Scaffold(
       backgroundColor: kSecondaryColor,
@@ -144,6 +175,9 @@ class _NewAudioPageState extends State<NewAudioPage> {
                 children: [
                   IconButton(
                     onPressed: () async {
+                      await _initImages();
+                      setState(() => _isLoading = true);
+                      Future.delayed(Duration(seconds: 5));
                       List<double> freq =
                           await FFTAnalysis(widget.filePath, widget.duration)
                               .main();
@@ -154,12 +188,15 @@ class _NewAudioPageState extends State<NewAudioPage> {
                       //String note = NoteFrequencies().getNote(freq[0]);
                       List<List<dynamic>> notes =
                           NoteFrequencies().getNoteList(freq, resolution);
+
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => RecentProjects(notes),
                         ),
                       );
+                      setState(() => _isLoading = false);
 
+                      // old code where a popup would come up with the notes produced by fft
                       // showDialog<String>(
                       //   context: context,
                       //   builder: (BuildContext context) => AlertDialog(
