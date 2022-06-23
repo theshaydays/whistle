@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-23T07:01:11.142Z" agent="5.0 (Windows)" etag="Ge41qARFSIYmPBvXJcWH" version="20.0.3" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2022-06-23T07:12:30.097Z" agent="5.0 (Windows)" etag="549EmJWH5wfyubfvGaje" version="20.0.3" type="github" pages="5">
   <diagram name="User Activity Flow" id="8ce9d11a-91a2-4d17-14d8-a56ed91bf033">
-    <mxGraphModel dx="1727" dy="931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1051" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -287,6 +287,65 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="sRQy5ILCkBpcYewuUoMn-9" value="&lt;div&gt;- Check for icon changes when user is recording&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check that alert dialog appears if no recording is found &lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check that user microphone is in use (green microphone icon on phone should show on newer android versions)&lt;/div&gt;&lt;div&gt;- Check for long duration recordings&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-6">
+          <mxGeometry x="273" width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="iQAjpgXcgUv90W1xNbnd" name="Recording -&gt; Audio Player">
+    <mxGraphModel dx="1209" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="0zopE5zRqRAD2ZtNLqu7-2" target="0zopE5zRqRAD2ZtNLqu7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-2" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="90" y="40" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-3" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="90" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-4" value="&lt;div&gt;User Chooses to Analyse Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="190" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="30" width="410" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-1">
+          <mxGeometry width="410" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-3" value="Unit tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-2">
+          <mxGeometry width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-4" value="Widget tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-2">
+          <mxGeometry x="137" width="136" height="84" as="geometry">
+            <mxRectangle width="136" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-5" value="User Tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-2">
+          <mxGeometry x="273" width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-1">
+          <mxGeometry y="84" width="410" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-7" value="- NA" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-6">
+          <mxGeometry width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-8" value="&lt;div&gt;- Check if &quot;Analyse Audio&quot; Button leads to Audio Player Page if recording exists&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check if &quot;Analyse Audio&quot; produces popup that prompts user to record audio if recordign does not exist&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-6">
+          <mxGeometry x="137" width="136" height="226" as="geometry">
+            <mxRectangle width="136" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-9" value="&lt;div&gt;- Check if &quot;Analyse Audio&quot; Button leads to Audio Player Page if recording exists&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check if &quot;Analyse Audio&quot; produces popup that prompts user to record audio if recordign does not exist&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="Yp_rqyOEtS_qU6ms5UeL-6">
           <mxGeometry x="273" width="137" height="226" as="geometry">
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
