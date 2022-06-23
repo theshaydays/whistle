@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-06-23T06:57:09.612Z" agent="5.0 (Windows)" etag="VuenZa9hZlMXcozA9dgF" version="20.0.3" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2022-06-23T07:01:11.142Z" agent="5.0 (Windows)" etag="Ge41qARFSIYmPBvXJcWH" version="20.0.3" type="github" pages="4">
   <diagram name="User Activity Flow" id="8ce9d11a-91a2-4d17-14d8-a56ed91bf033">
     <mxGraphModel dx="1727" dy="931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -246,6 +246,51 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="6nobseFbJJmHWOGPow-g-1" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6nobseFbJJmHWOGPow-g-2" value="User Records Audio" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="181" y="80" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="30" width="410" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-1">
+          <mxGeometry width="410" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-3" value="Unit tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-2">
+          <mxGeometry width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-4" value="Widget tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-2">
+          <mxGeometry x="137" width="136" height="84" as="geometry">
+            <mxRectangle width="136" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-5" value="User Tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-2">
+          <mxGeometry x="273" width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-1">
+          <mxGeometry y="84" width="410" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-7" value="&lt;div&gt;- recorder.play()&lt;/div&gt;&lt;div&gt;- recorder.stop()&lt;/div&gt;&lt;div&gt;- recorder.pause()&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-6">
+          <mxGeometry width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-8" value="&lt;div&gt;- Check for icon changes when user is recording&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check that alert dialog appears if no recording is found &lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-6">
+          <mxGeometry x="137" width="136" height="226" as="geometry">
+            <mxRectangle width="136" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sRQy5ILCkBpcYewuUoMn-9" value="&lt;div&gt;- Check for icon changes when user is recording&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check that alert dialog appears if no recording is found &lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check that user microphone is in use (green microphone icon on phone should show on newer android versions)&lt;/div&gt;&lt;div&gt;- Check for long duration recordings&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="sRQy5ILCkBpcYewuUoMn-6">
+          <mxGeometry x="273" width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
