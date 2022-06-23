@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/FFTAnalysis.dart';
 import 'package:whistle/LoadingPage.dart';
+import 'package:whistle/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
 import 'package:whistle/models/Formatting.dart';
@@ -8,6 +9,7 @@ import 'StaticPlayer.dart';
 import 'package:whistle/RecentProjects.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:just_audio/just_audio.dart';
 
 class NewAudioPage extends StatefulWidget {
   final String filePath;
@@ -24,6 +26,9 @@ class _NewAudioPageState extends State<NewAudioPage> {
   bool _isLoading = false;
   List<String>? images;
   List<int>? randomList;
+  int? songDuration;
+  int? songPosition;
+  AudioPlayer _audioPlayer = AudioPlayer();
 
   Future _initImages() async {
     // >> To get paths you need these 2 lines
@@ -46,6 +51,25 @@ class _NewAudioPageState extends State<NewAudioPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _audioPlayer.setFilePath(widget.filePath);
+
+    // In the future, we want both asset files and device files to be played. We will need to change the parameters passed into this class so the following code chunk will become pivotal
+    // if (widget.pathType == 'asset') {
+    //   _audioPlayer.setAsset(widget.filePath);
+    // } else if (widget.pathType == 'device file') {
+    //   _audioPlayer.setFilePath(widget.filePath);
+    // }
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
@@ -54,7 +78,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
     }
 
     return Scaffold(
-      backgroundColor: kSecondaryColor,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -66,9 +90,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
         title: Text(
           'Now Playing',
           style: TextStyle(
-              fontSize: 15.0,
-              color: kPrimaryColor,
-              fontWeight: FontWeight.w800),
+              fontSize: 15.0, color: kWhiteColor, fontWeight: FontWeight.w800),
         ),
         actions: [
           SizedBox(
@@ -137,11 +159,11 @@ class _NewAudioPageState extends State<NewAudioPage> {
               margin: EdgeInsetsDirectional.only(top: 10.0),
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               width: double.infinity,
-              child: LinearProgressIndicator(
-                backgroundColor: kLightColor2,
-                value: 0.6,
-                valueColor: AlwaysStoppedAnimation(kPrimaryColor),
-              ),
+              child: Slider(
+                  min: 0,
+                  max: _audioPlayer.duration!.inSeconds.toDouble(),
+                  value: _audioPlayer.position.inSeconds.toDouble(),
+                  onChanged: (value) async {}),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -177,7 +199,6 @@ class _NewAudioPageState extends State<NewAudioPage> {
                     onPressed: () async {
                       await _initImages();
                       setState(() => _isLoading = true);
-                      Future.delayed(Duration(seconds: 5));
                       List<double> freq =
                           await FFTAnalysis(widget.filePath, widget.duration)
                               .main();
@@ -219,7 +240,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
                     color: kPrimaryColor,
                     size: 0.12 * size.width,
                   ),
-                  StaticPlayer(widget.filePath, 'device file'),
+                  PlayButton(_audioPlayer),
                   Icon(
                     Icons.skip_next,
                     color: kPrimaryColor,

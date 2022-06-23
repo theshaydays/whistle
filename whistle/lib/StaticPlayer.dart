@@ -31,6 +31,14 @@ class _StaticPlayerState extends State<StaticPlayer> {
     super.dispose();
   }
 
+  int getDuration() {
+    return _audioPlayer.duration!.inSeconds;
+  }
+
+  int getCurrentPosition() {
+    return _audioPlayer.position.inSeconds;
+  }
+
   @override
   Widget build(BuildContext context) {
     return PlayButton(_audioPlayer);
