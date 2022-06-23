@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 import 'package:whistle/FFMPEGConvert.dart';
 import 'package:whistle/NewAudioPage.dart';
+import 'package:whistle/NewProject.dart';
 
 class RecordingPage extends StatefulWidget {
   const RecordingPage({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _RecordingPageState extends State<RecordingPage> {
   final recorder = FlutterSoundRecorder();
   bool isRecorderReady = false;
   String? filePath;
+  bool permissionGranted = true;
 
   Future record() async {
     if (!isRecorderReady) return;
@@ -76,7 +78,8 @@ class _RecordingPageState extends State<RecordingPage> {
     final status = await Permission.microphone.request();
 
     if (status != PermissionStatus.granted) {
-      throw 'Microphone permission not granted';
+      permissionGranted = false;
+      //throw 'Microphone permission not granted';
     }
 
     await recorder.openRecorder();
@@ -148,12 +151,33 @@ class _RecordingPageState extends State<RecordingPage> {
                               : Icons.fiber_manual_record),
                           color: Colors.white,
                           onPressed: () async {
-                            if (recorder.isRecording) {
-                              await stop();
+                            if (!permissionGranted) {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  content: Text(
+                                      'Please enable microphone recording or select an audio file from your device.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                        onPressed: () =>
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NewProject(),
+                                              ),
+                                            ),
+                                        child: const Text('Close')),
+                                  ],
+                                ),
+                              );
                             } else {
-                              await record();
+                              if (recorder.isRecording) {
+                                await stop();
+                              } else {
+                                await record();
+                              }
+                              setState(() {});
                             }
-                            setState(() {});
                           },
                           iconSize: 25,
                         ),
