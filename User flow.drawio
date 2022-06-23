@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-23T05:43:22.273Z" agent="5.0 (Windows)" etag="nArr6AMnW4ytBG-RwTkj" version="20.0.3" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-06-23T06:57:09.612Z" agent="5.0 (Windows)" etag="VuenZa9hZlMXcozA9dgF" version="20.0.3" type="github" pages="4">
   <diagram name="User Activity Flow" id="8ce9d11a-91a2-4d17-14d8-a56ed91bf033">
-    <mxGraphModel dx="1151" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1727" dy="931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -130,7 +130,7 @@
           <mxGeometry x="20" y="80" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HlVarFdxL_Z1gcEfDgmB-8" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="380" y="40" width="410" height="224" as="geometry" />
+          <mxGeometry x="381" y="40" width="410" height="224" as="geometry" />
         </mxCell>
         <mxCell id="HlVarFdxL_Z1gcEfDgmB-9" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-8">
           <mxGeometry width="410" height="60" as="geometry" />
@@ -150,24 +150,102 @@
             <mxRectangle width="137" height="60" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HlVarFdxL_Z1gcEfDgmB-13" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-8">
+        <mxCell id="HlVarFdxL_Z1gcEfDgmB-13" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-8">
           <mxGeometry y="60" width="410" height="164" as="geometry" />
         </mxCell>
-        <mxCell id="HlVarFdxL_Z1gcEfDgmB-14" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
+        <mxCell id="HlVarFdxL_Z1gcEfDgmB-14" value="- NA" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
           <mxGeometry width="137" height="164" as="geometry">
             <mxRectangle width="137" height="164" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HlVarFdxL_Z1gcEfDgmB-15" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
+        <mxCell id="HlVarFdxL_Z1gcEfDgmB-15" value="&lt;div&gt;- Check if &quot;New Project&quot; Button leads to New Projects page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
           <mxGeometry x="137" width="136" height="164" as="geometry">
             <mxRectangle width="136" height="164" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HlVarFdxL_Z1gcEfDgmB-16" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
+        <mxCell id="HlVarFdxL_Z1gcEfDgmB-16" value="&lt;div&gt;- Check if &quot;New Project&quot; Button leads to New Projects page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="HlVarFdxL_Z1gcEfDgmB-13">
           <mxGeometry x="273" width="137" height="164" as="geometry">
             <mxRectangle width="137" height="164" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="9EFpOCobpkcPWfrSdeKq" name="New Projects -&gt; Record Audio">
+    <mxGraphModel dx="1209" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Y6IENhfF4qyb8PqlVkrg-2" target="Y6IENhfF4qyb8PqlVkrg-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-2" value="New Projects page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="110" y="50" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;fillColor=#e51400;strokeColor=#B20000;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Y6IENhfF4qyb8PqlVkrg-4" target="Y6IENhfF4qyb8PqlVkrg-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-4" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="110" y="300" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-5" value="&lt;div&gt;User Chooses to Record Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="190" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-6" value="User denies Permissions" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="10" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-7" value="App requests for permissions" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="210" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="381" y="40" width="410" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-1">
+          <mxGeometry width="410" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-3" value="Unit tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-2">
+          <mxGeometry width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-4" value="Widget tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-2">
+          <mxGeometry x="137" width="136" height="84" as="geometry">
+            <mxRectangle width="136" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-5" value="User Tests" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-2">
+          <mxGeometry x="273" width="137" height="84" as="geometry">
+            <mxRectangle width="137" height="84" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-1">
+          <mxGeometry y="84" width="410" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-7" value="- NA" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-6">
+          <mxGeometry width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-8" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-6">
+          <mxGeometry x="137" width="136" height="226" as="geometry">
+            <mxRectangle width="136" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-9" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;/div&gt;&lt;div&gt;- Check if Permissions pop-up appears&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="iT77Vtpq-jMncwMzb1B8-6">
+          <mxGeometry x="273" width="137" height="226" as="geometry">
+            <mxRectangle width="137" height="226" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="H8FsUbBv88bBLcoio4jZ" name="Recording">
+    <mxGraphModel dx="1209" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>
