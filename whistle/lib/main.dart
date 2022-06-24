@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'HomeScreen.dart';
 import 'SongScreen.dart';
 import 'dart:io' show Platform;
@@ -26,9 +25,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Whistle',
-      theme: ThemeData(
+      /*theme: ThemeData(
         textTheme: GoogleFonts.saralaTextTheme(Theme.of(context).textTheme),
-      ),
+      ),*/
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
       routes: {'/song': (ctx) => SongScreen()},

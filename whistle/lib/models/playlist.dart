@@ -21,5 +21,6 @@ List<Playlist> playlists = [
     id: 3,
     playlistName: 'Sample 3',
     image: "images/mountain.jpeg",
-  )
+  ),
+  Playlist(id: 4, playlistName: 'Sample 4', image: "images/sky.jpeg"),
 ];

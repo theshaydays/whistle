@@ -27,4 +27,6 @@ List<Song> songs = [
       songName: 'Sample 3',
       image: "images/mountain.jpeg",
       artist: 'Whistle'),
+  Song(
+      id: 4, songName: 'Sample 4', image: "images/sky.jpeg", artist: 'Whistle'),
 ];

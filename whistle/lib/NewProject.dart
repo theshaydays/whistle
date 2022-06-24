@@ -51,7 +51,7 @@ class _NewProjectState extends State<NewProject> {
               style: TextStyle(
                   fontSize: 15.0,
                   color: Colors.white,
-                  fontWeight: FontWeight.w800),
+                  fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             actions: [
