@@ -41,13 +41,13 @@ class FFTAnalysis {
     // analyse slices
     List<double> frequencyList = [];
 
-    print('paths are ' + splicedAudioFilePaths.length.toString());
+    //print('paths are ' + splicedAudioFilePaths.length.toString());
 
     for (int i = 0; i < splicedAudioFilePaths.length; i++) {
       Wav slice = await Wav.readFile(splicedAudioFilePaths[i]);
       Future<double> freq = analyse(slice, sampleRate);
       frequencyList.add(await freq);
-      print('index is $i');
+      //print('index is $i');
     }
     return frequencyList;
   }
