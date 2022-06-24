@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:piano/piano.dart';
 import 'package:whistle/models/Notes.dart';
+import 'package:whistle/models/constants.dart';
 
 class RecentProjects extends StatefulWidget {
   final List<List<dynamic>> noteList;
@@ -12,6 +13,31 @@ class RecentProjects extends StatefulWidget {
 }
 
 class _RecentProjectsState extends State<RecentProjects> {
+  Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Do you want to return to home page?'),
+          content: Text('Changes made on this page will not be saved'),
+          actions: [
+            ElevatedButton(
+              child: Text('No'),
+              style: ElevatedButton.styleFrom(
+                primary: kPrimaryColor,
+              ),
+              onPressed: () => Navigator.pop(context, false),
+            ),
+            ElevatedButton(
+              child: Text('Yes'),
+              style: ElevatedButton.styleFrom(
+                primary: kPrimaryColor,
+              ),
+              onPressed: () => Navigator.pop(context, true),
+            ),
+          ],
+        ),
+      );
+
+  @override
   Widget build(BuildContext context) {
     return ClefImage(
       clef: Clef.Treble,
