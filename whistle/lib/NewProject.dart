@@ -4,6 +4,7 @@ import 'package:whistle/models/constants.dart';
 import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/FFMPEGConvert.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:whistle/HomeScreen.dart';
 
 class NewProject extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _NewProjectState extends State<NewProject> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Do you want to return to home page?'),
+          title: Text('Do you want to return to the previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
@@ -54,13 +55,34 @@ class _NewProjectState extends State<NewProject> {
             ),
             centerTitle: true,
             actions: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Icon(
-                  Icons.more_horiz,
-                  color: Colors.white,
-                  size: 30,
-                ),
+              SizedBox(
+                width: 10.0,
+              ),
+              IconButton(
+                icon: Icon(Icons.home),
+                color: kWhiteColor,
+                onPressed: () async {
+                  List<Widget> widgetList = [
+                    TextButton(
+                        onPressed: () => Navigator.pop(context, 'Close'),
+                        child: Text('No')),
+                    TextButton(
+                        onPressed: () =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            )),
+                        child: Text('Yes')),
+                  ];
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text('Do you want to return to the home page?'),
+                      content:
+                          Text('Changes made on this page will not be saved'),
+                      actions: widgetList,
+                    ),
+                  );
+                },
               )
             ],
           ),
@@ -129,6 +151,18 @@ class _NewProjectState extends State<NewProject> {
                               // print(file.path!);
                             } else {
                               // user cancelled picker
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  content: Text(
+                                      'Please enable file selection or record audio in this app itself.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: const Text('Close')),
+                                  ],
+                                ),
+                              );
                             }
                           },
                           iconSize: 75,
