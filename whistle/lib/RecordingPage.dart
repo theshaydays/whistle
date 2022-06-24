@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:whistle/FFMPEGConvert.dart';
 import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/NewProject.dart';
+import 'package:whistle/HomeScreen.dart';
 
 class RecordingPage extends StatefulWidget {
   const RecordingPage({Key? key}) : super(key: key);
@@ -106,23 +107,45 @@ class _RecordingPageState extends State<RecordingPage> {
             ),
             centerTitle: true,
             actions: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Icon(
-                  Icons.more_horiz,
-                  color: Colors.white,
-                  size: 30,
-                ),
+              SizedBox(
+                width: 10.0,
+              ),
+              IconButton(
+                icon: Icon(Icons.home),
+                color: kWhiteColor,
+                onPressed: () async {
+                  List<Widget> widgetList = [
+                    TextButton(
+                        onPressed: () => Navigator.pop(context, 'Close'),
+                        child: Text('No')),
+                    TextButton(
+                        onPressed: () =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            )),
+                        child: Text('Yes')),
+                  ];
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text('Do you want to return to the home page?'),
+                      content:
+                          Text('Changes made on this page will not be saved'),
+                      actions: widgetList,
+                    ),
+                  );
+                },
               )
             ],
           ),
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 200, 10, 100),
+            padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       StreamBuilder<RecordingDisposition>(
                         stream: recorder.onProgress,
@@ -138,58 +161,59 @@ class _RecordingPageState extends State<RecordingPage> {
                           );
                         },
                       ),
-                      Ink(
-                        height: 50,
-                        width: 50,
-                        decoration: const ShapeDecoration(
-                          color: kPrimaryColor,
-                          shape: CircleBorder(),
-                        ),
-                        child: IconButton(
-                          icon: Icon(recorder.isRecording
-                              ? Icons.stop
-                              : Icons.fiber_manual_record),
-                          color: Colors.white,
-                          onPressed: () async {
-                            if (!permissionGranted) {
-                              showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                  content: Text(
-                                      'Please enable microphone recording or select an audio file from your device.'),
-                                  actions: <Widget>[
-                                    TextButton(
-                                        onPressed: () =>
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    NewProject(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: Ink(
+                          height: 50,
+                          width: 50,
+                          decoration: const ShapeDecoration(
+                            color: kPrimaryColor,
+                            shape: CircleBorder(),
+                          ),
+                          child: IconButton(
+                            icon: Icon(recorder.isRecording
+                                ? Icons.stop
+                                : Icons.fiber_manual_record),
+                            color: Colors.white,
+                            onPressed: () async {
+                              if (!permissionGranted) {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                    content: Text(
+                                        'Please enable microphone recording or select an audio file from your device.'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      NewProject(),
+                                                ),
                                               ),
-                                            ),
-                                        child: const Text('Close')),
-                                  ],
-                                ),
-                              );
-                            } else {
-                              if (recorder.isRecording) {
-                                await stop();
+                                          child: const Text('Close')),
+                                    ],
+                                  ),
+                                );
                               } else {
-                                await record();
+                                if (recorder.isRecording) {
+                                  await stop();
+                                } else {
+                                  await record();
+                                }
+                                setState(() {});
                               }
-                              setState(() {});
-                            }
-                          },
-                          iconSize: 25,
+                            },
+                            iconSize: 25,
+                          ),
                         ),
                       ),
+                      Text(recorder.isRecording
+                          ? 'Press to stop recording'
+                          : 'Press to record'),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(recorder.isRecording
-                            ? 'Press to stop recording'
-                            : 'Press to record'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                        padding: const EdgeInsets.only(top: 25),
                         child: Ink(
                           height: 50,
                           width: 50,
@@ -228,12 +252,9 @@ class _RecordingPageState extends State<RecordingPage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Press to analyse audio \n (Only after recording is done)',
-                          textAlign: TextAlign.center,
-                        ),
+                      Text(
+                        'Press to analyse audio \n (Only after recording is done)',
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),

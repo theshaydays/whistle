@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:whistle/FFTAnalysis.dart';
+import 'package:whistle/HomeScreen.dart';
 import 'package:whistle/LoadingPage.dart';
 import 'package:whistle/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/constants.dart';
-import 'package:whistle/models/Formatting.dart';
-import 'StaticPlayer.dart';
 import 'package:whistle/RecentProjects.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -94,7 +93,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Do you want to return to home page?'),
+          title: Text('Do you want to return to the previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
@@ -146,9 +145,31 @@ class _NewAudioPageState extends State<NewAudioPage> {
             SizedBox(
               width: 10.0,
             ),
-            Icon(
-              Icons.more_horiz,
-              color: kPrimaryColor,
+            IconButton(
+              icon: Icon(Icons.home),
+              color: kWhiteColor,
+              onPressed: () async {
+                List<Widget> widgetList = [
+                  TextButton(
+                      onPressed: () => Navigator.pop(context, 'Close'),
+                      child: Text('No')),
+                  TextButton(
+                      onPressed: () =>
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          )),
+                      child: Text('Yes')),
+                ];
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: Text('Do you want to return to the home page?'),
+                    content:
+                        Text('Changes made on this page will not be saved'),
+                    actions: widgetList,
+                  ),
+                );
+              },
             )
           ],
         ),
