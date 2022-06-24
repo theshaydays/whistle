@@ -100,9 +100,9 @@ Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
     noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
         NotePosition(note: Note.C, octave: 10)),
     noteImages: getNotes(list),
-    clefColor: Colors.black,
-    noteColor: Colors.black,
-    size: Size.zero,
+    clefColor: kPrimaryColor,
+    noteColor: kPrimaryColor,
+    size: Size.infinite,
   );
 }
 
@@ -119,4 +119,34 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
     }
   }
   return noteImages;
+}
+
+//function to get the number of staves needed
+int getStaves(List<List<dynamic>> noteResults) {
+  int noOfStaves = 0;
+  for (int i = 0; i < noteResults.length; i++) {
+    if (noteResults.length % (10) == 0) {
+      noOfStaves++;
+    }
+  }
+  return noOfStaves;
+}
+
+//function to split the list of notes into smaller lists (each containing only 10 notes)
+List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
+  List<List<List<dynamic>>> chunks = [];
+  int chunkSize = 10;
+  for (var i = 0; i < noteResults.length; i += chunkSize) {
+    chunks.add(noteResults.sublist(
+        i,
+        i + chunkSize > noteResults.length
+            ? noteResults.length
+            : i + chunkSize));
+  }
+  return chunks;
+}
+
+//for loop to print the different lists of notes
+Widget getScoreWidgets(List<String> noteResults) {
+  return new Row(children: noteResults.map((item) => new Text(item)).toList());
 }
