@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'HomeScreen.dart';
 import 'SongScreen.dart';
 import 'dart:io' show Platform;

@@ -3,14 +3,11 @@ import 'dart:js';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:whistle/PreviousProjects.dart';
 
 import 'package:whistle/models/constants.dart';
 
 import 'FFMPEGConvert.dart';
 import 'NewAudioPage.dart';
-import 'NewProject.dart';
-import 'RecentProjects.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,6 +28,28 @@ class _HomeScreenState extends State<HomeScreen> {
       Icon(Icons.home, size: 30, color: kPrimaryColor),
       Icon(Icons.search, size: 30, color: kPrimaryColor),
       Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+      IconButton(
+        onPressed: () async {
+          FilePickerResult? result =
+              await FilePicker.platform.pickFiles(type: FileType.audio);
+          if (result != null) {
+            PlatformFile file = result.files.first;
+            String fileDuration = await FFmpegConvert(file.path!).getDuration();
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) =>
+                    NewAudioPage(file.path!, file.name, fileDuration))));
+            // NewAudioPage(
+            //   file.path!,
+            //   file.name,
+            // );
+            // print(file.path!);
+          } else {
+            // user cancelled picker
+          }
+        },
+        icon: Icon(Icons.playlist_play),
+        color: Colors.white,
+      ),
       Icon(Icons.settings, size: 30, color: kPrimaryColor),
       Icon(Icons.person, size: 30, color: kPrimaryColor),
     ];
@@ -63,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildNavigationRail(),
+                  /*_buildNavigationRail(),*/
                   /*_buildPlayListAndSongs(size),*/
                 ],
               ),
@@ -77,8 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
           CurvedNavigationBar(backgroundColor: kSecondaryColor, items: items),
     );
   }
+}
 
-  Widget _buildNavigationRail() {
+  /*Widget _buildNavigationRail() {
     return NavigationRail(
       minWidth: 56.0,
       selectedIndex: _selectedIndex,
@@ -179,10 +199,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-}
+} 
 
 
-  /*Widget _buildBottomBar(Size size) {
+  Widget _buildBottomBar(Size size) {
     return Container(
       height: size.height * 0.15,
       color: kSecondaryColor,
