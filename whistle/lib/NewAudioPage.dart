@@ -49,7 +49,6 @@ class _NewAudioPageState extends State<NewAudioPage> {
       randomList = List.generate(images!.length, (index) => index + 1);
       randomList?.shuffle();
     });
-    print('testing $images');
   }
 
   @override
