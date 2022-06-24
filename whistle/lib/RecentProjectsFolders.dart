@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:piano/piano.dart';
 import 'package:whistle/HomeScreen.dart';
-import 'package:whistle/models/Notes.dart';
+import 'package:whistle/RecentProjects.dart';
 import 'package:whistle/models/constants.dart';
 
-class RecentProjects extends StatefulWidget {
-  final List<List<dynamic>> noteList;
-
-  const RecentProjects(this.noteList);
-
+class RecentProjectsFolders extends StatefulWidget {
   @override
-  _RecentProjectsState createState() => _RecentProjectsState();
+  _RecentProjectsFoldersState createState() => _RecentProjectsFoldersState();
 }
 
-class _RecentProjectsState extends State<RecentProjects> {
+class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
@@ -49,7 +44,7 @@ class _RecentProjectsState extends State<RecentProjects> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'Score Sheet',
+              'Recent Projects',
               style: TextStyle(
                   fontSize: 15.0,
                   color: Colors.white,
@@ -88,65 +83,35 @@ class _RecentProjectsState extends State<RecentProjects> {
               )
             ],
           ),
-          body: _buildScore(context, widget.noteList),
-          backgroundColor: kSecondaryColor,
+          body: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  color: Colors.transparent,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      IconButton(
+                          icon: Icon(Icons.folder),
+                          iconSize: 80,
+                          color: kPrimaryColor,
+                          alignment: Alignment.center,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RecentProjects(test),
+                              ),
+                            );
+                          }),
+                      Text("Project 1"),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       );
-}
-
-Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
-  return ClefImage(
-    clef: Clef.Treble,
-    noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
-        NotePosition(note: Note.C, octave: 10)),
-    noteImages: getNotes(list),
-    clefColor: kPrimaryColor,
-    noteColor: kPrimaryColor,
-    size: Size.infinite,
-  );
-}
-
-//function to get all the notes
-List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
-  List<NoteImage> noteImages = [];
-  for (int i = 0; i < noteResults.length; i++) {
-    List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
-    if (noteInfo.isNotEmpty) {
-      noteImages.add(NoteImage(
-          notePosition: NotePosition(
-              note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
-          offset: (i) * 0.1));
-    }
-  }
-  return noteImages;
-}
-
-//function to get the number of staves needed
-int getStaves(List<List<dynamic>> noteResults) {
-  int noOfStaves = 0;
-  for (int i = 0; i < noteResults.length; i++) {
-    if (noteResults.length % (10) == 0) {
-      noOfStaves++;
-    }
-  }
-  return noOfStaves;
-}
-
-//function to split the list of notes into smaller lists (each containing only 10 notes)
-List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
-  List<List<List<dynamic>>> chunks = [];
-  int chunkSize = 10;
-  for (var i = 0; i < noteResults.length; i += chunkSize) {
-    chunks.add(noteResults.sublist(
-        i,
-        i + chunkSize > noteResults.length
-            ? noteResults.length
-            : i + chunkSize));
-  }
-  return chunks;
-}
-
-//for loop to print the different lists of notes
-Widget getScoreWidgets(List<String> noteResults) {
-  return new Row(children: noteResults.map((item) => new Text(item)).toList());
 }

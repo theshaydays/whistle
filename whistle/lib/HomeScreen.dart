@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:whistle/PreviousProjects.dart';
-import 'package:whistle/RecentProjects.dart';
+import 'package:whistle/RecentProjectsFolders.dart';
 
 import 'package:whistle/models/constants.dart';
 import 'package:whistle/models/playlist.dart';
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => RecentProjects(test),
+                      builder: (context) => RecentProjectsFolders(),
                     ),
                   );
                 },
