@@ -26,9 +26,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Whistle',
-      theme: ThemeData(
+      /*theme: ThemeData(
         textTheme: GoogleFonts.saralaTextTheme(Theme.of(context).textTheme),
-      ),
+      ),*/
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
       routes: {'/song': (ctx) => SongScreen()},

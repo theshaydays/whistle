@@ -1,14 +1,16 @@
+import 'dart:js';
+
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:whistle/FFMPEGConvert.dart';
-import 'package:whistle/NewProject.dart';
-import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/PreviousProjects.dart';
-import 'package:whistle/RecentProjects.dart';
 
 import 'package:whistle/models/constants.dart';
-import 'models/playlist.dart';
-import 'models/song.dart';
-import 'package:file_picker/file_picker.dart';
+
+import 'FFMPEGConvert.dart';
+import 'NewAudioPage.dart';
+import 'NewProject.dart';
+import 'RecentProjects.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,6 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final items = <Widget>[
+      Icon(Icons.home, size: 30, color: kPrimaryColor),
+      Icon(Icons.search, size: 30, color: kPrimaryColor),
+      Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+      Icon(Icons.settings, size: 30, color: kPrimaryColor),
+      Icon(Icons.person, size: 30, color: kPrimaryColor),
+    ];
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -32,10 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         title: Text(
           'Whistle',
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              ?.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -59,21 +64,127 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildNavigationRail(),
-                  _buildPlayListAndSongs(size),
+                  /*_buildPlayListAndSongs(size),*/
                 ],
               ),
             ),
-            _buildCurrentPlayingSong(size),
-            _buildBottomBar(size),
+            /*_buildCurrentPlayingSong(size),*/
+            /*_buildBottomBar(size),*/
           ],
         ),
       ),
+      bottomNavigationBar:
+          CurvedNavigationBar(backgroundColor: kSecondaryColor, items: items),
     );
   }
 
-  Widget _buildBottomBar(Size size) {
+  Widget _buildNavigationRail() {
+    return NavigationRail(
+      minWidth: 56.0,
+      selectedIndex: _selectedIndex,
+      onDestinationSelected: (int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      groupAlignment: -0.1,
+      labelType: NavigationRailLabelType.all,
+      selectedLabelTextStyle:
+          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+      unselectedLabelTextStyle:
+          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+      leading: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 5.0),
+            RotatedBox(
+              quarterTurns: -1,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                ),
+                child: Text(
+                  'Previous Projects',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PreviousProjects(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      destinations: [
+        NavigationRailDestination(
+          icon: SizedBox.shrink(),
+          label: RotatedBox(
+            quarterTurns: -1,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: kPrimaryColor,
+              ),
+              child: Text(
+                'Recent Projects',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.0),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => RecentProjects(test),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+        NavigationRailDestination(
+          icon: SizedBox.shrink(),
+          label: RotatedBox(
+            quarterTurns: -1,
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                ),
+                child: Text(
+                  'New Project',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NewProject(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+  /*Widget _buildBottomBar(Size size) {
     return Container(
-      height: size.height * 0.065,
+      height: size.height * 0.15,
       color: kSecondaryColor,
       child: Container(
         decoration: BoxDecoration(
@@ -81,18 +192,18 @@ class _HomeScreenState extends State<HomeScreen> {
             topLeft: Radius.circular(50),
             topRight: Radius.circular(50),
           ),
-          color: kWhiteColor,
+          color: kSecondaryColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(
               Icons.home,
-              color: kLightColor,
+              color: Colors.white,
             ),
             Icon(
               Icons.search,
-              color: kLightColor,
+              color: Colors.white,
             ),
             IconButton(
               onPressed: () async {
@@ -115,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
               icon: Icon(Icons.playlist_play),
-              color: kLightColor,
+              color: Colors.white,
             ),
             // Icon(
             //   Icons.playlist_play,
@@ -123,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
             Icon(
               Icons.favorite_border,
-              color: kLightColor,
+              color: Colors.white,
             ),
           ],
         ),
@@ -200,7 +311,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
+  } 
+
 
   Widget _buildNavigationRail() {
     return NavigationRail(
@@ -395,8 +507,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
-      /*Center(
+} 
+
+      Center(
         child: currentIndex == 0
             ? Container(
                 width: double.infinity,
