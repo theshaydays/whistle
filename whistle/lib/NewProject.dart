@@ -14,7 +14,7 @@ class _NewProjectState extends State<NewProject> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Do you want to return to home page?'),
+          title: Text('Do you want to return to previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
