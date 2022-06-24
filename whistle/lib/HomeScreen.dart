@@ -77,13 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Column(
           children: [
             Container(
               height: size.height * 0.75,
               color: Colors.transparent,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildNavigationRail(),
                   _buildPlayListAndSongs(size),
