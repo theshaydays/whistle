@@ -187,6 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
+                key: Key('toNewProjects'),
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,
                 ),

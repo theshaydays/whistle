@@ -39,6 +39,7 @@ class _NewProjectState extends State<NewProject> {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
+        key: ValueKey('NewProjectPage'),
         onWillPop: () async {
           final shouldPop = await showWarning(context);
           return shouldPop ?? false;
@@ -60,6 +61,7 @@ class _NewProjectState extends State<NewProject> {
                 width: 10.0,
               ),
               IconButton(
+                key: ValueKey('homeButton'),
                 icon: Icon(Icons.home),
                 color: kWhiteColor,
                 onPressed: () async {
@@ -77,6 +79,7 @@ class _NewProjectState extends State<NewProject> {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
+                      key: ValueKey('goHomeDialog'),
                       title: Text('Do you want to return to the home page?'),
                       content:
                           Text('Changes made on this page will not be saved'),
