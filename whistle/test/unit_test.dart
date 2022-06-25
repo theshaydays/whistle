@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:piano/piano.dart';
+import 'package:whistle/RecentProjects.dart';
 import 'package:whistle/fftAnalysis.dart';
 import 'package:whistle/models/Formatting.dart';
 import 'package:wav/wav.dart';
+import 'package:whistle/models/NoteFrequencies.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +20,7 @@ void main() {
     expect(output, '01:06');
   });
 
+  // The following test is only to check that the correct return type is returned. The value being wrong is expected as algorithm testing is done
   test('FFT Analysis', () async {
     //setup
     String filePath =
@@ -30,6 +34,54 @@ void main() {
 
     //test
     expect(output, 0.0);
+  });
+
+  test('Getting Note from frequency', () async {
+    //setup
+    double frequency = 440.00;
+
+    //do
+    String output = NoteFrequencies().getNote(frequency);
+
+    //test
+    expect(output, "A4");
+  });
+
+  test('Getting List of notes from frequencies', () async {
+    //setup
+    List<double> frequencies = [440.00, 0.00, 880.00, 880.00];
+
+    //do
+    List<List<dynamic>> output =
+        NoteFrequencies().getNoteList(frequencies, 0.25);
+
+    //test
+    expect(output, [
+      ["A4", 0.25],
+      ["rest", 0.25],
+      ["A5", 0.5]
+    ]);
+  });
+
+  test('Getting List of NoteImages for printing', () async {
+    //setup
+    List<List<dynamic>> notes = [
+      ["A4", 0.25],
+      ["rest", 0.25],
+      ["A5", 0.5]
+    ];
+
+    //do
+    List<NoteImage> output = getNotes(notes);
+
+    //test
+    print(output.toString());
+    expect(
+        output.toString(),
+        [
+          NoteImage(notePosition: NotePosition(note: Note.A)),
+          NoteImage(notePosition: NotePosition(note: Note.B))
+        ].toString());
   });
 
   // cannot run ffmpeg tests because it's not supported by windows
