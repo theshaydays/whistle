@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:whistle/models/constants.dart';
 
 class LoadingPage extends StatefulWidget {
   final List<String> imagePaths;
@@ -15,7 +16,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kSecondaryColor,
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -34,7 +35,7 @@ class _LoadingPageState extends State<LoadingPage> {
               final selectedImage = imageList[widget.randomList[index] - 1];
               return DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: kSecondaryColor,
                   image: DecorationImage(
                     image: selectedImage.image,
                     scale: 1,
