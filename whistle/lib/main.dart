@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
-import 'SongScreen.dart';
+import 'package:whistle/sign_in/sign_in_screen.dart';
 import 'dart:io' show Platform;
 
 void main() {
@@ -25,12 +24,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Whistle',
-      /*theme: ThemeData(
-        textTheme: GoogleFonts.saralaTextTheme(Theme.of(context).textTheme),
-      ),*/
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-      routes: {'/song': (ctx) => SongScreen()},
+      home: SignInScreen(),
     );
   }
 }
