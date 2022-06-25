@@ -149,6 +149,7 @@ class _NewProjectState extends State<NewProject> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: ((context) => NewAudioPage(
                                       file.path!, file.name, fileDuration))));
+                              FilePickerStatus.done;
                               // NewAudioPage(
                               //   file.path!,
                               //   file.name,

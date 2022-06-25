@@ -9,7 +9,7 @@ import 'package:whistle/FFmpegConvert.dart';
 class FFTAnalysis {
   final String filePath;
   final String duration;
-  static final double resolution = 0.125;
+  static final double resolution = 0.25;
   static final int accuracy = 12;
   static final double volThreshold = 10.00;
 
@@ -41,10 +41,13 @@ class FFTAnalysis {
     // analyse slices
     List<double> frequencyList = [];
 
+    //print('paths are ' + splicedAudioFilePaths.length.toString());
+
     for (int i = 0; i < splicedAudioFilePaths.length; i++) {
       Wav slice = await Wav.readFile(splicedAudioFilePaths[i]);
       Future<double> freq = analyse(slice, sampleRate);
       frequencyList.add(await freq);
+      //print('index is $i');
     }
     return frequencyList;
   }

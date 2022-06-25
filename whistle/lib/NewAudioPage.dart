@@ -49,7 +49,6 @@ class _NewAudioPageState extends State<NewAudioPage> {
       randomList = List.generate(images!.length, (index) => index + 1);
       randomList?.shuffle();
     });
-    print('testing $images');
   }
 
   @override
@@ -198,16 +197,20 @@ class _NewAudioPageState extends State<NewAudioPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      widget.audioName,
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Expanded(
-                      child: Container(),
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          widget.audioName,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
+                      ),
                     ),
                     Icon(
                       Icons.favorite,

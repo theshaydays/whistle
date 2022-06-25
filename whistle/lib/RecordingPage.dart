@@ -30,8 +30,6 @@ class _RecordingPageState extends State<RecordingPage> {
   Future stop() async {
     if (!isRecorderReady) return;
     filePath = await recorder.stopRecorder();
-
-    print('Recorded audio: $filePath');
   }
 
   Future pause() async {
