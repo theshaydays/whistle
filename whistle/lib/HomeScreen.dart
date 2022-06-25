@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
+      key: ValueKey('HomeScreen'),
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         centerTitle: false,
@@ -187,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                key: Key('toNewProjects'),
+                key: Key('ToNewProjects'),
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,
                 ),

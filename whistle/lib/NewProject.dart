@@ -16,10 +16,12 @@ class _NewProjectState extends State<NewProject> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
+          key: ValueKey('BackButton'),
           title: Text('Do you want to return to the previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
+              key: ValueKey('BackButtonNo'),
               child: Text('No'),
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,
@@ -27,6 +29,7 @@ class _NewProjectState extends State<NewProject> {
               onPressed: () => Navigator.pop(context, false),
             ),
             ElevatedButton(
+              key: ValueKey('BackButtonYes'),
               child: Text('Yes'),
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,
@@ -61,15 +64,17 @@ class _NewProjectState extends State<NewProject> {
                 width: 10.0,
               ),
               IconButton(
-                key: ValueKey('homeButton'),
+                key: ValueKey('HomeButton'),
                 icon: Icon(Icons.home),
                 color: kWhiteColor,
                 onPressed: () async {
                   List<Widget> widgetList = [
                     TextButton(
+                        key: ValueKey('HomeButtonNo'),
                         onPressed: () => Navigator.pop(context, 'Close'),
                         child: Text('No')),
                     TextButton(
+                        key: ValueKey('HomeButtonYes'),
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HomeScreen(),
@@ -79,7 +84,7 @@ class _NewProjectState extends State<NewProject> {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      key: ValueKey('goHomeDialog'),
+                      key: ValueKey('GoHomeDialog'),
                       title: Text('Do you want to return to the home page?'),
                       content:
                           Text('Changes made on this page will not be saved'),
@@ -197,6 +202,7 @@ class _NewProjectState extends State<NewProject> {
             items: <Widget>[
               Icon(Icons.home, size: 30, color: kPrimaryColor),
               Icon(Icons.search, size: 30, color: kPrimaryColor),
+              Icon(Icons.favorite, size: 30, color: favoriteColor),
               Icon(Icons.favorite, size: 30, color: favoriteColor),
               IconButton(
                 onPressed: () async {

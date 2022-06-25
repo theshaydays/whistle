@@ -43,16 +43,80 @@ void main() {
     expect(find.byKey(ValueKey('NewProjectPage')), findsNothing);
   });
 
-  testWidgets('Test Home Icon ', (WidgetTester tester) async {
-    //find widget
-    final homeButton = find.byKey(ValueKey('homeButton'));
+  group('New Projects Page', () {
+    testWidgets('Home Icon', (WidgetTester tester) async {
+      //find widget
+      final homeButton = find.byKey(ValueKey('HomeButton'));
 
-    //execute test
-    await tester.pumpWidget(MaterialApp(home: NewProject()));
-    await tester.tap(homeButton);
-    await tester.pumpAndSettle();
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.tap(homeButton);
+      await tester.pumpAndSettle();
 
-    //check outputs
-    expect(find.byKey(ValueKey('goHomeDialog')), findsOneWidget);
+      //check outputs
+      expect(find.byKey(ValueKey('GoHomeDialog')), findsOneWidget);
+    });
+
+    testWidgets('Test Home Icon No', (WidgetTester tester) async {
+      //find widget
+      final homeButtonNo = find.byKey(ValueKey('HomeButtonNo'));
+      final homeButton = find.byKey(ValueKey('HomeButton'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.tap(homeButton);
+      await tester.pumpAndSettle();
+      await tester.tap(homeButtonNo);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+    });
+
+    testWidgets('Test Home Icon Yes', (WidgetTester tester) async {
+      //find widget
+      final homeButtonYes = find.byKey(ValueKey('HomeButtonYes'));
+      final homeButton = find.byKey(ValueKey('HomeButton'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.tap(homeButton);
+      await tester.pumpAndSettle();
+      await tester.tap(homeButtonYes);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('HomeScreen')), findsOneWidget);
+    });
+
+    testWidgets('Test Back Icon No', (WidgetTester tester) async {
+      //find widget
+      final backButtonNo = find.byKey(ValueKey('BackButtonNo'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      await tester.tap(backButtonNo);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+    });
+
+    testWidgets('Test Back Icon Yes', (WidgetTester tester) async {
+      //find widget
+      final backButtonYes = find.byKey(ValueKey('BackButtonYes'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      await tester.tap(backButtonYes);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('HomeScreen')), findsOneWidget);
+    });
   });
 }
