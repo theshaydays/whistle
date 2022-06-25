@@ -75,12 +75,11 @@ void main() {
     List<NoteImage> output = getNotes(notes);
 
     //test
-    print(output.toString());
     expect(
         output.toString(),
         [
           NoteImage(notePosition: NotePosition(note: Note.A)),
-          NoteImage(notePosition: NotePosition(note: Note.B))
+          NoteImage(notePosition: NotePosition(note: Note.A))
         ].toString());
   });
 
