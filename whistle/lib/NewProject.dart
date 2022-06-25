@@ -193,7 +193,7 @@ class _NewProjectState extends State<NewProject> {
             items: <Widget>[
               Icon(Icons.home, size: 30, color: kPrimaryColor),
               Icon(Icons.search, size: 30, color: kPrimaryColor),
-              Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+              Icon(Icons.favorite, size: 30, color: favoriteColor),
               IconButton(
                 onPressed: () async {
                   FilePickerResult? result =
