@@ -51,8 +51,8 @@ class _RecentProjectsState extends State<RecentProjects> {
             title: Text(
               'Score Sheet',
               style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.white,
+                  fontSize: 20.0,
+                  color: kSecondaryColor,
                   fontWeight: FontWeight.bold),
             ),
             centerTitle: true,

@@ -1,5 +1,9 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:whistle/FFMPEGConvert.dart';
 import 'package:whistle/HomeScreen.dart';
+import 'package:whistle/NewAudioPage.dart';
 import 'package:whistle/RecentProjects.dart';
 import 'package:whistle/models/constants.dart';
 
@@ -9,6 +13,15 @@ class RecentProjectsFolders extends StatefulWidget {
 }
 
 class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
+  final myDecoratedField = InputDecoration(
+    filled: true,
+    fillColor: kPrimaryColor,
+    border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30.0), borderSide: BorderSide.none),
+    hintText: "Project Title",
+    hintStyle: TextStyle(color: kSecondaryColor, fontSize: 15.0),
+  );
+
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
@@ -44,9 +57,9 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'Recent Projects',
+              'RECENT PROJECTS',
               style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 20.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
@@ -83,35 +96,227 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
               )
             ],
           ),
-          body: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Column(
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.75,
-                  color: Colors.transparent,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(Icons.folder),
-                          iconSize: 80,
-                          color: kPrimaryColor,
-                          alignment: Alignment.center,
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => RecentProjects(test),
-                              ),
-                            );
-                          }),
-                      Text("Project 1"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          body: _buildFolders(context),
+          backgroundColor: kSecondaryColor,
+          bottomNavigationBar: CurvedNavigationBar(
+            backgroundColor: kSecondaryColor,
+            color: kLightColor2,
+            items: <Widget>[
+              Icon(Icons.home, size: 30, color: kPrimaryColor),
+              Icon(Icons.search, size: 30, color: kPrimaryColor),
+              Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+              IconButton(
+                onPressed: () async {
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles(type: FileType.audio);
+                  if (result != null) {
+                    PlatformFile file = result.files.first;
+                    String fileDuration =
+                        await FFmpegConvert(file.path!).getDuration();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => NewAudioPage(
+                            file.path!, file.name, fileDuration))));
+                    // NewAudioPage(
+                    //   file.path!,
+                    //   file.name,
+                    // );
+                    // print(file.path!);
+                  } else {
+                    // user cancelled picker
+                  }
+                },
+                icon: Icon(Icons.playlist_play),
+                color: kPrimaryColor,
+              ),
+              Icon(Icons.person, size: 30, color: kPrimaryColor),
+            ],
           ),
         ),
       );
+
+  Widget _buildFolders(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              TextField(
+                decoration: myDecoratedField.copyWith(
+                  hintText: "Project Title",
+                  icon: IconButton(
+                    icon: Icon(Icons.folder),
+                    iconSize: 75,
+                    color: kPrimaryColor,
+                    alignment: Alignment.center,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RecentProjects(test),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
