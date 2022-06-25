@@ -14,6 +14,7 @@ class RecentProjectsFolders extends StatefulWidget {
 
 class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
   final myDecoratedField = InputDecoration(
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 35.0),
     filled: true,
     fillColor: kPrimaryColor,
     border: OutlineInputBorder(
@@ -104,7 +105,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
             items: <Widget>[
               Icon(Icons.home, size: 30, color: kPrimaryColor),
               Icon(Icons.search, size: 30, color: kPrimaryColor),
-              Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+              Icon(Icons.favorite, size: 30, color: favoriteColor),
               IconButton(
                 onPressed: () async {
                   FilePickerResult? result =
@@ -147,7 +148,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -166,7 +167,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -185,7 +186,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -204,7 +205,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -223,7 +224,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -242,7 +243,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -261,7 +262,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -280,7 +281,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
@@ -299,7 +300,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                   hintText: "Project Title",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
-                    iconSize: 75,
+                    iconSize: 70,
                     color: kPrimaryColor,
                     alignment: Alignment.center,
                     onPressed: () {
