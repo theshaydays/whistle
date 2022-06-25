@@ -94,6 +94,7 @@ class _RecentProjectsState extends State<RecentProjects> {
       );
 }
 
+//original code that works
 Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
   return ClefImage(
     clef: Clef.Treble,
@@ -105,6 +106,31 @@ Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
     size: Size.infinite,
   );
 }
+
+//the one i tried .... but idk if this works
+/*Widget _buildScore(
+    BuildContext context, List<List<dynamic>> list, noteResults) {
+  int stavesRequired = getStaves(
+      noteResults); //to determine how many staves should be printed out
+  for (int i = 0; i < stavesRequired; i++) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          ClefImage(
+            clef: Clef.Treble,
+            noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
+                NotePosition(note: Note.C, octave: 10)),
+            noteImages: getNotes(list),
+            clefColor: kPrimaryColor,
+            noteColor: kPrimaryColor,
+            size: Size.infinite,
+          )
+        ],
+      ),
+    );
+  }
+}*/
 
 //function to get all the notes
 List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
