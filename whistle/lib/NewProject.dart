@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:whistle/RecordingPage.dart';
 import 'package:whistle/models/constants.dart';
@@ -47,10 +48,10 @@ class _NewProjectState extends State<NewProject> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'New Project',
+              'NEW PROJECT',
               style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.white,
+                  fontSize: 20.0,
+                  color: kSecondaryColor,
                   fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
@@ -116,7 +117,11 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Record Audio'),
+                        child: Text('Record Audio',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0)),
                       ),
                     ],
                   ),
@@ -170,13 +175,50 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Select file from device'),
+                        child: Text('Select file from device',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0)),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
+          ),
+          bottomNavigationBar: CurvedNavigationBar(
+            backgroundColor: kSecondaryColor,
+            color: kLightColor2,
+            items: <Widget>[
+              Icon(Icons.home, size: 30, color: kPrimaryColor),
+              Icon(Icons.search, size: 30, color: kPrimaryColor),
+              Icon(Icons.favorite, size: 30, color: kPrimaryColor),
+              IconButton(
+                onPressed: () async {
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles(type: FileType.audio);
+                  if (result != null) {
+                    PlatformFile file = result.files.first;
+                    String fileDuration =
+                        await FFmpegConvert(file.path!).getDuration();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => NewAudioPage(
+                            file.path!, file.name, fileDuration))));
+                    // NewAudioPage(
+                    //   file.path!,
+                    //   file.name,
+                    // );
+                    // print(file.path!);
+                  } else {
+                    // user cancelled picker
+                  }
+                },
+                icon: Icon(Icons.playlist_play),
+                color: kPrimaryColor,
+              ),
+              Icon(Icons.person, size: 30, color: kPrimaryColor),
+            ],
           ),
         ),
       );

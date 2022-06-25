@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   primary: kPrimaryColor,
                 ),
                 child: Text(
-                  'Previous Projects',
+                  'Sample Keyboard',
                   style: TextStyle(
                       color: kSecondaryColor,
                       fontWeight: FontWeight.bold,

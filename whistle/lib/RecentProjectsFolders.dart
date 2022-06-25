@@ -18,7 +18,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
     fillColor: kPrimaryColor,
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30.0), borderSide: BorderSide.none),
-    hintText: "Project Name",
+    hintText: "Project Title",
     hintStyle: TextStyle(color: kSecondaryColor, fontSize: 15.0),
   );
 
