@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kSecondaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
+                      fontSize: 12.0),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kSecondaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
+                      fontSize: 12.0),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kSecondaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
+                      fontSize: 12.0),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(

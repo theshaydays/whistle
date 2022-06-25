@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:piano/piano.dart';
 import 'package:whistle/HomeScreen.dart';
 import 'package:whistle/models/Notes.dart';
@@ -95,42 +96,58 @@ class _RecentProjectsState extends State<RecentProjects> {
 }
 
 //original code that works
-Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
-  return ClefImage(
-    clef: Clef.Treble,
-    noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
-        NotePosition(note: Note.C, octave: 10)),
-    noteImages: getNotes(list),
-    clefColor: kPrimaryColor,
-    noteColor: kPrimaryColor,
-    size: Size.infinite,
-  );
-}
+// Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
+//   return ClefImage(
+//     clef: Clef.Treble,
+//     noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
+//         NotePosition(note: Note.C, octave: 10)),
+//     noteImages: getNotes(list),
+//     clefColor: kPrimaryColor,
+//     noteColor: kPrimaryColor,
+//     size: Size.infinite,
+//   );
+// }
 
 //the one i tried .... but idk if this works
-/*Widget _buildScore(
-    BuildContext context, List<List<dynamic>> list, noteResults) {
-  int stavesRequired = getStaves(
-      noteResults); //to determine how many staves should be printed out
-  for (int i = 0; i < stavesRequired; i++) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          ClefImage(
-            clef: Clef.Treble,
-            noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
-                NotePosition(note: Note.C, octave: 10)),
-            noteImages: getNotes(list),
-            clefColor: kPrimaryColor,
-            noteColor: kPrimaryColor,
-            size: Size.infinite,
-          )
-        ],
+Widget _buildScore(BuildContext context, noteResults) {
+  Size size = MediaQuery.of(context).size;
+  //to determine how many staves should be printed out
+  int stavesRequired = getStaves(noteResults);
+  //to determine the max number of notes each stave can take
+  List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
+
+  //list of staves
+  List<Widget> staves = [
+    Container(
+      alignment: AlignmentDirectional.topCenter,
+      width: size.width,
+      height: size.height + (stavesRequired - 3) * 175,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Text("JODY IS SMART"),
       ),
-    );
+    )
+  ];
+  for (int i = 0; i < stavesRequired; i++) {
+    staves.add(Positioned(
+      top: i * 175,
+      child: ClefImage(
+        clef: Clef.Treble,
+        noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
+            NotePosition(note: Note.C, octave: 10)),
+        noteImages: getNotes(splitNotes[i]),
+        clefColor: kPrimaryColor,
+        noteColor: kPrimaryColor,
+        size: size,
+      ),
+    ));
   }
-}*/
+  return SingleChildScrollView(
+    child: Stack(
+      children: staves,
+    ),
+  );
+}
 
 //function to get all the notes
 List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
@@ -149,13 +166,19 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
 
 //function to get the number of staves needed
 int getStaves(List<List<dynamic>> noteResults) {
-  int noOfStaves = 0;
-  for (int i = 0; i < noteResults.length; i++) {
-    if (noteResults.length % (10) == 0) {
-      noOfStaves++;
-    }
+  if (noteResults.length == 0) {
+    return 0;
   }
-  return noOfStaves;
+  return (noteResults.length ~/ 10) + 1;
+  // int noOfStaves = 1;
+  // for (int i = 0; i < noteResults.length; i+ +) {
+  //   if (noteResults.length % (10) == 0) {
+  //     noOfStaves++;
+  //   }
+  // }
+
+  // print(noteResults.length);
+  // return noOfStaves;
 }
 
 //function to split the list of notes into smaller lists (each containing only 10 notes)
