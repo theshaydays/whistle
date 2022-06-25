@@ -62,6 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         title: Text(
           'WHISTLE',
+          style: TextStyle(
+              fontSize: 25.0,
+              color: kSecondaryColor,
+              fontWeight: FontWeight.bold),
         ),
         elevation: 0,
         backgroundColor: kPrimaryColor,
