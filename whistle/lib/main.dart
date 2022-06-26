@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'SongScreen.dart';
 import 'dart:io' show Platform;
+import 'package:flutter/services.dart';
 
 void main() {
   _setTargetPlatformForDesktop();
@@ -23,6 +24,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
     return MaterialApp(
       title: 'Whistle',
       /*theme: ThemeData(

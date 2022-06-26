@@ -203,30 +203,7 @@ class _NewProjectState extends State<NewProject> {
               Icon(Icons.home, size: 30, color: kPrimaryColor),
               Icon(Icons.search, size: 30, color: kPrimaryColor),
               Icon(Icons.favorite, size: 30, color: favoriteColor),
-              Icon(Icons.favorite, size: 30, color: favoriteColor),
-              IconButton(
-                onPressed: () async {
-                  FilePickerResult? result =
-                      await FilePicker.platform.pickFiles(type: FileType.audio);
-                  if (result != null) {
-                    PlatformFile file = result.files.first;
-                    String fileDuration =
-                        await FFmpegConvert(file.path!).getDuration();
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => NewAudioPage(
-                            file.path!, file.name, fileDuration))));
-                    // NewAudioPage(
-                    //   file.path!,
-                    //   file.name,
-                    // );
-                    // print(file.path!);
-                  } else {
-                    // user cancelled picker
-                  }
-                },
-                icon: Icon(Icons.playlist_play),
-                color: kPrimaryColor,
-              ),
+              Icon(Icons.playlist_play, size: 30, color: kPrimaryColor),
               Icon(Icons.person, size: 30, color: kPrimaryColor),
             ],
           ),

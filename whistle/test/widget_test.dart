@@ -89,6 +89,19 @@ void main() {
       expect(find.byKey(ValueKey('HomeScreen')), findsOneWidget);
     });
 
+    testWidgets('Test Back Icon', (WidgetTester tester) async {
+      //find widget
+      //final backButtonNo = find.byKey(ValueKey('BackButtonNo'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('BackButton')), findsOneWidget);
+    });
+
     testWidgets('Test Back Icon No', (WidgetTester tester) async {
       //find widget
       final backButtonNo = find.byKey(ValueKey('BackButtonNo'));
@@ -116,7 +129,7 @@ void main() {
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('HomeScreen')), findsOneWidget);
+      expect(find.byKey(ValueKey('HomeScreen')), findsNothing);
     });
   });
 }
