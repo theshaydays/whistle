@@ -3,7 +3,11 @@ class Playlist {
   final String image;
   final int id;
 
-  Playlist({required this.id, required this.playlistName, required this.image});
+  Playlist({
+    required this.id,
+    required this.playlistName,
+    required this.image,
+  });
 }
 
 List<Playlist> playlists = [
@@ -22,5 +26,9 @@ List<Playlist> playlists = [
     playlistName: 'Sample 3',
     image: "images/mountain.jpeg",
   ),
-  Playlist(id: 4, playlistName: 'Sample 4', image: "images/sky.jpeg"),
+  Playlist(
+    id: 4,
+    playlistName: 'Sample 4',
+    image: "images/sky.jpeg",
+  ),
 ];

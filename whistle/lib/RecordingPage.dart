@@ -40,7 +40,7 @@ class _RecordingPageState extends State<RecordingPage> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Do you want to return to home page?'),
+          title: Text('Do you want to return to the previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
@@ -98,11 +98,11 @@ class _RecordingPageState extends State<RecordingPage> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'New Project',
+              'NEW PROJECT',
               style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w800),
+                  fontSize: 20.0,
+                  color: kSecondaryColor,
+                  fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             actions: [
@@ -208,9 +208,17 @@ class _RecordingPageState extends State<RecordingPage> {
                           ),
                         ),
                       ),
-                      Text(recorder.isRecording
-                          ? 'Press to stop recording'
-                          : 'Press to record'),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            recorder.isRecording
+                                ? 'Press to stop recording'
+                                : 'Press to record',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0)),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 25),
                         child: Ink(
@@ -243,17 +251,27 @@ class _RecordingPageState extends State<RecordingPage> {
                               String fileDuration =
                                   await FFmpegConvert(filePath!).getDuration();
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => NewAudioPage(filePath!,
-                                      'recorded audio', fileDuration))));
+                                  builder: ((context) => NewAudioPage(
+                                      filePath!,
+                                      'recorded audio',
+                                      fileDuration,
+                                      'device file'))));
                               setState(() {});
                             },
                             iconSize: 25,
                           ),
                         ),
                       ),
-                      Text(
-                        'Press to analyse audio \n (Only after recording is done)',
-                        textAlign: TextAlign.center,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Press to analyse audio \n (Only after recording is done)',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0),
+                        ),
                       ),
                     ],
                   ),

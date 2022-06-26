@@ -116,8 +116,8 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     String fileDuration =
                         await FFmpegConvert(file.path!).getDuration();
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => NewAudioPage(
-                            file.path!, file.name, fileDuration))));
+                        builder: ((context) => NewAudioPage(file.path!,
+                            file.name, fileDuration, 'device file'))));
                     // NewAudioPage(
                     //   file.path!,
                     //   file.name,

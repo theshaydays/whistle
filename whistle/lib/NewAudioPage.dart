@@ -16,8 +16,10 @@ class NewAudioPage extends StatefulWidget {
   final String filePath;
   final String audioName;
   final String duration;
+  final String pathType;
 
-  const NewAudioPage(this.filePath, this.audioName, this.duration);
+  const NewAudioPage(
+      this.filePath, this.audioName, this.duration, this.pathType);
 
   @override
   _NewAudioPageState createState() => _NewAudioPageState();
@@ -54,14 +56,11 @@ class _NewAudioPageState extends State<NewAudioPage> {
   @override
   void initState() {
     super.initState();
-    _audioPlayer.setFilePath(widget.filePath);
-
-    // In the future, we want both asset files and device files to be played. We will need to change the parameters passed into this class so the following code chunk will become pivotal
-    // if (widget.pathType == 'asset') {
-    //   _audioPlayer.setAsset(widget.filePath);
-    // } else if (widget.pathType == 'device file') {
-    //   _audioPlayer.setFilePath(widget.filePath);
-    // }
+    if (widget.pathType == 'asset') {
+      _audioPlayer.setAsset(widget.filePath);
+    } else if (widget.pathType == 'device file') {
+      _audioPlayer.setFilePath(widget.filePath);
+    }
   }
 
   @override
@@ -253,6 +252,9 @@ class _NewAudioPageState extends State<NewAudioPage> {
                   children: [
                     IconButton(
                       onPressed: () async {
+                        if (widget.pathType == 'asset') {
+                          return;
+                        }
                         await _initImages();
                         setState(() => _isLoading = true);
                         List<double> freq =

@@ -157,7 +157,10 @@ class _NewProjectState extends State<NewProject> {
                                   await FFmpegConvert(file.path!).getDuration();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: ((context) => NewAudioPage(
-                                      file.path!, file.name, fileDuration))));
+                                      file.path!,
+                                      file.name,
+                                      fileDuration,
+                                      'device file'))));
                               FilePickerStatus.done;
                               // NewAudioPage(
                               //   file.path!,
