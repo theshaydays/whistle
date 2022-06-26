@@ -30,17 +30,32 @@ void main() {
   //   expect(find.text('1'), findsOneWidget);
   // });
 
-  testWidgets('Test next Icon ', (WidgetTester tester) async {
-    //find widget
-    final newProject = find.byKey(ValueKey('toNewProjects'));
+  group('HomeScreen', () {
+    testWidgets('New Project Icon ', (WidgetTester tester) async {
+      //find widget
+      final newProject = find.byKey(ValueKey('ToNewProjects'));
 
-    //execute test
-    await tester.pumpWidget(MaterialApp(home: HomeScreen()));
-    await tester.tap(newProject);
-    await tester.pumpAndSettle();
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: HomeScreen()));
+      await tester.tap(newProject);
+      await tester.pumpAndSettle();
 
-    //check outputs
-    expect(find.byKey(ValueKey('NewProjectPage')), findsNothing);
+      //check outputs
+      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+    });
+
+    testWidgets('Sample Keyboard Icon ', (WidgetTester tester) async {
+      //find widget
+      final button = find.byKey(ValueKey('SampleKeyboard'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: HomeScreen()));
+      await tester.tap(button);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('KeyboardPage')), findsOneWidget);
+    });
   });
 
   group('New Projects Page', () {

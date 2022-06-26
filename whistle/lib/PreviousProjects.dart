@@ -18,6 +18,7 @@ class _PreviousProjectsState extends State<PreviousProjects> {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+      key: ValueKey('KeyboardPage'),
       debugShowCheckedModeBanner: false,
       title: 'Piano Demo',
       home: Center(

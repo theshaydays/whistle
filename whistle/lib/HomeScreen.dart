@@ -96,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: RotatedBox(
                     quarterTurns: -1,
                     child: ElevatedButton(
+                      key: ValueKey('SampleKeyboard'),
                       style: ElevatedButton.styleFrom(
                         primary: kPrimaryColor,
                       ),
