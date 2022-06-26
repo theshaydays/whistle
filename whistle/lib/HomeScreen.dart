@@ -124,6 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: RotatedBox(
                       quarterTurns: -1,
                       child: ElevatedButton(
+                        key: ValueKey('RecentProjectsButton'),
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,
                         ),
@@ -152,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ElevatedButton(
-                        key: Key('ToNewProjects'),
+                        key: Key('ToNewProject'),
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,
                         ),
