@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-26T19:34:35.680Z" agent="5.0 (Windows)" etag="D210NyW8tDLBLktyniy3" version="20.0.3" type="github" pages="13">
+<mxfile host="app.diagrams.net" modified="2022-06-26T20:16:33.597Z" agent="5.0 (Windows)" etag="qTORKJa6W0xe6yIMZiR4" version="20.0.3" type="github" pages="13">
   <diagram name="User Activity Flow" id="8ce9d11a-91a2-4d17-14d8-a56ed91bf033">
-    <mxGraphModel dx="2198" dy="1185" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1099" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -133,7 +133,7 @@
           <mxGeometry x="684" y="261" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="lY-wEfp9Yewug6UpfVMN-10" value="User Tries the Sample Piano" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;size=0.16666666666666666;" vertex="1" parent="1">
-          <mxGeometry x="360" y="290" width="120" height="60" as="geometry" />
+          <mxGeometry x="366" y="282" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="qZzp6hlASHi8pTWKc_2k-3" value="App requests for permissions" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="544" y="563" width="111" height="74" as="geometry" />
