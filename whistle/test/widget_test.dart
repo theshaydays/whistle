@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:whistle/HomeScreen.dart';
 import 'package:whistle/NewProject.dart';
+import 'package:whistle/RecordingPage.dart';
 
 import 'package:whistle/main.dart';
 
@@ -158,6 +159,32 @@ void main() {
 
       //check outputs
       expect(find.byKey(ValueKey('HomeScreen')), findsNothing);
+    });
+
+    testWidgets('To Recording Page', (WidgetTester tester) async {
+      //find widget
+      final button = find.byKey(ValueKey('ToRecordingPage'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.tap(button);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byWidget(RecordingPage()), findsOneWidget);
+    });
+
+    testWidgets('To Audio Player Page', (WidgetTester tester) async {
+      //find widget
+      final button = find.byKey(ValueKey('ToRecordingPage'));
+
+      //execute test
+      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.tap(button);
+      await tester.pumpAndSettle();
+
+      //check outputs
+      expect(find.byKey(ValueKey('RecordingPage')), findsOneWidget);
     });
   });
 }

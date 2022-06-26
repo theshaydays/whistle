@@ -111,6 +111,7 @@ class _NewProjectState extends State<NewProject> {
                           shape: CircleBorder(),
                         ),
                         child: IconButton(
+                          key: ValueKey('ToRecordingPage'),
                           icon: const Icon(Icons.mic),
                           color: Colors.white,
                           onPressed: () {
