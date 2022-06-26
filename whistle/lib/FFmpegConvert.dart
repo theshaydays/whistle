@@ -58,7 +58,7 @@ class FFmpegConvert {
     String outputPath = rawDocumentPath + "/" + fileName + ".wav";
     String command = '-i ' + path + ' ' + outputPath;
     FFmpegSession sess = await FFmpegKit.execute(command);
-    print('issit the entire thing ' + outputPath);
+    //print('issit the entire thing ' + outputPath);
     return outputPath;
   }
 
