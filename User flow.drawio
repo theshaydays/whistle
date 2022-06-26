@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-06-26T21:00:22.609Z" agent="5.0 (Windows)" etag="vjonAIB8kkZG8EVUl6n9" version="20.0.3" type="github" pages="13">
+<mxfile host="app.diagrams.net" modified="2022-06-26T22:08:38.499Z" agent="5.0 (Windows)" etag="OKyDL-DKNdKl0sTaqg0y" version="20.0.3" type="github" pages="13">
   <diagram name="User Activity Flow" id="8ce9d11a-91a2-4d17-14d8-a56ed91bf033">
     <mxGraphModel dx="2418" dy="1304" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -485,29 +485,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Y6IENhfF4qyb8PqlVkrg-2" target="Y6IENhfF4qyb8PqlVkrg-4" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-2" value="New Projects page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="110" y="50" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;fillColor=#e51400;strokeColor=#B20000;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="Y6IENhfF4qyb8PqlVkrg-4" target="Y6IENhfF4qyb8PqlVkrg-2" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="150" y="160" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-4" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="110" y="300" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-5" value="&lt;div&gt;User Chooses to Record Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="190" y="140" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-6" value="User denies Permissions" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="10" y="230" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Y6IENhfF4qyb8PqlVkrg-7" value="App requests for permissions" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="200" y="210" width="120" height="80" as="geometry" />
-        </mxCell>
         <mxCell id="iT77Vtpq-jMncwMzb1B8-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="381" y="40" width="410" height="310" as="geometry" />
         </mxCell>
@@ -537,15 +514,41 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="iT77Vtpq-jMncwMzb1B8-8" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="iT77Vtpq-jMncwMzb1B8-6" vertex="1">
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-8" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="iT77Vtpq-jMncwMzb1B8-6" vertex="1">
           <mxGeometry x="137" width="136" height="226" as="geometry">
             <mxRectangle width="136" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="iT77Vtpq-jMncwMzb1B8-9" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if going back gives users a warning that work will be unsaved&lt;/div&gt;&lt;div&gt;- Check if Permissions pop-up appears&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="iT77Vtpq-jMncwMzb1B8-6" vertex="1">
+        <mxCell id="iT77Vtpq-jMncwMzb1B8-9" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if Permissions pop-up appears&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is redirected back to previous page&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="iT77Vtpq-jMncwMzb1B8-6" vertex="1">
           <mxGeometry x="273" width="137" height="226" as="geometry">
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="vB7ZplfozgnaRXjqskXR-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="10" y="50" width="310" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-2" value="New Projects page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vB7ZplfozgnaRXjqskXR-1" vertex="1">
+          <mxGeometry x="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;fillColor=#e51400;strokeColor=#B20000;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="vB7ZplfozgnaRXjqskXR-1" source="Y6IENhfF4qyb8PqlVkrg-4" target="Y6IENhfF4qyb8PqlVkrg-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-4" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vB7ZplfozgnaRXjqskXR-1" vertex="1">
+          <mxGeometry x="100" y="250" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="vB7ZplfozgnaRXjqskXR-1" source="Y6IENhfF4qyb8PqlVkrg-2" target="Y6IENhfF4qyb8PqlVkrg-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-5" value="&lt;div&gt;User Chooses to Record Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vB7ZplfozgnaRXjqskXR-1" vertex="1">
+          <mxGeometry x="180" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-6" value="User denies Permissions" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vB7ZplfozgnaRXjqskXR-1" vertex="1">
+          <mxGeometry y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Y6IENhfF4qyb8PqlVkrg-7" value="App requests for permissions" style="ellipse;whiteSpace=wrap;html=1;" parent="vB7ZplfozgnaRXjqskXR-1" vertex="1">
+          <mxGeometry x="190" y="160" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -555,12 +558,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="6nobseFbJJmHWOGPow-g-1" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="40" y="80" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="6nobseFbJJmHWOGPow-g-2" value="User Records Audio" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="181" y="80" width="120" height="80" as="geometry" />
-        </mxCell>
         <mxCell id="sRQy5ILCkBpcYewuUoMn-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="360" y="30" width="410" height="310" as="geometry" />
         </mxCell>
@@ -600,6 +597,15 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="oJkjQPhfVABlD_yIS7Or-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="80" width="261" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6nobseFbJJmHWOGPow-g-1" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="oJkjQPhfVABlD_yIS7Or-1" vertex="1">
+          <mxGeometry width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6nobseFbJJmHWOGPow-g-2" value="User Records Audio" style="ellipse;whiteSpace=wrap;html=1;" parent="oJkjQPhfVABlD_yIS7Or-1" vertex="1">
+          <mxGeometry x="141" width="120" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -608,18 +614,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="0zopE5zRqRAD2ZtNLqu7-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="0zopE5zRqRAD2ZtNLqu7-2" target="0zopE5zRqRAD2ZtNLqu7-3" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="0zopE5zRqRAD2ZtNLqu7-2" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="90" y="40" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="0zopE5zRqRAD2ZtNLqu7-3" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="90" y="230" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="0zopE5zRqRAD2ZtNLqu7-4" value="&lt;div&gt;User Chooses to Analyse Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="190" y="140" width="120" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="Yp_rqyOEtS_qU6ms5UeL-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="350" y="30" width="410" height="310" as="geometry" />
         </mxCell>
@@ -649,7 +643,7 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-8" value="&lt;div&gt;- Check if &quot;Analyse Audio&quot; Button leads to Audio Player Page if recording exists&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check if &quot;Analyse Audio&quot; produces popup that prompts user to record audio if recordign does not exist&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="Yp_rqyOEtS_qU6ms5UeL-6" vertex="1">
+        <mxCell id="Yp_rqyOEtS_qU6ms5UeL-8" value="&lt;div&gt;- Check if &quot;Analyse Audio&quot; Button leads to Audio Player Page if recording exists&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check if &quot;Analyse Audio&quot; produces popup that prompts user to record audio if recording does not exist&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="Yp_rqyOEtS_qU6ms5UeL-6" vertex="1">
           <mxGeometry x="137" width="136" height="226" as="geometry">
             <mxRectangle width="136" height="226" as="alternateBounds" />
           </mxGeometry>
@@ -659,6 +653,21 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="HRoOwoSz40V1S5b5Ieix-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="90" y="40" width="220" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-2" value="Record Audio in App" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="HRoOwoSz40V1S5b5Ieix-1" vertex="1">
+          <mxGeometry width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-3" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="HRoOwoSz40V1S5b5Ieix-1" vertex="1">
+          <mxGeometry y="190" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="HRoOwoSz40V1S5b5Ieix-1" source="0zopE5zRqRAD2ZtNLqu7-2" target="0zopE5zRqRAD2ZtNLqu7-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0zopE5zRqRAD2ZtNLqu7-4" value="&lt;div&gt;User Chooses to Analyse Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="HRoOwoSz40V1S5b5Ieix-1" vertex="1">
+          <mxGeometry x="100" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -667,12 +676,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="_XzHiNCjYJ3TNLUAsnI3-1" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="30" y="60" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="_XzHiNCjYJ3TNLUAsnI3-2" value="User Play/Pause/Repeats Audio" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="170" y="60" width="120" height="80" as="geometry" />
-        </mxCell>
         <mxCell id="Geb7ai_sO6iN6AyhS-gm-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="360" y="30" width="410" height="310" as="geometry" />
         </mxCell>
@@ -702,7 +705,7 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Geb7ai_sO6iN6AyhS-gm-8" value="&lt;div&gt;- Check for icon changes when user is is playing audio&lt;/div&gt;&lt;div&gt;- Check that music bar runs as audio is playing&lt;/div&gt;&lt;div&gt;- Check for dynamic updating of current song time&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Check for circular progress bar when music player is buffering&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="Geb7ai_sO6iN6AyhS-gm-6" vertex="1">
+        <mxCell id="Geb7ai_sO6iN6AyhS-gm-8" value="&lt;div&gt;- Check for icon changes when user is is playing audio&lt;/div&gt;&lt;div&gt;- Check that music bar runs as audio is playing&lt;/div&gt;&lt;div&gt;- Check for circular progress bar when music player is buffering&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="Geb7ai_sO6iN6AyhS-gm-6" vertex="1">
           <mxGeometry x="137" width="136" height="226" as="geometry">
             <mxRectangle width="136" height="226" as="alternateBounds" />
           </mxGeometry>
@@ -712,6 +715,15 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="c-zQqiR48lGGY2HWL1n7-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="30" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_XzHiNCjYJ3TNLUAsnI3-1" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="c-zQqiR48lGGY2HWL1n7-1" vertex="1">
+          <mxGeometry width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_XzHiNCjYJ3TNLUAsnI3-2" value="User Play/Pause/Repeats Audio" style="ellipse;whiteSpace=wrap;html=1;" parent="c-zQqiR48lGGY2HWL1n7-1" vertex="1">
+          <mxGeometry x="140" width="120" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -720,18 +732,6 @@
       <root>
         <mxCell id="OzKtZ0BJDIPAE0FcNc2a-0" />
         <mxCell id="OzKtZ0BJDIPAE0FcNc2a-1" parent="OzKtZ0BJDIPAE0FcNc2a-0" />
-        <mxCell id="xG4TP7VO0qEi2mYmLJL5-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="OzKtZ0BJDIPAE0FcNc2a-1" source="xG4TP7VO0qEi2mYmLJL5-1" target="xG4TP7VO0qEi2mYmLJL5-2" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="xG4TP7VO0qEi2mYmLJL5-1" value="New Projects page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="OzKtZ0BJDIPAE0FcNc2a-1" vertex="1">
-          <mxGeometry x="120" y="30" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="xG4TP7VO0qEi2mYmLJL5-2" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="OzKtZ0BJDIPAE0FcNc2a-1" vertex="1">
-          <mxGeometry x="120" y="210" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="xG4TP7VO0qEi2mYmLJL5-3" value="&lt;div&gt;User Chooses to Select Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="OzKtZ0BJDIPAE0FcNc2a-1" vertex="1">
-          <mxGeometry x="20" y="130" width="120" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="ZKOqrS20EV06dLl0XJPy-9" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="OzKtZ0BJDIPAE0FcNc2a-1" vertex="1">
           <mxGeometry x="350" y="30" width="410" height="360" as="geometry" />
         </mxCell>
@@ -766,15 +766,30 @@
             <mxRectangle width="136" height="262" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZKOqrS20EV06dLl0XJPy-17" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if Permissions pop-up appears&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is prevented access from moving to next page and dialog appears&lt;/div&gt;&lt;div&gt;-Check if users can find their audio files&lt;/div&gt;&lt;div&gt;- Check if only files with audio formats are allowed to be chosen&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="ZKOqrS20EV06dLl0XJPy-14" vertex="1">
+        <mxCell id="ZKOqrS20EV06dLl0XJPy-17" value="&lt;div&gt;- Check if &quot;Record Audio&quot; Button leads to Recording page&lt;/div&gt;&lt;div&gt;- Check if Permissions pop-up appears&lt;/div&gt;&lt;div&gt;- If App permissions denied, check if user is prevented access from moving to next page and dialog appears&lt;/div&gt;&lt;div&gt;- Check if users can find their audio files&lt;/div&gt;&lt;div&gt;- Check if only files with audio formats are allowed to be chosen&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontFamily=Verdana;fontSize=12;align=left;verticalAlign=top;" parent="ZKOqrS20EV06dLl0XJPy-14" vertex="1">
           <mxGeometry x="273" width="137" height="262" as="geometry">
             <mxRectangle width="137" height="262" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h61C8RZGvA5JhnqKRT-R-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=15;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="OzKtZ0BJDIPAE0FcNc2a-1" source="xG4TP7VO0qEi2mYmLJL5-2">
+        <mxCell id="rxpPDUU7iGJrH93ax32A-0" value="" style="group" vertex="1" connectable="0" parent="OzKtZ0BJDIPAE0FcNc2a-1">
+          <mxGeometry x="20" y="30" width="220" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="xG4TP7VO0qEi2mYmLJL5-1" value="New Projects page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="rxpPDUU7iGJrH93ax32A-0" vertex="1">
+          <mxGeometry x="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xG4TP7VO0qEi2mYmLJL5-2" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="rxpPDUU7iGJrH93ax32A-0" vertex="1">
+          <mxGeometry x="100" y="180" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xG4TP7VO0qEi2mYmLJL5-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="rxpPDUU7iGJrH93ax32A-0" source="xG4TP7VO0qEi2mYmLJL5-1" target="xG4TP7VO0qEi2mYmLJL5-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xG4TP7VO0qEi2mYmLJL5-3" value="&lt;div&gt;User Chooses to Select Audio&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="rxpPDUU7iGJrH93ax32A-0" vertex="1">
+          <mxGeometry y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h61C8RZGvA5JhnqKRT-R-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=15;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="rxpPDUU7iGJrH93ax32A-0" source="xG4TP7VO0qEi2mYmLJL5-2">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="150" y="264" as="sourcePoint" />
-            <mxPoint x="150" y="110" as="targetPoint" />
+            <mxPoint x="130" y="234" as="sourcePoint" />
+            <mxPoint x="130" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
@@ -785,21 +800,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="0VVEOYPXL22duEINYnJw-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="0VVEOYPXL22duEINYnJw-2" target="0VVEOYPXL22duEINYnJw-3" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="0VVEOYPXL22duEINYnJw-2" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="110" y="40" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="0VVEOYPXL22duEINYnJw-3" value="Note Display page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="110" y="240" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="0VVEOYPXL22duEINYnJw-4" value="&lt;div&gt;User Presses Anayse audio button&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="180" y="150" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="0VVEOYPXL22duEINYnJw-5" value="User brought to Loadng Screen during analysis" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="10" y="145" width="110" height="70" as="geometry" />
-        </mxCell>
         <mxCell id="dvm2GHpFkMUkSQUbBWJH-1" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="330" y="25" width="410" height="310" as="geometry" />
         </mxCell>
@@ -839,10 +839,28 @@
             <mxRectangle width="137" height="226" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AOgxUUjYF7z48DPv0Kg3-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=15;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="1" source="0VVEOYPXL22duEINYnJw-3" target="0VVEOYPXL22duEINYnJw-2">
+        <mxCell id="gIhHmAdxOmAndpy1QyQu-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="10" y="40" width="290" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="0VVEOYPXL22duEINYnJw-2" value="Audio Player page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="gIhHmAdxOmAndpy1QyQu-1" vertex="1">
+          <mxGeometry x="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0VVEOYPXL22duEINYnJw-3" value="Note Display page" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="gIhHmAdxOmAndpy1QyQu-1" vertex="1">
+          <mxGeometry x="100" y="200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="0VVEOYPXL22duEINYnJw-4" value="&lt;div&gt;User Presses Anayse audio button&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter;whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="gIhHmAdxOmAndpy1QyQu-1" vertex="1">
+          <mxGeometry x="170" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0VVEOYPXL22duEINYnJw-5" value="User brought to Loadng Screen during analysis" style="ellipse;whiteSpace=wrap;html=1;" parent="gIhHmAdxOmAndpy1QyQu-1" vertex="1">
+          <mxGeometry y="105" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="0VVEOYPXL22duEINYnJw-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="gIhHmAdxOmAndpy1QyQu-1" source="0VVEOYPXL22duEINYnJw-2" target="0VVEOYPXL22duEINYnJw-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOgxUUjYF7z48DPv0Kg3-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=15;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="gIhHmAdxOmAndpy1QyQu-1" source="0VVEOYPXL22duEINYnJw-3" target="0VVEOYPXL22duEINYnJw-2">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="150" y="264" as="sourcePoint" />
-            <mxPoint x="150" y="110" as="targetPoint" />
+            <mxPoint x="140" y="224" as="sourcePoint" />
+            <mxPoint x="140" y="70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
