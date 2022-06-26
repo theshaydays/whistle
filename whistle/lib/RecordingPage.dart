@@ -88,6 +88,7 @@ class _RecordingPageState extends State<RecordingPage> {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
+        key: ValueKey('Recording Page'),
         onWillPop: () async {
           final shouldPop = await showWarning(context);
           return shouldPop ?? false;

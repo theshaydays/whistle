@@ -121,7 +121,7 @@ Widget _buildScore(BuildContext context, noteResults) {
     Container(
       alignment: AlignmentDirectional.topCenter,
       width: size.width,
-      height: size.height + (stavesRequired - 3) * 175,
+      height: size.height + (stavesRequired - 3) * 200,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text("JODY IS SMART"),
@@ -130,7 +130,7 @@ Widget _buildScore(BuildContext context, noteResults) {
   ];
   for (int i = 0; i < stavesRequired; i++) {
     staves.add(Positioned(
-      top: i * 175,
+      top: i * 200,
       child: ClefImage(
         clef: Clef.Treble,
         noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),

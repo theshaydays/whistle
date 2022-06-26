@@ -49,6 +49,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
+        key: ValueKey('RecentProjectsPage'),
         onWillPop: () async {
           final shouldPop = await showWarning(context);
           return shouldPop ?? false;

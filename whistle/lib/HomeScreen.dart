@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:whistle/PreviousProjects.dart';
 import 'package:whistle/RecentProjectsFolders.dart';
 
@@ -8,8 +8,6 @@ import 'package:whistle/models/constants.dart';
 import 'package:whistle/models/playlist.dart';
 import 'package:whistle/models/song.dart';
 
-import 'FFMPEGConvert.dart';
-import 'NewAudioPage.dart';
 import 'NewProject.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,32 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
       Icon(Icons.home, size: 30, color: kPrimaryColor),
       Icon(Icons.search, size: 30, color: kPrimaryColor),
       Icon(Icons.favorite, size: 30, color: favoriteColor),
-      IconButton(
-        onPressed: () async {
-          FilePickerResult? result =
-              await FilePicker.platform.pickFiles(type: FileType.audio);
-          if (result != null) {
-            PlatformFile file = result.files.first;
-            String fileDuration = await FFmpegConvert(file.path!).getDuration();
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) =>
-                    NewAudioPage(file.path!, file.name, fileDuration))));
-            // NewAudioPage(
-            //   file.path!,
-            //   file.name,
-            // );
-            // print(file.path!);
-          } else {
-            // user cancelled picker
-          }
-        },
-        icon: Icon(Icons.playlist_play),
-        color: kPrimaryColor,
-      ),
+      Icon(Icons.playlist_play, size: 30, color: kPrimaryColor),
       Icon(Icons.person, size: 30, color: kPrimaryColor),
     ];
 
     return Scaffold(
+      key: ValueKey('HomeScreen'),
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         centerTitle: false,
@@ -80,23 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Column(
-          children: [
-            Container(
-              height: size.height * 0.75,
-              color: Colors.transparent,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildNavigationRail(),
-                  _buildPlayListAndSongs(size),
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildNavigationRail(),
+          _buildPlayListAndSongs(size),
+        ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: kSecondaryColor, color: kLightColor2, items: items),
@@ -104,112 +71,116 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNavigationRail() {
-    return NavigationRail(
-      backgroundColor: kSecondaryColor,
-      minWidth: 40.0,
-      selectedIndex: _selectedIndex,
-      onDestinationSelected: (int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      groupAlignment: -0.1,
-      labelType: NavigationRailLabelType.all,
-      selectedLabelTextStyle:
-          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
-      unselectedLabelTextStyle:
-          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
-      leading: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              child: SizedBox(height: 5.0),
-              padding: const EdgeInsets.all(8.0),
-            ),
-            RotatedBox(
-              quarterTurns: -1,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
-                ),
-                child: Text(
-                  'Sample Keyboard',
-                  style: TextStyle(
-                      color: kSecondaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PreviousProjects(),
+    return LayoutBuilder(builder: (context, constraint) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraint.maxHeight),
+          child: IntrinsicHeight(
+            child: NavigationRail(
+              groupAlignment: -0.25,
+              backgroundColor: kSecondaryColor,
+              selectedIndex: _selectedIndex,
+              onDestinationSelected: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              labelType: NavigationRailLabelType.all,
+              selectedLabelTextStyle:
+                  TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+              unselectedLabelTextStyle:
+                  TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+              destinations: [
+                NavigationRailDestination(
+                  icon: FittedBox(),
+                  label: RotatedBox(
+                    quarterTurns: -1,
+                    child: ElevatedButton(
+                      key: ValueKey('SampleKeyboard'),
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                      ),
+                      child: Text(
+                        'Sample Keyboard',
+                        style: TextStyle(
+                            color: kSecondaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.0),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PreviousProjects(),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-      destinations: [
-        NavigationRailDestination(
-          icon: SizedBox.shrink(),
-          label: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RotatedBox(
-              quarterTurns: -1,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
+                  ),
                 ),
-                child: Text(
-                  'Recent Projects',
-                  style: TextStyle(
-                      color: kSecondaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => RecentProjectsFolders(),
+                NavigationRailDestination(
+                  icon: SizedBox.shrink(),
+                  label: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RotatedBox(
+                      quarterTurns: -1,
+                      child: ElevatedButton(
+                        key: ValueKey('RecentProjectsButton'),
+                        style: ElevatedButton.styleFrom(
+                          primary: kPrimaryColor,
+                        ),
+                        child: Text(
+                          'Recent Projects',
+                          style: TextStyle(
+                              color: kSecondaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => RecentProjectsFolders(),
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+                NavigationRailDestination(
+                  icon: SizedBox.shrink(),
+                  label: RotatedBox(
+                    quarterTurns: -1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        key: Key('ToNewProject'),
+                        style: ElevatedButton.styleFrom(
+                          primary: kPrimaryColor,
+                        ),
+                        child: Text(
+                          'New Project',
+                          style: TextStyle(
+                              color: kSecondaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => NewProject(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-        NavigationRailDestination(
-          icon: SizedBox.shrink(),
-          label: RotatedBox(
-            quarterTurns: -1,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
-                ),
-                child: Text(
-                  'New Project',
-                  style: TextStyle(
-                      color: kSecondaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => NewProject(),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+      );
+    });
   }
 }
 
@@ -273,18 +244,20 @@ Widget _buildPlayListItem({required String title, required String image}) {
     child: Align(
       alignment: Alignment.bottomCenter,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
             ),
           ),
-          Expanded(child: Container(height: 0)),
           Container(
             height: 30,
             width: 30,

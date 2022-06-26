@@ -16,10 +16,12 @@ class _NewProjectState extends State<NewProject> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
+          key: ValueKey('BackButton'),
           title: Text('Do you want to return to the previous page?'),
           content: Text('Changes made on this page will not be saved'),
           actions: [
             ElevatedButton(
+              key: ValueKey('BackButtonNo'),
               child: Text('No'),
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,
@@ -27,6 +29,7 @@ class _NewProjectState extends State<NewProject> {
               onPressed: () => Navigator.pop(context, false),
             ),
             ElevatedButton(
+              key: ValueKey('BackButtonYes'),
               child: Text('Yes'),
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,
@@ -39,6 +42,7 @@ class _NewProjectState extends State<NewProject> {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
+        key: ValueKey('NewProjectPage'),
         onWillPop: () async {
           final shouldPop = await showWarning(context);
           return shouldPop ?? false;
@@ -60,14 +64,17 @@ class _NewProjectState extends State<NewProject> {
                 width: 10.0,
               ),
               IconButton(
+                key: ValueKey('HomeButton'),
                 icon: Icon(Icons.home),
                 color: kWhiteColor,
                 onPressed: () async {
                   List<Widget> widgetList = [
                     TextButton(
+                        key: ValueKey('HomeButtonNo'),
                         onPressed: () => Navigator.pop(context, 'Close'),
                         child: Text('No')),
                     TextButton(
+                        key: ValueKey('HomeButtonYes'),
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HomeScreen(),
@@ -77,6 +84,7 @@ class _NewProjectState extends State<NewProject> {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
+                      key: ValueKey('GoHomeDialog'),
                       title: Text('Do you want to return to the home page?'),
                       content:
                           Text('Changes made on this page will not be saved'),
@@ -103,6 +111,7 @@ class _NewProjectState extends State<NewProject> {
                           shape: CircleBorder(),
                         ),
                         child: IconButton(
+                          key: ValueKey('ToRecordingPage'),
                           icon: const Icon(Icons.mic),
                           color: Colors.white,
                           onPressed: () {
@@ -195,29 +204,7 @@ class _NewProjectState extends State<NewProject> {
               Icon(Icons.home, size: 30, color: kPrimaryColor),
               Icon(Icons.search, size: 30, color: kPrimaryColor),
               Icon(Icons.favorite, size: 30, color: favoriteColor),
-              IconButton(
-                onPressed: () async {
-                  FilePickerResult? result =
-                      await FilePicker.platform.pickFiles(type: FileType.audio);
-                  if (result != null) {
-                    PlatformFile file = result.files.first;
-                    String fileDuration =
-                        await FFmpegConvert(file.path!).getDuration();
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => NewAudioPage(
-                            file.path!, file.name, fileDuration))));
-                    // NewAudioPage(
-                    //   file.path!,
-                    //   file.name,
-                    // );
-                    // print(file.path!);
-                  } else {
-                    // user cancelled picker
-                  }
-                },
-                icon: Icon(Icons.playlist_play),
-                color: kPrimaryColor,
-              ),
+              Icon(Icons.playlist_play, size: 30, color: kPrimaryColor),
               Icon(Icons.person, size: 30, color: kPrimaryColor),
             ],
           ),
