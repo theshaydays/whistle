@@ -46,6 +46,7 @@ class _RecentProjectsState extends State<RecentProjects> {
           return shouldPop ?? false;
         },
         child: Scaffold(
+          backgroundColor: kSecondaryColor,
           appBar: AppBar(
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
@@ -90,7 +91,6 @@ class _RecentProjectsState extends State<RecentProjects> {
             ],
           ),
           body: _buildScore(context, widget.noteList),
-          backgroundColor: kSecondaryColor,
         ),
       );
 }
@@ -123,8 +123,15 @@ Widget _buildScore(BuildContext context, noteResults) {
       width: size.width,
       height: size.height + (stavesRequired - 3) * 200,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Text("JODY IS SMART"),
+        padding: const EdgeInsets.all(50.0),
+        child: Text(
+          'Your transcribed score!',
+          style: TextStyle(
+            color: kPrimaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
       ),
     )
   ];

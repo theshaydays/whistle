@@ -49,14 +49,25 @@ class _LoadingPageState extends State<LoadingPage> {
             child: Text(
               'Loading',
               style: TextStyle(
-                  fontFamily: 'fantasy',
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold),
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 100,
+            child: Text(
+              'Please do not go back (will crash app :( )',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Center(
             child: CircleAvatar(
-              backgroundImage: Image.asset('images/Logo_black.png').image,
+              backgroundImage:
+                  Image.asset('images/loading_screen_logo.png').image,
               backgroundColor: Colors.white,
               foregroundColor: Colors.black,
               radius: 120,

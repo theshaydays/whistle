@@ -133,9 +133,9 @@ class _NewAudioPageState extends State<NewAudioPage> {
           centerTitle: true,
           leading: BackButton(),
           title: Text(
-            'Now Playing',
+            'NOW PLAYING',
             style: TextStyle(
-                fontSize: 15.0,
+                fontSize: 20.0,
                 color: kWhiteColor,
                 fontWeight: FontWeight.w800),
           ),

@@ -15,7 +15,10 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: kSecondaryColor,
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        shadowColor: kPrimaryColor,
         title: Text(
           "Sign In",
           style: TextStyle(
@@ -29,19 +32,30 @@ class _SignInScreenState extends State<SignInScreen> {
           width: double.infinity,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Text("Welcome Back",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: getProportionateScreenWidth(28),
-                        fontWeight: FontWeight.bold)),
-                Text(
-                  "Sign in with your email and password \nor continue with social media",
-                  textAlign: TextAlign.center,
-                ),
-                SignForm(),
-              ],
+            child: ConstrainedBox(
+              constraints:
+                  BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: Text("Welcome Back",
+                        style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: getProportionateScreenWidth(28),
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 100, top: 25),
+                    child: Text(
+                      "Sign in with your email and password \nor continue with social media",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SignForm(),
+                ],
+              ),
             ),
           ),
         ),
@@ -65,6 +79,7 @@ class _SignFormState extends State<SignForm> {
     return Form(
       /*key: _formKey,*/
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextFormField(
             keyboardType: TextInputType.emailAddress,
