@@ -201,7 +201,7 @@ Widget _buildPlayListAndSongs(Size size) {
         ),
         Container(
           height: 0.375 * size.height,
-          width: size.width * 0.8,
+          width: size.width * 0.75,
           child: ListView.builder(
             itemCount: playlists.length,
             itemBuilder: (context, index) => _buildSongListItem(
