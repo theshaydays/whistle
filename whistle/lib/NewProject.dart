@@ -48,6 +48,7 @@ class _NewProjectState extends State<NewProject> {
           return shouldPop ?? false;
         },
         child: Scaffold(
+          backgroundColor: kSecondaryColor,
           appBar: AppBar(
             leading: BackButton(),
             backgroundColor: kPrimaryColor,

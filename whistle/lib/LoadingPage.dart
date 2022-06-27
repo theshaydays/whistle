@@ -54,6 +54,16 @@ class _LoadingPageState extends State<LoadingPage> {
               ),
             ),
           ),
+          Positioned(
+            bottom: 100,
+            child: Text(
+              'Please do not go back (will crash app :( )',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Center(
             child: CircleAvatar(
               backgroundImage:

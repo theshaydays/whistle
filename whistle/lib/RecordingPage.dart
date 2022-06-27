@@ -94,6 +94,7 @@ class _RecordingPageState extends State<RecordingPage> {
           return shouldPop ?? false;
         },
         child: Scaffold(
+          backgroundColor: kSecondaryColor,
           appBar: AppBar(
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
