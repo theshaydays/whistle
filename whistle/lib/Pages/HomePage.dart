@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                           primary: kPrimaryColor,
                         ),
                         child: Text(
-                          'Recent Projects',
+                          'Saved Projects',
                           style: TextStyle(
                               color: kSecondaryColor,
                               fontWeight: FontWeight.bold,
