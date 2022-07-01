@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/models/Formatting.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/TimeFormatting.dart';
+import 'package:whistle/models/Constants.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
-import 'package:whistle/FFMPEGConvert.dart';
-import 'package:whistle/NewAudioPage.dart';
-import 'package:whistle/NewProject.dart';
-import 'package:whistle/HomeScreen.dart';
+import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
+import 'package:whistle/Pages/AudioPlayerPage.dart';
+import 'package:whistle/Pages/NewProjectPage.dart';
+import 'package:whistle/Pages/HomePage.dart';
 
 class RecordingPage extends StatefulWidget {
   const RecordingPage({Key? key}) : super(key: key);
@@ -121,7 +121,7 @@ class _RecordingPageState extends State<RecordingPage> {
                     TextButton(
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => HomePage(),
                             )),
                         child: Text('Yes')),
                   ];
@@ -189,7 +189,7 @@ class _RecordingPageState extends State<RecordingPage> {
                                               Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      NewProject(),
+                                                      NewProjectPage(),
                                                 ),
                                               ),
                                           child: const Text('Close')),
@@ -252,7 +252,7 @@ class _RecordingPageState extends State<RecordingPage> {
                               String fileDuration =
                                   await FFmpegConvert(filePath!).getDuration();
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => NewAudioPage(
+                                  builder: ((context) => AudioPlayerPage(
                                       filePath!,
                                       'recorded audio',
                                       fileDuration,

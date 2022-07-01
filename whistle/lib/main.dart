@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/sign_in/sign_in_screen.dart';
+import 'package:whistle/Pages/SignInPage.dart';
 import 'dart:io' show Platform;
-import 'package:flutter/services.dart';
 
 void main() {
   _setTargetPlatformForDesktop();

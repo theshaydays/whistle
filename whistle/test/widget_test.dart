@@ -7,11 +7,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:whistle/HomeScreen.dart';
-import 'package:whistle/NewProject.dart';
-import 'package:whistle/RecordingPage.dart';
-
-import 'package:whistle/main.dart';
+import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/Pages/NewProjectPage.dart';
+import 'package:whistle/Pages/RecordingPage.dart';
 
 void main() {
   // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -31,18 +29,18 @@ void main() {
   //   expect(find.text('1'), findsOneWidget);
   // });
 
-  group('HomeScreen', () {
+  group('HomePage', () {
     testWidgets('New Project Icon ', (WidgetTester tester) async {
       //find widget
-      final newProject = find.byKey(ValueKey('ToNewProject'));
+      final newProjectPage = find.byKey(ValueKey('ToNewProjectPage'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: HomeScreen()));
-      await tester.tap(newProject);
+      await tester.pumpWidget(MaterialApp(home: HomePage()));
+      await tester.tap(newProjectPage);
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+      expect(find.byKey(ValueKey('NewProjectPagePage')), findsOneWidget);
     });
 
     testWidgets('Sample Keyboard Icon', (WidgetTester tester) async {
@@ -50,7 +48,7 @@ void main() {
       final button = find.byKey(ValueKey('SampleKeyboard'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: HomeScreen()));
+      await tester.pumpWidget(MaterialApp(home: HomePage()));
       await tester.tap(button);
       await tester.pumpAndSettle();
 
@@ -63,7 +61,7 @@ void main() {
       final button = find.byKey(ValueKey('RecentProjectsButton'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: HomeScreen()));
+      await tester.pumpWidget(MaterialApp(home: HomePage()));
       await tester.tap(button);
       await tester.pumpAndSettle();
 
@@ -78,7 +76,7 @@ void main() {
       final homeButton = find.byKey(ValueKey('HomeButton'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.tap(homeButton);
       await tester.pumpAndSettle();
 
@@ -92,14 +90,14 @@ void main() {
       final homeButton = find.byKey(ValueKey('HomeButton'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.tap(homeButton);
       await tester.pumpAndSettle();
       await tester.tap(homeButtonNo);
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+      expect(find.byKey(ValueKey('NewProjectPagePage')), findsOneWidget);
     });
 
     testWidgets('Test Home Icon Yes', (WidgetTester tester) async {
@@ -108,14 +106,14 @@ void main() {
       final homeButton = find.byKey(ValueKey('HomeButton'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.tap(homeButton);
       await tester.pumpAndSettle();
       await tester.tap(homeButtonYes);
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('HomeScreen')), findsOneWidget);
+      expect(find.byKey(ValueKey('HomePage')), findsOneWidget);
     });
 
     testWidgets('Test Back Icon', (WidgetTester tester) async {
@@ -123,7 +121,7 @@ void main() {
       //final backButtonNo = find.byKey(ValueKey('BackButtonNo'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.pageBack();
       await tester.pumpAndSettle();
 
@@ -136,14 +134,14 @@ void main() {
       final backButtonNo = find.byKey(ValueKey('BackButtonNo'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.pageBack();
       await tester.pumpAndSettle();
       await tester.tap(backButtonNo);
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('NewProjectPage')), findsOneWidget);
+      expect(find.byKey(ValueKey('NewProjectPagePage')), findsOneWidget);
     });
 
     testWidgets('Test Back Icon Yes', (WidgetTester tester) async {
@@ -151,14 +149,14 @@ void main() {
       final backButtonYes = find.byKey(ValueKey('BackButtonYes'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.pageBack();
       await tester.pumpAndSettle();
       await tester.tap(backButtonYes);
       await tester.pumpAndSettle();
 
       //check outputs
-      expect(find.byKey(ValueKey('HomeScreen')), findsNothing);
+      expect(find.byKey(ValueKey('HomePage')), findsNothing);
     });
 
     testWidgets('To Recording Page', (WidgetTester tester) async {
@@ -166,7 +164,7 @@ void main() {
       final button = find.byKey(ValueKey('ToRecordingPage'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.tap(button);
       await tester.pumpAndSettle();
 
@@ -179,7 +177,7 @@ void main() {
       final button = find.byKey(ValueKey('ToRecordingPage'));
 
       //execute test
-      await tester.pumpWidget(MaterialApp(home: NewProject()));
+      await tester.pumpWidget(MaterialApp(home: NewProjectPage()));
       await tester.tap(button);
       await tester.pumpAndSettle();
 

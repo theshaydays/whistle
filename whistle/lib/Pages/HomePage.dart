@@ -1,23 +1,20 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:whistle/PreviousProjects.dart';
-import 'package:whistle/RecentProjectsFolders.dart';
+import 'package:whistle/Pages/SampleKeyboardPage.dart';
+import 'package:whistle/Pages/SavedProjectsPage.dart';
+import 'package:whistle/Pages/NewProjectPage.dart';
+import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Playlist.dart';
+import 'package:whistle/models/Songs.dart';
 
-import 'package:whistle/models/constants.dart';
-import 'package:whistle/models/playlist.dart';
-import 'package:whistle/models/song.dart';
-
-import 'NewProject.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   String buttonName = 'Click';
   bool isClicked = false;
   int _selectedIndex = 0;
@@ -34,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
-      key: ValueKey('HomeScreen'),
+      key: ValueKey('HomePage'),
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         centerTitle: false,
@@ -110,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => PreviousProjects(),
+                            builder: (context) => SampleKeyboardPage(),
                           ),
                         );
                       },
@@ -138,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => RecentProjectsFolders(),
+                              builder: (context) => SavedProjectsPage(),
                             ),
                           );
                         },
@@ -167,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => NewProject(),
+                              builder: (context) => NewProjectPage(),
                             ),
                           );
                         },

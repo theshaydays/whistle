@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:piano/piano.dart';
-import 'package:whistle/HomeScreen.dart';
+import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/models/Notes.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Constants.dart';
 
-class RecentProjects extends StatefulWidget {
+class ScoreSheetPage extends StatefulWidget {
   final List<List<dynamic>> noteList;
 
-  const RecentProjects(this.noteList);
+  const ScoreSheetPage(this.noteList);
 
   @override
-  _RecentProjectsState createState() => _RecentProjectsState();
+  _ScoreSheetPageState createState() => _ScoreSheetPageState();
 }
 
-class _RecentProjectsState extends State<RecentProjects> {
+class _ScoreSheetPageState extends State<ScoreSheetPage> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
@@ -73,7 +72,7 @@ class _RecentProjectsState extends State<RecentProjects> {
                     TextButton(
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => HomePage(),
                             )),
                         child: Text('Yes')),
                   ];
