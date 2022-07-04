@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:piano/piano.dart';
+//import 'package:piano/piano.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/models/Notes.dart';
 import 'package:whistle/models/Constants.dart';
+
+import 'package:whistle/ScorePainter/ClefImage.dart';
+import 'package:whistle/ScorePainter/Clef.dart';
+import 'package:whistle/ScorePainter/NoteRange.dart';
+import 'package:whistle/ScorePainter/NotePosition.dart';
+import 'package:whistle/ScorePainter/ClefPainter.dart';
 
 class ScoreSheetPage extends StatefulWidget {
   final List<List<dynamic>> noteList;
