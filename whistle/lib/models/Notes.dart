@@ -1,4 +1,6 @@
-import 'package:piano/piano.dart';
+// import 'package:piano/piano.dart';
+
+import 'package:whistle/ScorePainter/NotePosition.dart';
 
 var notes = {
   'rest': [],

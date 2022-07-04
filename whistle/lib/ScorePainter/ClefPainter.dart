@@ -549,7 +549,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               canvas,
               ovalRect.topLeft.translate(
                 -ovalHeight,
-                -ovalHeight / 2,
+                -4 * ovalHeight / 3,
               ));
         }
       }
@@ -559,9 +559,9 @@ class ClefPainter extends CustomPainter with EquatableMixin {
       return;
     }
     final clefHeight = (firstLineY - lastLineY);
-    final clefSymbolOffset = (clef == Clef.Treble) ? 0.45 : 0.08;
+    final clefSymbolOffset = (clef == Clef.Treble) ? 0.15 : 0.08;
     if (_clefSymbolPainter == null || clefSize != _lastClefSize) {
-      final clefSymbolScale = (clef == Clef.Treble) ? 2.35 : 1.34;
+      final clefSymbolScale = (clef == Clef.Treble) ? 1.05 : 1.34;
       _clefSymbolPainter = TextPainter(
           text: TextSpan(
               text: clef.symbol,

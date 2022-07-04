@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:piano/piano.dart';
+// import 'package:piano/piano.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/models/Notes.dart';
 import 'package:whistle/models/Constants.dart';
@@ -168,6 +168,8 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
     List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
     if (noteInfo.isNotEmpty) {
       noteImages.add(NoteImage(
+          isPause: true,
+          noteLength: 1 / 16,
           notePosition: NotePosition(
               note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
           offset: (i) * 0.1));
