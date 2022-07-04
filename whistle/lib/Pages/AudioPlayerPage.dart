@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/FFTAnalysis.dart';
-import 'package:whistle/HomeScreen.dart';
-import 'package:whistle/LoadingPage.dart';
-import 'package:whistle/PlayButton.dart';
+import 'package:whistle/AlgorithmMethods/FFTAnalysis.dart';
+import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/Pages/LoadingPage.dart';
+import 'package:whistle/Widgets/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
-import 'package:whistle/models/constants.dart';
-import 'package:whistle/RecentProjects.dart';
+import 'package:whistle/models/Constants.dart';
+import 'package:whistle/Pages/ScoreSheetPage.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
-import 'Slider.dart';
+import '../Widgets/Slider.dart';
 
-class NewAudioPage extends StatefulWidget {
+class AudioPlayerPage extends StatefulWidget {
   final String filePath;
   final String audioName;
   final String duration;
   final String pathType;
 
-  const NewAudioPage(
+  const AudioPlayerPage(
       this.filePath, this.audioName, this.duration, this.pathType);
 
   @override
-  _NewAudioPageState createState() => _NewAudioPageState();
+  _AudioPlayerPageState createState() => _AudioPlayerPageState();
 }
 
-class _NewAudioPageState extends State<NewAudioPage> {
+class _AudioPlayerPageState extends State<AudioPlayerPage> {
   bool _isLoading = false;
   List<String>? images;
   List<int>? randomList;
@@ -154,7 +154,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
                   TextButton(
                       onPressed: () =>
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => HomePage(),
                           )),
                       child: Text('Yes')),
                 ];
@@ -270,7 +270,7 @@ class _NewAudioPageState extends State<NewAudioPage> {
 
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => RecentProjects(notes),
+                            builder: (context) => ScoreSheetPage(notes),
                           ),
                         );
                         setState(() => _isLoading = false);

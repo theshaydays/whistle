@@ -1,18 +1,19 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:whistle/FFMPEGConvert.dart';
-import 'package:whistle/HomeScreen.dart';
-import 'package:whistle/NewAudioPage.dart';
-import 'package:whistle/RecentProjects.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
+import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/Pages/AudioPlayerPage.dart';
+import 'package:whistle/Pages/ScoreSheetPage.dart';
+import 'package:whistle/models/Constants.dart';
 
-class RecentProjectsFolders extends StatefulWidget {
+class SavedProjectsPage extends StatefulWidget {
   @override
-  _RecentProjectsFoldersState createState() => _RecentProjectsFoldersState();
+  _SavedProjectsPageFoldersState createState() =>
+      _SavedProjectsPageFoldersState();
 }
 
-class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
+class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
   final myDecoratedField = InputDecoration(
     contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 35.0),
     filled: true,
@@ -49,7 +50,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
-        key: ValueKey('RecentProjectsPage'),
+        key: ValueKey('ScoreSheetPagePage'),
         onWillPop: () async {
           final shouldPop = await showWarning(context);
           return shouldPop ?? false;
@@ -81,7 +82,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     TextButton(
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => HomePage(),
                             )),
                         child: Text('Yes')),
                   ];
@@ -116,7 +117,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     String fileDuration =
                         await FFmpegConvert(file.path!).getDuration();
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => NewAudioPage(file.path!,
+                        builder: ((context) => AudioPlayerPage(file.path!,
                             file.name, fileDuration, 'device file'))));
                     // NewAudioPage(
                     //   file.path!,
@@ -155,7 +156,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -174,7 +175,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -193,7 +194,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -212,7 +213,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -231,7 +232,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -250,7 +251,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -269,7 +270,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -288,7 +289,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },
@@ -307,7 +308,7 @@ class _RecentProjectsFoldersState extends State<RecentProjectsFolders> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RecentProjects(test),
+                          builder: (context) => ScoreSheetPage(test),
                         ),
                       );
                     },

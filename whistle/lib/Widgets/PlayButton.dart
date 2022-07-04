@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Constants.dart';
 
 class PlayButton extends StatelessWidget {
   final AudioPlayer _audioPlayer;

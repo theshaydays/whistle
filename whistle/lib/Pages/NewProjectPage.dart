@@ -1,18 +1,18 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:whistle/RecordingPage.dart';
-import 'package:whistle/models/constants.dart';
-import 'package:whistle/NewAudioPage.dart';
-import 'package:whistle/FFMPEGConvert.dart';
+import 'package:whistle/Pages/RecordingPage.dart';
+import 'package:whistle/models/Constants.dart';
+import 'package:whistle/Pages/AudioPlayerPage.dart';
+import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:whistle/HomeScreen.dart';
+import 'package:whistle/Pages/HomePage.dart';
 
-class NewProject extends StatefulWidget {
+class NewProjectPage extends StatefulWidget {
   @override
-  _NewProjectState createState() => _NewProjectState();
+  _NewProjectPageState createState() => _NewProjectPageState();
 }
 
-class _NewProjectState extends State<NewProject> {
+class _NewProjectPageState extends State<NewProjectPage> {
   Future<bool?> showWarning(BuildContext context) async => showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
@@ -78,7 +78,7 @@ class _NewProjectState extends State<NewProject> {
                         key: ValueKey('HomeButtonYes'),
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => HomePage(),
                             )),
                         child: Text('Yes')),
                   ];
@@ -157,7 +157,7 @@ class _NewProjectState extends State<NewProject> {
                               String fileDuration =
                                   await FFmpegConvert(file.path!).getDuration();
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => NewAudioPage(
+                                  builder: ((context) => AudioPlayerPage(
                                       file.path!,
                                       file.name,
                                       fileDuration,

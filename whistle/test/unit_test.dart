@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:piano/piano.dart';
-import 'package:whistle/RecentProjects.dart';
-import 'package:whistle/fftAnalysis.dart';
-import 'package:whistle/models/Formatting.dart';
+import 'package:whistle/Pages/ScoreSheetPage.dart';
+import 'package:whistle/AlgorithmMethods/FFTAnalysis.dart';
+import 'package:whistle/models/TimeFormatting.dart';
 import 'package:wav/wav.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 

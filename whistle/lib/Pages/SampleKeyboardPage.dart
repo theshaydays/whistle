@@ -1,20 +1,19 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:piano/piano.dart';
-import 'main.dart';
+import '../main.dart';
 
-class PreviousProjects extends StatefulWidget {
+class SampleKeyboardPage extends StatefulWidget {
   @override
-  _PreviousProjectsState createState() => _PreviousProjectsState();
+  _SampleKeyboardPageState createState() => _SampleKeyboardPageState();
 }
 
 void main() {
   runApp(MyApp());
 }
 
-class _PreviousProjectsState extends State<PreviousProjects> {
+class _SampleKeyboardPageState extends State<SampleKeyboardPage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(

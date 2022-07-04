@@ -4,7 +4,7 @@ import 'package:wav/wav.dart';
 
 import 'dart:math';
 
-import 'package:whistle/FFmpegConvert.dart';
+import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
 
 class FFTAnalysis {
   final String filePath;

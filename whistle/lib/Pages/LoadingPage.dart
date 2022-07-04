@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Constants.dart';
 
 class LoadingPage extends StatefulWidget {
   final List<String> imagePaths;

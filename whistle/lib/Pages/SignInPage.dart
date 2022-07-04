@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/HomeScreen.dart';
-import 'package:whistle/models/constants.dart';
-import 'package:whistle/size_config.dart';
+import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/SizeConfig.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -194,7 +194,7 @@ class _SignFormState extends State<SignForm> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => HomePage(),
                   ),
                 );
               },
