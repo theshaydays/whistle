@@ -108,9 +108,9 @@ extension NotePositionHelpers on NotePosition {
         offset = 35;
     }
     if (accidental == Accidental.Flat) {
-      offset -= 0;
+      offset -= 1;
     } else if (accidental == Accidental.Sharp) {
-      offset += 0;
+      offset += 1;
     }
     return offset + ((octave - 1) * 12);
   }

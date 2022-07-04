@@ -126,7 +126,7 @@ Widget _buildScore(BuildContext context, noteResults) {
     Container(
       alignment: AlignmentDirectional.topCenter,
       width: size.width,
-      height: size.height + (stavesRequired - 3) * 200,
+      height: size.height + (stavesRequired - 5) * 100,
       child: Padding(
         padding: const EdgeInsets.all(50.0),
         child: Text(
@@ -142,7 +142,7 @@ Widget _buildScore(BuildContext context, noteResults) {
   ];
   for (int i = 0; i < stavesRequired; i++) {
     staves.add(Positioned(
-      top: i * 200,
+      top: i * 100,
       child: ClefImage(
         clef: Clef.Treble,
         noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
