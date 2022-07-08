@@ -116,8 +116,8 @@ class ClefPainter extends CustomPainter with EquatableMixin {
             (bounds.width - ovalWidth * 2 - clefSize.width) *
                 ledgerLineImage.offset;
         final ledgerLineRight = ledgerLineLeft + ovalWidth * 1.6;
-        canvas.drawLine(
-            Offset(ledgerLineLeft, y), Offset(ledgerLineRight, y), _linePaint);
+        // canvas.drawLine(
+        //     Offset(ledgerLineLeft, y), Offset(ledgerLineRight, y), _linePaint);
       } else {
         canvas.drawLine(
             Offset(bounds.left, y), Offset(bounds.right, y), _linePaint);

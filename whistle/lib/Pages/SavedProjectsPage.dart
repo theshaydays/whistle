@@ -156,7 +156,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -175,7 +175,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -194,7 +194,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -213,7 +213,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -232,7 +232,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -251,7 +251,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -270,7 +270,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -289,7 +289,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },
@@ -308,7 +308,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test),
+                          builder: (context) => ScoreSheetPage(test, 120),
                         ),
                       );
                     },

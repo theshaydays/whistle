@@ -10,10 +10,13 @@ import 'package:whistle/ScorePainter/NoteRange.dart';
 import 'package:whistle/ScorePainter/NotePosition.dart';
 import 'package:whistle/ScorePainter/ClefPainter.dart';
 
+final int notesPerStave = 8;
+
 class ScoreSheetPage extends StatefulWidget {
   final List<List<dynamic>> noteList;
+  final int BPM;
 
-  const ScoreSheetPage(this.noteList);
+  const ScoreSheetPage(this.noteList, this.BPM);
 
   @override
   _ScoreSheetPageState createState() => _ScoreSheetPageState();
@@ -95,26 +98,12 @@ class _ScoreSheetPageState extends State<ScoreSheetPage> {
               )
             ],
           ),
-          body: _buildScore(context, widget.noteList),
+          body: _buildScore(context, widget.noteList, widget.BPM),
         ),
       );
 }
 
-//original code that works
-// Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
-//   return ClefImage(
-//     clef: Clef.Treble,
-//     noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
-//         NotePosition(note: Note.C, octave: 10)),
-//     noteImages: getNotes(list),
-//     clefColor: kPrimaryColor,
-//     noteColor: kPrimaryColor,
-//     size: Size.infinite,
-//   );
-// }
-
-//the one i tried .... but idk if this works
-Widget _buildScore(BuildContext context, noteResults) {
+Widget _buildScore(BuildContext context, noteResults, int BPM) {
   Size size = MediaQuery.of(context).size;
   //to determine how many staves should be printed out
   int stavesRequired = getStaves(noteResults);
@@ -147,7 +136,7 @@ Widget _buildScore(BuildContext context, noteResults) {
         clef: Clef.Treble,
         noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
             NotePosition(note: Note.C, octave: 10)),
-        noteImages: getNotes(splitNotes[i]),
+        noteImages: getNotes(splitNotes[i], BPM),
         clefColor: kPrimaryColor,
         noteColor: kPrimaryColor,
         size: size,
@@ -162,17 +151,25 @@ Widget _buildScore(BuildContext context, noteResults) {
 }
 
 //function to get all the notes
-List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
+List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
   List<NoteImage> noteImages = [];
   for (int i = 0; i < noteResults.length; i++) {
     List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
     if (noteInfo.isNotEmpty) {
       noteImages.add(NoteImage(
-          isPause: true,
-          noteLength: 1 / 16,
+          isPause: false,
+          noteLength: (noteResults[i][1] / (BPM / 60)) / 4,
+          //noteLength: 1 / 8,
           notePosition: NotePosition(
               note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
-          offset: (i) * 0.1));
+          offset: (i) * 0.125));
+    } else {
+      noteImages.add(NoteImage(
+          isPause: true,
+          noteLength: (noteResults[i][1] / (BPM / 60)) / 4,
+          notePosition: NotePosition(
+              note: Note.C, accidental: Accidental.None, octave: -1),
+          offset: (i) * 0.125));
     }
   }
   return noteImages;
@@ -183,7 +180,9 @@ int getStaves(List<List<dynamic>> noteResults) {
   if (noteResults.length == 0) {
     return 0;
   }
-  return (noteResults.length ~/ 10) + 1;
+  return (noteResults.length % notesPerStave == 0
+      ? noteResults.length ~/ notesPerStave
+      : (noteResults.length ~/ notesPerStave) + 1);
   // int noOfStaves = 1;
   // for (int i = 0; i < noteResults.length; i+ +) {
   //   if (noteResults.length % (10) == 0) {
@@ -198,7 +197,7 @@ int getStaves(List<List<dynamic>> noteResults) {
 //function to split the list of notes into smaller lists (each containing only 10 notes)
 List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
   List<List<List<dynamic>>> chunks = [];
-  int chunkSize = 10;
+  int chunkSize = notesPerStave;
   for (var i = 0; i < noteResults.length; i += chunkSize) {
     chunks.add(noteResults.sublist(
         i,
