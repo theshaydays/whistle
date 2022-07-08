@@ -158,7 +158,7 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
     if (noteInfo.isNotEmpty) {
       noteImages.add(NoteImage(
           isPause: false,
-          noteLength: (noteResults[i][1] / (BPM / 60)) / 4,
+          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
           //noteLength: 1 / 8,
           notePosition: NotePosition(
               note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
@@ -166,7 +166,7 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
     } else {
       noteImages.add(NoteImage(
           isPause: true,
-          noteLength: (noteResults[i][1] / (BPM / 60)) / 4,
+          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
           notePosition: NotePosition(
               note: Note.C, accidental: Accidental.None, octave: -1),
           offset: (i) * 0.125));
