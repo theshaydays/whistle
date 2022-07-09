@@ -111,11 +111,11 @@ class ClefPainter extends CustomPainter with EquatableMixin {
       final y = (bounds.height - ((line * noteHeight) - noteHeight / 2))
           .roundToDouble();
       if (ledgerLineImage != null) {
-        final ledgerLineLeft = bounds.left +
-            clefSize.width +
-            (bounds.width - ovalWidth * 2 - clefSize.width) *
-                ledgerLineImage.offset;
-        final ledgerLineRight = ledgerLineLeft + ovalWidth * 1.6;
+        // final ledgerLineLeft = bounds.left +
+        //     clefSize.width +
+        //     (bounds.width - ovalWidth * 2 - clefSize.width) *
+        //         ledgerLineImage.offset;
+        // final ledgerLineRight = ledgerLineLeft + ovalWidth * 1.6;
         // canvas.drawLine(
         //     Offset(ledgerLineLeft, y), Offset(ledgerLineRight, y), _linePaint);
       } else {
@@ -132,6 +132,12 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         (firstLineIndex + (lastLineIndex - firstLineIndex - 1) / 2).floor();
 
     for (final noteImage in noteImages) {
+      // Draw a bar (line thingy)
+      // if (noteImage.notePosition.octave == -2) {
+      //   canvas.drawLine(Offset.zero, Offset.zero, _tailPaint);
+      //   break;
+      // }
+
       ///
       ///Draw a Pause
       ///

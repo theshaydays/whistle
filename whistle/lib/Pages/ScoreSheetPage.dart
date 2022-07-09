@@ -171,6 +171,10 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
               note: Note.C, accidental: Accidental.None, octave: -1),
           offset: (i) * 0.125));
     }
+    // noteImages.add(NoteImage(
+    //     notePosition:
+    //         NotePosition(note: Note.F, accidental: Accidental.None, octave: -2),
+    //     offset: (i) * 0.13));
   }
   return noteImages;
 }
