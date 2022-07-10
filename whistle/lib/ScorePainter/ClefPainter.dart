@@ -51,6 +51,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
   final Paint _linePaint;
   final Paint _notePaint;
   final Paint _tailPaint;
+  final Paint _barPaint;
   TextPainter? _clefSymbolPainter;
   Map<Accidental, TextPainter> _accidentalSymbolPainters = {};
   Size? _lastClefSize;
@@ -68,6 +69,9 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         _linePaint = Paint()
           ..color = clefColor
           ..strokeWidth = lineHeight.toDouble(),
+        _barPaint = Paint()
+          ..color = clefColor
+          ..strokeWidth = lineHeight.toDouble() * 2,
         _notePaint = Paint(),
         _tailPaint = Paint()..strokeWidth = lineHeight.toDouble();
   @override
@@ -132,16 +136,31 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         (firstLineIndex + (lastLineIndex - firstLineIndex - 1) / 2).floor();
 
     for (final noteImage in noteImages) {
-      // Draw a bar (line thingy)
-      // if (noteImage.notePosition.octave == -2) {
-      //   canvas.drawLine(Offset.zero, Offset.zero, _tailPaint);
-      //   break;
-      // }
+      //TODO: Draw a bar (line thingy)
+      if (noteImage.notePosition.octave == -2) {
+        canvas.save();
+        //draw the line from top to bottom
+        final top = naturalPositionOf(NotePosition(note: Note.F, octave: 5));
+        final ovalRect = Rect.fromLTWH(
+          clefSize.width +
+              bounds.left +
+              (bounds.width - clefSize.width) * noteImage.offset,
+          bounds.height - top * noteHeight + 2,
+          clefSize.width,
+          ovalHeight * 4,
+        );
+        canvas.drawLine(
+          Offset(ovalRect.left, ovalRect.top),
+          Offset(ovalRect.left, ovalRect.bottom),
+          _barPaint,
+        );
+        canvas.restore();
+      }
 
       ///
       ///Draw a Pause
       ///
-      if (noteImage.notePosition.octave == -1 /*NotePosition.pause*/) {
+      else if (noteImage.notePosition.octave == -1 /*NotePosition.pause*/) {
         Rect rect;
 
         _notePaint.color = noteImage.color ?? noteColor;
@@ -149,7 +168,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
           ///Draw Whole or Half PAUSE
           var pos = naturalPositionOf(NotePosition(note: Note.C, octave: 5));
           var top = noteImage.noteLength < 4 / 4
-              ? bounds.height - (pos * noteHeight)
+              ? bounds.height - (pos * noteHeight) + noteHeight / 3
               : bounds.height - (pos * noteHeight) - noteHeight / 2;
 
           rect = Rect.fromLTWH(
@@ -165,7 +184,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
           _notePaint.strokeWidth = 1.0;
 
           canvas.save();
-          canvas.translate(rect.left, rect.top + noteHeight * 0.3);
+          canvas.translate(rect.left, rect.top + noteHeight * 0.1);
           canvas.drawRect(Offset.zero & rect.size, _notePaint);
           canvas.restore();
         } else if (noteImage.noteLength >= (1 / 4)) {
@@ -184,7 +203,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
           _notePaint.style = PaintingStyle.stroke;
           _notePaint.strokeWidth = 1.0;
-          print("draw 4er pause rect=$rect");
+          //print("draw 4er pause rect=$rect");
 
           canvas.save();
 
@@ -197,11 +216,12 @@ class ClefPainter extends CustomPainter with EquatableMixin {
           canvas.drawLine(Offset(w, h / 4), Offset(0, h / 2), _notePaint);
           _notePaint.strokeWidth = 1.0;
           canvas.drawLine(Offset(0, h / 2), Offset(w, h * 3 / 4), _notePaint);
-          _notePaint.strokeWidth = 4.0;
+          _notePaint.strokeWidth = 3.5;
           canvas.drawArc(
-              Rect.fromPoints(Offset(w * 3 / 2, h), Offset(0, h * 3 / 4)),
-              math.pi,
-              math.pi / 2,
+              Rect.fromPoints(
+                  Offset(w * 3 / 2, h), Offset(w * 1 / 10, h * 2 / 3)),
+              -math.pi / 2,
+              -math.pi,
               false,
               _notePaint);
           _notePaint.strokeWidth = 1.0;
@@ -222,7 +242,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
           _notePaint.style = PaintingStyle.stroke;
           _notePaint.strokeWidth = 1.0;
-          print("draw 8th pause rect=$rect");
+          //print("draw 8th pause rect=$rect");
 
           canvas.save();
 
@@ -258,7 +278,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
           _notePaint.style = PaintingStyle.stroke;
           _notePaint.strokeWidth = 1.0;
-          print("draw 16th pause rect=$rect");
+          //print("draw 16th pause rect=$rect");
 
           canvas.save();
 
@@ -303,7 +323,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
           _notePaint.style = PaintingStyle.stroke;
           _notePaint.strokeWidth = 1.0;
-          print("draw 16th pause rect=$rect");
+          //print("draw 16th pause rect=$rect");
 
           canvas.save();
 
@@ -358,7 +378,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
           _notePaint.style = PaintingStyle.stroke;
           _notePaint.strokeWidth = 1.0;
-          print("draw 16th pause rect=$rect");
+          //print("draw 16th pause rect=$rect");
 
           canvas.save();
 
@@ -426,7 +446,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         //Draw a Note
 
         final noteIndex = naturalPositionOf(noteImage.notePosition);
-        if (noteIndex == -1) {
+        if (noteIndex == -1 || noteIndex == -2) {
           continue;
         }
 
@@ -439,13 +459,13 @@ class ClefPainter extends CustomPainter with EquatableMixin {
             ovalWidth,
             ovalHeight);
         canvas.save();
-        canvas.translate(ovalRect.left, ovalRect.top + noteHeight * 0.3);
-        canvas.rotate(-0.2);
+        canvas.translate(ovalRect.left, ovalRect.top + noteHeight * 0.1);
+        canvas.rotate(-0.1);
         _notePaint.color = noteImage.color ?? noteColor;
 
         if (noteImage.noteLength >= (2 / 4)) {
           _notePaint.style = PaintingStyle.stroke;
-          _notePaint.strokeWidth = 2.0;
+          _notePaint.strokeWidth = 1.5;
         } else {
           _notePaint.style = PaintingStyle.fill;
           _notePaint.strokeWidth = 1.0;
@@ -453,8 +473,8 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
         canvas.drawOval(Offset.zero & ovalRect.size, _notePaint);
         canvas.restore();
-        canvas.drawArc(ovalRect, 0, 2, false,
-            _notePaint); //figo per abbellire minime e semiminime!
+        // canvas.drawArc(ovalRect, 0, 2, false,
+        //     _notePaint); //figo per abbellire minime e semiminime!
 
         final isOnOrAboveMiddleLine = noteIndex > middleLineIndex;
 
@@ -476,6 +496,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
         _tailPaint.color = noteImage.color ?? noteColor;
         if (noteImage.noteLength < 4 / 4) {
+          // TODO: heres the bar line
           canvas.drawLine(tailFrom, tailTo, _tailPaint);
         }
 
@@ -487,7 +508,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               ovalWidth * 3 / 2,
               ovalHeight //tailHeight.toDouble()
               );
-          _tailPaint.strokeWidth = 0.25;
+          _tailPaint.strokeWidth = 0.5;
           canvas.drawArc(
               arcRect, 0, isOnOrAboveMiddleLine ? 2 : -2, false, _tailPaint);
         }
@@ -502,7 +523,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               ovalWidth * 3 / 2,
               ovalHeight //tailHeight.toDouble()
               );
-          _tailPaint.strokeWidth = 0.25;
+          _tailPaint.strokeWidth = 0.5;
           canvas.drawArc(
               arcRect, 0, isOnOrAboveMiddleLine ? 2 : -2, false, _tailPaint);
         }
@@ -517,7 +538,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               ovalWidth * 3 / 2,
               ovalHeight //tailHeight.toDouble()
               );
-          _tailPaint.strokeWidth = 0.25;
+          _tailPaint.strokeWidth = 0.5;
           canvas.drawArc(
               arcRect, 0, isOnOrAboveMiddleLine ? 2 : -2, false, _tailPaint);
         }
@@ -532,7 +553,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               ovalWidth * 3 / 2,
               ovalHeight //tailHeight.toDouble()
               );
-          _tailPaint.strokeWidth = 0.25;
+          _tailPaint.strokeWidth = 0.5;
           canvas.drawArc(
               arcRect, 0, isOnOrAboveMiddleLine ? 2 : -2, false, _tailPaint);
         }

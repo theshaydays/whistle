@@ -173,9 +173,10 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
     }
     // noteImages.add(NoteImage(
     //     notePosition:
-    //         NotePosition(note: Note.F, accidental: Accidental.None, octave: -2),
-    //     offset: (i) * 0.13));
+    //         NotePosition(note: Note.C, accidental: Accidental.None, octave: -2),
+    //     offset: (i) * 0.125));
   }
+  print(noteImages.map((e) => e.notePosition.octave));
   return noteImages;
 }
 
@@ -187,15 +188,6 @@ int getStaves(List<List<dynamic>> noteResults) {
   return (noteResults.length % notesPerStave == 0
       ? noteResults.length ~/ notesPerStave
       : (noteResults.length ~/ notesPerStave) + 1);
-  // int noOfStaves = 1;
-  // for (int i = 0; i < noteResults.length; i+ +) {
-  //   if (noteResults.length % (10) == 0) {
-  //     noOfStaves++;
-  //   }
-  // }
-
-  // print(noteResults.length);
-  // return noOfStaves;
 }
 
 //function to split the list of notes into smaller lists (each containing only 10 notes)
