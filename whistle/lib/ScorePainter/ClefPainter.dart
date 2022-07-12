@@ -52,6 +52,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
   final Paint _notePaint;
   final Paint _tailPaint;
   final Paint _barPaint;
+  final Paint _dotPaint;
   TextPainter? _clefSymbolPainter;
   Map<Accidental, TextPainter> _accidentalSymbolPainters = {};
   Size? _lastClefSize;
@@ -72,6 +73,9 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         _barPaint = Paint()
           ..color = clefColor
           ..strokeWidth = lineHeight.toDouble() * 2,
+        _dotPaint = Paint()
+          ..color = clefColor
+          ..style = PaintingStyle.fill,
         _notePaint = Paint(),
         _tailPaint = Paint()..strokeWidth = lineHeight.toDouble();
   @override
@@ -136,10 +140,10 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         (firstLineIndex + (lastLineIndex - firstLineIndex - 1) / 2).floor();
 
     for (final noteImage in noteImages) {
-      //TODO: Draw a bar (line thingy)
+      // drawing bars
       if (noteImage.notePosition.octave == -2) {
         canvas.save();
-        //draw the line from top to bottom
+        // draw the line from top to bottom
         final top = naturalPositionOf(NotePosition(note: Note.F, octave: 5));
         final ovalRect = Rect.fromLTWH(
           clefSize.width +
@@ -187,6 +191,12 @@ class ClefPainter extends CustomPainter with EquatableMixin {
           canvas.translate(rect.left, rect.top + noteHeight * 0.1);
           canvas.drawRect(Offset.zero & rect.size, _notePaint);
           canvas.restore();
+
+          if (noteImage.noteLength < 4 / 4 && noteImage.noteLength > 2 / 4) {
+            final dotRect = Rect.fromLTWH(
+                rect.left, rect.top * 65 / 66, rect.width * 4 / 3, rect.height);
+            canvas.drawCircle(dotRect.centerRight, 1.5, _dotPaint);
+          }
         } else if (noteImage.noteLength >= (1 / 4)) {
           ///Draw quarter PAUSE
           var pos = naturalPositionOf(NotePosition(note: Note.E, octave: 5));
@@ -226,6 +236,12 @@ class ClefPainter extends CustomPainter with EquatableMixin {
               _notePaint);
           _notePaint.strokeWidth = 1.0;
           canvas.restore();
+
+          if (noteImage.noteLength < 2 / 4 && noteImage.noteLength > 1 / 4) {
+            final dotRect = Rect.fromLTWH(
+                rect.left, rect.top * 1.01, rect.width * 4 / 3, rect.height);
+            canvas.drawCircle(dotRect.centerRight, 1.5, _dotPaint);
+          }
         } else if (noteImage.noteLength >= (1 / 8)) {
           ///Draw 8th PAUSE
           var pos = naturalPositionOf(NotePosition(note: Note.C, octave: 5));
@@ -476,6 +492,25 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         // canvas.drawArc(ovalRect, 0, 2, false,
         //     _notePaint); //figo per abbellire minime e semiminime!
 
+        // TODO: draw dots
+        if (noteImage.noteLength < 4 / 4 && noteImage.noteLength > 2 / 4) {
+          final dotRect = Rect.fromLTWH(ovalRect.left, ovalRect.top * 65 / 66,
+              ovalRect.width * 4 / 3, ovalRect.height);
+          canvas.drawCircle(dotRect.centerRight, 1.5, _dotPaint);
+        }
+
+        if (noteImage.noteLength < 2 / 4 && noteImage.noteLength > 1 / 4) {
+          final dotRect = Rect.fromLTWH(ovalRect.left, ovalRect.top * 65 / 66,
+              ovalRect.width * 4 / 3, ovalRect.height);
+          canvas.drawCircle(dotRect.centerRight, 1.5, _dotPaint);
+        }
+        //not needed tbh since resolution is quavers
+        if (noteImage.noteLength < 1 / 4 && noteImage.noteLength > 1 / 8) {
+          final dotRect = Rect.fromLTWH(ovalRect.left, ovalRect.top * 65 / 66,
+              ovalRect.width * 4 / 3, ovalRect.height);
+          canvas.drawCircle(dotRect.centerRight, 1.5, _dotPaint);
+        }
+
         final isOnOrAboveMiddleLine = noteIndex > middleLineIndex;
 
         final Offset tailFrom, tailTo;
@@ -496,7 +531,6 @@ class ClefPainter extends CustomPainter with EquatableMixin {
 
         _tailPaint.color = noteImage.color ?? noteColor;
         if (noteImage.noteLength < 4 / 4) {
-          // TODO: heres the bar line
           canvas.drawLine(tailFrom, tailTo, _tailPaint);
         }
 
@@ -564,10 +598,11 @@ class ClefPainter extends CustomPainter with EquatableMixin {
             _accidentalSymbolPainters[noteImage.notePosition.accidental] =
                 TextPainter(
                     text: TextSpan(
-                        text: noteImage.notePosition.accidental.symbol,
-                        style: TextStyle(
-                            fontSize: ovalHeight * 2,
-                            color: noteImage.color ?? noteColor)),
+                      text: noteImage.notePosition.accidental.symbol,
+                      style: TextStyle(
+                          fontSize: ovalHeight * 2,
+                          color: noteImage.color ?? noteColor),
+                    ),
                     textDirection: TextDirection.ltr)
                   ..layout();
           }
@@ -591,9 +626,12 @@ class ClefPainter extends CustomPainter with EquatableMixin {
       final clefSymbolScale = (clef == Clef.Treble) ? 1.05 : 1.34;
       _clefSymbolPainter = TextPainter(
           text: TextSpan(
-              text: clef.symbol,
-              style: TextStyle(
-                  fontSize: clefHeight * clefSymbolScale, color: clefColor)),
+            text: clef.symbol,
+            style: TextStyle(
+              fontSize: clefHeight * clefSymbolScale,
+              color: clefColor,
+            ),
+          ),
           textDirection: TextDirection.ltr)
         ..layout();
     }
