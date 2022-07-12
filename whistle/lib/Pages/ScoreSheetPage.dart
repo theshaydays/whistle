@@ -184,30 +184,30 @@ List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
 }
 
 //function to get the number of staves needed
-int getStaves(List<List<dynamic>> noteResults) {
-  if (noteResults.length == 0) {
-    return 0;
-  }
-  return (noteResults.length % notesPerStave == 0
-      ? noteResults.length ~/ notesPerStave
-      : (noteResults.length ~/ notesPerStave) + 1);
-}
+// int getStaves(List<List<dynamic>> noteResults) {
+//   if (noteResults.length == 0) {
+//     return 0;
+//   }
+//   return (noteResults.length % notesPerStave == 0
+//       ? noteResults.length ~/ notesPerStave
+//       : (noteResults.length ~/ notesPerStave) + 1);
+// }
 
 //function to split the list of notes into smaller lists (each containing only 10 notes)
-List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
-  List<List<List<dynamic>>> chunks = [];
-  int chunkSize = notesPerStave;
-  for (var i = 0; i < noteResults.length; i += chunkSize) {
-    chunks.add(noteResults.sublist(
-        i,
-        i + chunkSize > noteResults.length
-            ? noteResults.length
-            : i + chunkSize));
-  }
-  return chunks;
-}
+// List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
+//   List<List<List<dynamic>>> chunks = [];
+//   int chunkSize = notesPerStave;
+//   for (var i = 0; i < noteResults.length; i += chunkSize) {
+//     chunks.add(noteResults.sublist(
+//         i,
+//         i + chunkSize > noteResults.length
+//             ? noteResults.length
+//             : i + chunkSize));
+//   }
+//   return chunks;
+// }
 
 //for loop to print the different lists of notes
-Widget getScoreWidgets(List<String> noteResults) {
-  return new Row(children: noteResults.map((item) => new Text(item)).toList());
-}
+// Widget getScoreWidgets(List<String> noteResults) {
+//   return new Row(children: noteResults.map((item) => new Text(item)).toList());
+// }
