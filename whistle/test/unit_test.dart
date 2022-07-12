@@ -72,7 +72,7 @@ void main() {
     ];
 
     //do
-    List<NoteImage> output = getNotes(notes);
+    List<NoteImage> output = getNotes(notes, 60).cast<NoteImage>();
 
     //test
     expect(

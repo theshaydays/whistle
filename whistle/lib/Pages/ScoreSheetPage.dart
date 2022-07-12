@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:piano/piano.dart';
 import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Notes.dart';
 import 'package:whistle/models/Constants.dart';
 
+import 'package:whistle/ScorePainter/ClefImage.dart';
+import 'package:whistle/ScorePainter/Clef.dart';
+import 'package:whistle/ScorePainter/NoteRange.dart';
+import 'package:whistle/ScorePainter/NotePosition.dart';
+import 'package:whistle/ScorePainter/ClefPainter.dart';
+
+final int notesPerStave = 8;
+
 class ScoreSheetPage extends StatefulWidget {
   final List<List<dynamic>> noteList;
+  final int BPM;
 
-  const ScoreSheetPage(this.noteList);
+  const ScoreSheetPage(this.noteList, this.BPM);
 
   @override
   _ScoreSheetPageState createState() => _ScoreSheetPageState();
@@ -89,38 +98,26 @@ class _ScoreSheetPageState extends State<ScoreSheetPage> {
               )
             ],
           ),
-          body: _buildScore(context, widget.noteList),
+          body: _buildScore(context, widget.noteList, widget.BPM),
         ),
       );
 }
 
-//original code that works
-// Widget _buildScore(BuildContext context, List<List<dynamic>> list) {
-//   return ClefImage(
-//     clef: Clef.Treble,
-//     noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
-//         NotePosition(note: Note.C, octave: 10)),
-//     noteImages: getNotes(list),
-//     clefColor: kPrimaryColor,
-//     noteColor: kPrimaryColor,
-//     size: Size.infinite,
-//   );
-// }
-
-//the one i tried .... but idk if this works
-Widget _buildScore(BuildContext context, noteResults) {
+Widget _buildScore(BuildContext context, noteResults, int BPM) {
   Size size = MediaQuery.of(context).size;
-  //to determine how many staves should be printed out
-  int stavesRequired = getStaves(noteResults);
   //to determine the max number of notes each stave can take
-  List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
+  // List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
+  List<List<List<dynamic>>> splitNotes =
+      NoteFrequencies().addBarsAndSplit(noteResults, (60 / BPM) / 2);
+  //to determine how many staves should be printed out
+  int stavesRequired = splitNotes.length;
 
   //list of staves
   List<Widget> staves = [
     Container(
       alignment: AlignmentDirectional.topCenter,
       width: size.width,
-      height: size.height + (stavesRequired - 3) * 200,
+      height: size.height + (stavesRequired - 5) * 100,
       child: Padding(
         padding: const EdgeInsets.all(50.0),
         child: Text(
@@ -136,12 +133,12 @@ Widget _buildScore(BuildContext context, noteResults) {
   ];
   for (int i = 0; i < stavesRequired; i++) {
     staves.add(Positioned(
-      top: i * 200,
+      top: i * 100,
       child: ClefImage(
         clef: Clef.Treble,
         noteRange: NoteRange(NotePosition(note: Note.C, octave: -10),
             NotePosition(note: Note.C, octave: 10)),
-        noteImages: getNotes(splitNotes[i]),
+        noteImages: getNotes(splitNotes[i], BPM),
         clefColor: kPrimaryColor,
         noteColor: kPrimaryColor,
         size: size,
@@ -156,52 +153,61 @@ Widget _buildScore(BuildContext context, noteResults) {
 }
 
 //function to get all the notes
-List<NoteImage> getNotes(List<List<dynamic>> noteResults) {
+List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
+  double spacing = 1 / noteResults.length;
   List<NoteImage> noteImages = [];
   for (int i = 0; i < noteResults.length; i++) {
     List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
-    if (noteInfo.isNotEmpty) {
+    if (noteInfo[0] == 'bar') {
       noteImages.add(NoteImage(
+          notePosition: NotePosition(note: Note.C, octave: -2),
+          offset: (i) * spacing));
+    } else if (noteInfo[0] == 'rest') {
+      noteImages.add(NoteImage(
+          isPause: true,
+          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
+          notePosition: NotePosition(note: Note.C, octave: -1),
+          offset: (i) * spacing));
+    } else {
+      noteImages.add(NoteImage(
+          isPause: false,
+          //60 referes to seconds in a minute
+          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
           notePosition: NotePosition(
               note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
-          offset: (i) * 0.1));
+          offset: (i) * spacing));
     }
   }
+  noteImages.add(NoteImage(
+      notePosition: NotePosition(note: Note.C, octave: -2), offset: 1));
   return noteImages;
 }
 
 //function to get the number of staves needed
-int getStaves(List<List<dynamic>> noteResults) {
-  if (noteResults.length == 0) {
-    return 0;
-  }
-  return (noteResults.length ~/ 10) + 1;
-  // int noOfStaves = 1;
-  // for (int i = 0; i < noteResults.length; i+ +) {
-  //   if (noteResults.length % (10) == 0) {
-  //     noOfStaves++;
-  //   }
-  // }
-
-  // print(noteResults.length);
-  // return noOfStaves;
-}
+// int getStaves(List<List<dynamic>> noteResults) {
+//   if (noteResults.length == 0) {
+//     return 0;
+//   }
+//   return (noteResults.length % notesPerStave == 0
+//       ? noteResults.length ~/ notesPerStave
+//       : (noteResults.length ~/ notesPerStave) + 1);
+// }
 
 //function to split the list of notes into smaller lists (each containing only 10 notes)
-List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
-  List<List<List<dynamic>>> chunks = [];
-  int chunkSize = 10;
-  for (var i = 0; i < noteResults.length; i += chunkSize) {
-    chunks.add(noteResults.sublist(
-        i,
-        i + chunkSize > noteResults.length
-            ? noteResults.length
-            : i + chunkSize));
-  }
-  return chunks;
-}
+// List<List<List<dynamic>>> getSmallLists(List<List<dynamic>> noteResults) {
+//   List<List<List<dynamic>>> chunks = [];
+//   int chunkSize = notesPerStave;
+//   for (var i = 0; i < noteResults.length; i += chunkSize) {
+//     chunks.add(noteResults.sublist(
+//         i,
+//         i + chunkSize > noteResults.length
+//             ? noteResults.length
+//             : i + chunkSize));
+//   }
+//   return chunks;
+// }
 
 //for loop to print the different lists of notes
-Widget getScoreWidgets(List<String> noteResults) {
-  return new Row(children: noteResults.map((item) => new Text(item)).toList());
-}
+// Widget getScoreWidgets(List<String> noteResults) {
+//   return new Row(children: noteResults.map((item) => new Text(item)).toList());
+// }

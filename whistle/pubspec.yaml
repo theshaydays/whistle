@@ -26,6 +26,7 @@ dependencies:
   wave_progress_bars: ^0.1.0
   flutter_svg: ^0.17.4
   curved_navigation_bar: ^1.0.3
+  freezed_annotation: ^0.14.3
 
 dev_dependencies:
   flutter_test:

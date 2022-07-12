@@ -270,7 +270,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
 
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => ScoreSheetPage(notes),
+                            builder: (context) => ScoreSheetPage(notes, 120),
                           ),
                         );
                         setState(() => _isLoading = false);
