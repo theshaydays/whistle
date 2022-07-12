@@ -54,6 +54,7 @@ class ClefPainter extends CustomPainter with EquatableMixin {
   final Paint _barPaint;
   final Paint _dotPaint;
   TextPainter? _clefSymbolPainter;
+  TextPainter? _timeSymbolPainter;
   Map<Accidental, TextPainter> _accidentalSymbolPainters = {};
   Size? _lastClefSize;
   final List<NotePosition> _naturalPositions;
@@ -492,7 +493,6 @@ class ClefPainter extends CustomPainter with EquatableMixin {
         // canvas.drawArc(ovalRect, 0, 2, false,
         //     _notePaint); //figo per abbellire minime e semiminime!
 
-        // TODO: draw dots
         if (noteImage.noteLength < 4 / 4 && noteImage.noteLength > 2 / 4) {
           final dotRect = Rect.fromLTWH(ovalRect.left, ovalRect.top * 65 / 66,
               ovalRect.width * 4 / 3, ovalRect.height);
@@ -638,6 +638,24 @@ class ClefPainter extends CustomPainter with EquatableMixin {
     _lastClefSize = clefSize;
     _clefSymbolPainter?.paint(
         canvas, Offset(bounds.left, lastLineY - clefSymbolOffset * clefHeight));
+
+    _timeSymbolPainter = TextPainter(
+        text: TextSpan(
+          text: '4',
+          style:
+              TextStyle(fontSize: 25, color: clefColor, fontFamily: 'fantasy'),
+        ),
+        textDirection: TextDirection.ltr)
+      ..layout();
+
+    _timeSymbolPainter?.paint(
+        canvas,
+        Offset(
+            clefSize.width * 0.6, lastLineY - clefSymbolOffset * clefHeight));
+    _timeSymbolPainter?.paint(
+        canvas,
+        Offset(clefSize.width * 0.6,
+            firstLineY - clefSymbolOffset * clefHeight * 4.25));
   }
 
   @override

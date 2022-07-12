@@ -3,7 +3,8 @@
 import 'package:whistle/ScorePainter/NotePosition.dart';
 
 var notes = {
-  'rest': [],
+  'bar': ['bar'],
+  'rest': ['rest'],
   //0th octave
   'C0': [Note.C, Accidental.None, 0],
   'C#0': [Note.C, Accidental.Sharp, 0],

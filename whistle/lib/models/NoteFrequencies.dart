@@ -163,4 +163,81 @@ class NoteFrequencies {
     }
     return noteList;
   }
+
+  List<List<List<dynamic>>> addBarsAndSplit(
+    List<List<dynamic>> noteList,
+    double resolution,
+  ) {
+    //remove the first rest if have
+    if (noteList[0][0] == 'rest') {
+      noteList.removeAt(0);
+    }
+    // since the algo cuts the sound into quavers (1/8ths), one bar only takes this much reso
+    double maxTime = resolution * 8;
+    //the following list (and lines of code) will check for any notes larger than one bar worth and shorten it
+    List<List<dynamic>> listWithoutLargeNotes = [];
+    for (int i = 0; i < noteList.length; i++) {
+      if (noteList[i][1] < maxTime) {
+        listWithoutLargeNotes.add(noteList[i]);
+      } else {
+        List<dynamic> dummyNote = noteList[i];
+        while (dummyNote[1] > maxTime) {
+          listWithoutLargeNotes.add([dummyNote[0], maxTime]);
+          dummyNote[1] -= maxTime;
+        }
+        if (dummyNote[1] > 0.0) {
+          listWithoutLargeNotes.add(dummyNote);
+        }
+      }
+    }
+
+    //splitting notes into bars of 8 quavers
+    List<List<List<dynamic>>> barList = [];
+    for (int i = 0; i < listWithoutLargeNotes.length; i++) {
+      if (barList.isEmpty) {
+        barList.add([listWithoutLargeNotes[i]]);
+      } else {
+        double currentTime = barList.last
+            .fold(0, (previousValue, element) => previousValue + element[1]);
+        // the following fold calculates if the total time of all the previous elements is smaller than maxTime
+        if (currentTime + listWithoutLargeNotes[i][1] <= maxTime) {
+          barList.last.add(listWithoutLargeNotes[i]);
+        } else if (currentTime == maxTime) {
+          barList.add([listWithoutLargeNotes[i]]);
+        } else {
+          // this is the first part of the note which fills up the rest of the bar
+          List<dynamic> firstPart = [
+            listWithoutLargeNotes[i][0],
+            maxTime - currentTime
+          ];
+          // this is the second part of the note which goes over to the next bar
+          List<dynamic> secondPart = [
+            listWithoutLargeNotes[i][0],
+            listWithoutLargeNotes[i][1] - (maxTime - currentTime)
+          ];
+          barList.last.add(firstPart);
+          barList.add([secondPart]);
+        }
+      }
+    }
+
+    // splitting notes into staves -> will merge bars
+    List<List<List<dynamic>>> staveList = [];
+
+    for (int i = 0; i < barList.length; i++) {
+      if (staveList.isEmpty) {
+        staveList.add(barList[i]);
+      } else {
+        // 9 because the next element will also have a bar at the end
+        if (staveList.last.length + barList[i].length < 8) {
+          //add the bar line for the previous bar , bar not added after as last bar is all the way at the end
+          staveList.last.add(['bar', 0.0]);
+          staveList.last.addAll(barList[i]);
+        } else {
+          staveList.add(barList[i]);
+        }
+      }
+    }
+    return staveList;
+  }
 }

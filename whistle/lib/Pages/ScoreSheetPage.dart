@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:piano/piano.dart';
 import 'package:whistle/Pages/HomePage.dart';
+import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Notes.dart';
 import 'package:whistle/models/Constants.dart';
 
@@ -105,10 +105,12 @@ class _ScoreSheetPageState extends State<ScoreSheetPage> {
 
 Widget _buildScore(BuildContext context, noteResults, int BPM) {
   Size size = MediaQuery.of(context).size;
-  //to determine how many staves should be printed out
-  int stavesRequired = getStaves(noteResults);
   //to determine the max number of notes each stave can take
-  List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
+  // List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
+  List<List<List<dynamic>>> splitNotes =
+      NoteFrequencies().addBarsAndSplit(noteResults, (60 / BPM) / 2);
+  //to determine how many staves should be printed out
+  int stavesRequired = splitNotes.length;
 
   //list of staves
   List<Widget> staves = [
@@ -152,31 +154,32 @@ Widget _buildScore(BuildContext context, noteResults, int BPM) {
 
 //function to get all the notes
 List<NoteImage> getNotes(List<List<dynamic>> noteResults, int BPM) {
+  double spacing = 1 / noteResults.length;
   List<NoteImage> noteImages = [];
   for (int i = 0; i < noteResults.length; i++) {
     List<dynamic> noteInfo = notes[noteResults[i][0]] as List<dynamic>;
-    if (noteInfo.isNotEmpty) {
+    if (noteInfo[0] == 'bar') {
       noteImages.add(NoteImage(
-          isPause: false,
-          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
-          //noteLength: 1 / 8,
-          notePosition: NotePosition(
-              note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
-          offset: (i) * 0.125));
-    } else {
+          notePosition: NotePosition(note: Note.C, octave: -2),
+          offset: (i) * spacing));
+    } else if (noteInfo[0] == 'rest') {
       noteImages.add(NoteImage(
           isPause: true,
           noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
+          notePosition: NotePosition(note: Note.C, octave: -1),
+          offset: (i) * spacing));
+    } else {
+      noteImages.add(NoteImage(
+          isPause: false,
+          //60 referes to seconds in a minute
+          noteLength: (noteResults[i][1] / (60 / BPM)) / 4,
           notePosition: NotePosition(
-              note: Note.C, accidental: Accidental.None, octave: -1),
-          offset: (i) * 0.125));
+              note: noteInfo[0], accidental: noteInfo[1], octave: noteInfo[2]),
+          offset: (i) * spacing));
     }
-    // noteImages.add(NoteImage(
-    //     notePosition:
-    //         NotePosition(note: Note.C, accidental: Accidental.None, octave: -2),
-    //     offset: (i) * 0.125));
   }
-  print(noteImages.map((e) => e.notePosition.octave));
+  noteImages.add(NoteImage(
+      notePosition: NotePosition(note: Note.C, octave: -2), offset: 1));
   return noteImages;
 }
 
