@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/Pages/SignInPage.dart';
-import 'dart:io' show Platform;
+import 'package:whistle/Pages/AuthenticatePage.dart';
+import 'package:whistle/models/HomeModel.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+/*void main() {
   _setTargetPlatformForDesktop();
   return runApp(MyApp());
 }
@@ -31,6 +32,21 @@ class _MyAppState extends State<MyApp> {
       title: 'Whistle',
       debugShowCheckedModeBanner: false,
       home: SignInScreen(),
+    );
+  }
+}*/
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => HomeModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: AuthenticateScreen(),
+      ),
     );
   }
 }
