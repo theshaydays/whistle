@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:whistle/Pages/AuthenticationWrapperPage.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Widgets/ButtonWidget.dart';
 import 'package:whistle/Widgets/TextFieldWidget.dart';
@@ -7,17 +8,19 @@ import 'package:whistle/Widgets/WaveWidget.dart';
 import 'package:whistle/models/HomeModel.dart';
 import 'package:whistle/models/constants.dart';
 
-class AuthenticateScreen extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   @override
-  State<AuthenticateScreen> createState() => _AuthenticateScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _AuthenticateScreenState extends State<AuthenticateScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
     final model = Provider.of<HomeModel>(context);
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
 
     return Scaffold(
       backgroundColor: kSecondaryColor,
@@ -102,6 +105,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                 ElevatedButton(
                   child: Text('Login'),
                   onPressed: () {
+                    context.read<AuthenticationService>().signIn(
+                      email: emailController.text, 
+                      password: passwordController.text,
                     Navigator.push(
                       context,
                       MaterialPageRoute(
