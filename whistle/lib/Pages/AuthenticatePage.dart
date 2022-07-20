@@ -44,7 +44,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  'Welcome to Flutter',
+                  'Welcome to Whistle!',
                   style: TextStyle(
                     color: kSecondaryColor,
                     fontSize: 40.0,
@@ -100,6 +100,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                   height: 10.0,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: kPrimaryColor),
                   child: Text('Login'),
                   onPressed: () {
                     Navigator.push(
@@ -119,6 +120,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                   height: 10.0,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: kPrimaryColor),
                   child: Text('Click here to login anonymously'),
                   onPressed: () {
                     Navigator.push(
