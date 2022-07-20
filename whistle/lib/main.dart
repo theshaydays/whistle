@@ -1,44 +1,52 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:whistle/Pages/AuthenticatePage.dart';
+import 'package:whistle/models/HomeModel.dart';
 import 'package:provider/provider.dart';
-import 'package:whistle/Pages/AuthenticationWrapperPage.dart';
 
-Future<void> main() async {
-  await Firebase.initializeApp();
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+/*void main() {
+  _setTargetPlatformForDesktop();
+  return runApp(MyApp());
 }
+
+void _setTargetPlatformForDesktop() {
+  if (Platform.isMacOS) {
+  } else if (Platform.isLinux || Platform.isWindows) {}
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    // add the following lines if you want to force the app to always stay vertical
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
+    return MaterialApp(
+      title: 'Whistle',
+      debugShowCheckedModeBanner: false,
+      home: SignInScreen(),
+    );
+  }
+}*/
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<AuthenticationService>(
-          create: (_) => AuthenticationService(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-            create: (context) =>
-                context.read<AuthenticationService>().authStateChanges),
-      ],
+    return ChangeNotifierProvider(
+      create: (context) => HomeModel(),
       child: MaterialApp(
-        title: "whistle",
-        home: AuthenticationWrapper(),
+        debugShowCheckedModeBanner: false,
+        home: AuthenticateScreen(),
       ),
     );
-  }
-}
-
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    // ignore: unnecessary_null_comparison
-    if (firebaseUser != null) {
-      return Text("Signed In");
-    }
-    return Text("Not Signed In");
   }
 }

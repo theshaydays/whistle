@@ -29,8 +29,8 @@ void main() {
     double sampleRate = 41100;
 
     //do
-    double output = await FFTAnalysis(filePath, '1.0', 0.25)
-        .analyse(inputAudio, sampleRate);
+    double output =
+        await FFTAnalysis(filePath, '1.0').analyse(inputAudio, sampleRate);
 
     //test
     expect(output, 0.0);
