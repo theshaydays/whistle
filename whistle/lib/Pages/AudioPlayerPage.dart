@@ -33,6 +33,8 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
   Duration songPosition = Duration.zero;
   AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int valueInt = 120;
+  int? selectedBPM;
 
   Future _initImages() async {
     // >> To get paths you need these 2 lines
@@ -111,6 +113,84 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
           ],
         ),
       );
+
+  Future<void> _tempBPMDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (dialogContext) {
+          return AlertDialog(
+            title: Text('Enter desired BPM for analysis'),
+            content: TextField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              onChanged: (value) {
+                setState(() {
+                  valueInt = int.parse(value);
+                });
+              },
+              decoration: InputDecoration(hintText: "Key in a number!"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(dialogContext);
+                  });
+                },
+              ),
+              TextButton(
+                child: Text('Analyse'),
+                onPressed: () async {
+                  Navigator.of(dialogContext).pop();
+                  setState(() {
+                    selectedBPM = valueInt;
+                  });
+                  if (widget.pathType == 'asset') {
+                    return;
+                  }
+                  await _initImages();
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  double resolution = 60 / selectedBPM! / 2;
+                  List<double> freq = await FFTAnalysis(
+                          widget.filePath, widget.duration, resolution)
+                      .main();
+
+                  print(freq);
+                  //String note = NoteFrequencies().getNote(freq[0]);
+                  List<List<dynamic>> notes =
+                      NoteFrequencies().getNoteList(freq, resolution);
+
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ScoreSheetPage(notes, selectedBPM!),
+                    ),
+                  );
+                  setState(() => (_isLoading = false));
+
+                  // old code where a popup would come up with the notes produced by fft
+                  // showDialog<String>(
+                  //   context: context,
+                  //   builder: (BuildContext context) => AlertDialog(
+                  //     content: Text('Your note is ' + notes),
+                  //     actions: <Widget>[
+                  //       TextButton(
+                  //           onPressed: () =>
+                  //               Navigator.pop(context, 'Close'),
+                  //           child: const Text('Close')),
+                  //     ],
+                  //   ),
+                  // );
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -252,43 +332,46 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                   children: [
                     IconButton(
                       onPressed: () async {
-                        if (widget.pathType == 'asset') {
-                          return;
-                        }
-                        await _initImages();
-                        setState(() => _isLoading = true);
-                        List<double> freq =
-                            await FFTAnalysis(widget.filePath, widget.duration)
-                                .main();
-                        double resolution =
-                            FFTAnalysis(widget.filePath, widget.duration)
-                                .getResolution();
-                        print(freq);
-                        //String note = NoteFrequencies().getNote(freq[0]);
-                        List<List<dynamic>> notes =
-                            NoteFrequencies().getNoteList(freq, resolution);
-
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => ScoreSheetPage(notes, 120),
-                          ),
-                        );
-                        setState(() => _isLoading = false);
-
-                        // old code where a popup would come up with the notes produced by fft
-                        // showDialog<String>(
-                        //   context: context,
-                        //   builder: (BuildContext context) => AlertDialog(
-                        //     content: Text('Your note is ' + notes),
-                        //     actions: <Widget>[
-                        //       TextButton(
-                        //           onPressed: () =>
-                        //               Navigator.pop(context, 'Close'),
-                        //           child: const Text('Close')),
-                        //     ],
-                        //   ),
-                        // );
+                        return _tempBPMDialog(context);
                       },
+                      // onPressed: () async {
+                      //   if (widget.pathType == 'asset') {
+                      //     return;
+                      //   }
+                      //   await _initImages();
+                      //   setState(() => _isLoading = true);
+                      //   List<double> freq =
+                      //       await FFTAnalysis(widget.filePath, widget.duration)
+                      //           .main();
+                      //   double resolution =
+                      //       FFTAnalysis(widget.filePath, widget.duration)
+                      //           .getResolution();
+                      //   print(freq);
+                      //   //String note = NoteFrequencies().getNote(freq[0]);
+                      //   List<List<dynamic>> notes =
+                      //       NoteFrequencies().getNoteList(freq, resolution);
+
+                      //   Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //       builder: (context) => ScoreSheetPage(notes, 120),
+                      //     ),
+                      //   );
+                      //   setState(() => _isLoading = false);
+
+                      //   // old code where a popup would come up with the notes produced by fft
+                      //   // showDialog<String>(
+                      //   //   context: context,
+                      //   //   builder: (BuildContext context) => AlertDialog(
+                      //   //     content: Text('Your note is ' + notes),
+                      //   //     actions: <Widget>[
+                      //   //       TextButton(
+                      //   //           onPressed: () =>
+                      //   //               Navigator.pop(context, 'Close'),
+                      //   //           child: const Text('Close')),
+                      //   //     ],
+                      //   //   ),
+                      //   // );
+                      // },
                       icon: Icon(Icons.music_note),
                       color: kLightColor,
                       iconSize: 0.09 * size.width,
