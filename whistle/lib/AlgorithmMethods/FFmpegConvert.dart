@@ -75,10 +75,12 @@ class FFmpegConvert {
     String path = this.filePath;
     Directory appDocumentDir = await getApplicationDocumentsDirectory();
     String rawDocumentPath = appDocumentDir.path;
+    //i ended up just calling the file result, the following 4 lines of code is q pointless
     String fullFileName = this.filePath.split('/').last;
     String fileName = fullFileName.split('.').first;
+    fileName = fileName.replaceAll(' ', '');
     String outPath = rawDocumentPath +
-        "/$fileName$idx.wav"; // files are converted to wav before slicing already
+        "output$idx.wav"; // files are converted to wav before slicing already
     var cmd =
         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
     FFmpegSession sess = await FFmpegKit.execute(cmd);
