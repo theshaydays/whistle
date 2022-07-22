@@ -4,7 +4,7 @@ import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/LoadingPage.dart';
 import 'package:whistle/Widgets/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 import 'package:whistle/Pages/ScoreSheetPage.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
