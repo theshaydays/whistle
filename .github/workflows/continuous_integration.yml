@@ -1,4 +1,9 @@
 name: CI
+
+defaults:
+  run:
+    working-directory: whistle
+
 on: 
   pull_request:
     branches:
