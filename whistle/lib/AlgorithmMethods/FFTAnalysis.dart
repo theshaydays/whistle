@@ -18,18 +18,26 @@ class FFTAnalysis {
     final double sampleRate =
         await FFmpegConvert(this.filePath).getSampleRate();
     // checking file format
-    final format = FFmpegConvert(this.filePath).getFileType();
+    // final format = FFmpegConvert(this.filePath).getFileType();
     //converting from wav files
     String newFilePath = this.filePath;
-    if (format != 'wav') {
-      newFilePath = await FFmpegConvert(this.filePath).convertFile();
-    }
+    // if (format != 'wav') {
+    //   newFilePath = await FFmpegConvert(this.filePath).convertFile();
+    // }
     //audio slicing
     int numOfSlices = double.parse(this.duration) ~/ resolution;
     List<String> splicedAudioFilePaths = [];
     for (int i = 0; i < numOfSlices; i++) {
-      splicedAudioFilePaths.add(await FFmpegConvert(newFilePath)
-          .sliceAudio(i * resolution, (i + 1) * resolution, i));
+      String slicedFilepath = await FFmpegConvert(newFilePath)
+          .sliceAudio(i * resolution, (i + 1) * resolution, i);
+      String format = await FFmpegConvert(slicedFilepath).getFileType();
+
+      print(format);
+      if (format != 'wav') {
+        slicedFilepath = await FFmpegConvert(slicedFilepath).convertFile();
+      }
+      print(slicedFilepath);
+      splicedAudioFilePaths.add(slicedFilepath);
     }
     //print(splicedAudioFilePaths);
     // analyse slices
