@@ -5,7 +5,7 @@ import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/AudioPlayerPage.dart';
 import 'package:whistle/Pages/ScoreSheetPage.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 
 class SavedProjectsPage extends StatefulWidget {
   @override

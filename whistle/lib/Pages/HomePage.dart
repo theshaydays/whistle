@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:whistle/Pages/SampleKeyboardPage.dart';
 import 'package:whistle/Pages/SavedProjectsPage.dart';
 import 'package:whistle/Pages/NewProjectPage.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 import 'package:whistle/models/Playlist.dart';
 import 'package:whistle/models/Songs.dart';
 

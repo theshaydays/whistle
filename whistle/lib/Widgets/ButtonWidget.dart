@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Constant.dart';
 
 // this is for SignInPage.dart
 class ButtonWidget extends StatelessWidget {

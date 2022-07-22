@@ -1,7 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:whistle/Pages/RecordingPage.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 import 'package:whistle/Pages/AudioPlayerPage.dart';
 import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
 import 'package:file_picker/file_picker.dart';

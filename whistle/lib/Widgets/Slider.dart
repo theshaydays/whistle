@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 import 'package:flutter/material.dart';
 
 class SeekBar extends StatefulWidget {
