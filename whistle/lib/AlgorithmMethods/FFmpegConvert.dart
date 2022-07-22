@@ -71,7 +71,7 @@ class FFmpegConvert {
   }
 
   Future<String> sliceAudio(double start, double end, int idx) async {
-    //String fileType = await getFileType();
+    String fileType = await getFileType();
     String path = this.filePath;
     Directory appDocumentDir = await getApplicationDocumentsDirectory();
     String rawDocumentPath = appDocumentDir.path;
@@ -80,10 +80,12 @@ class FFmpegConvert {
     String fileName = fullFileName.split('.').first;
     fileName = fileName.replaceAll(' ', '');
     String outPath = rawDocumentPath +
-        "output$idx.wav"; // files are converted to wav before slicing already
+        "/output$idx.$fileType"; // files are converted to wav before slicing already
     var cmd =
         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
     FFmpegSession sess = await FFmpegKit.execute(cmd);
+    print(path);
+    print(outPath);
     return outPath;
   }
 }
