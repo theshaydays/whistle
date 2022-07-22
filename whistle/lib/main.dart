@@ -3,8 +3,6 @@ import 'package:whistle/Pages/AuthenticatePage.dart';
 import 'package:whistle/models/HomeModel.dart';
 import 'package:provider/provider.dart';
 
-//testing CI code
-
 /*void main() {
   _setTargetPlatformForDesktop();
   return runApp(MyApp());
