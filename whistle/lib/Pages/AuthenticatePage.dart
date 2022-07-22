@@ -5,7 +5,7 @@ import 'package:whistle/Widgets/ButtonWidget.dart';
 import 'package:whistle/Widgets/TextFieldWidget.dart';
 import 'package:whistle/Widgets/WaveWidget.dart';
 import 'package:whistle/models/HomeModel.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 
 class AuthenticateScreen extends StatefulWidget {
   @override
