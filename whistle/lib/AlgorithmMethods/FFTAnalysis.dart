@@ -32,11 +32,11 @@ class FFTAnalysis {
           .sliceAudio(i * resolution, (i + 1) * resolution, i);
       String format = await FFmpegConvert(slicedFilepath).getFileType();
 
-      print(format);
+      //print(format);
       if (format != 'wav') {
         slicedFilepath = await FFmpegConvert(slicedFilepath).convertFile();
       }
-      print(slicedFilepath);
+      //print(slicedFilepath);
       splicedAudioFilePaths.add(slicedFilepath);
     }
     //print(splicedAudioFilePaths);
@@ -81,7 +81,7 @@ class FFTAnalysis {
         }
       }
 
-      print(list[idx]);
+      //print(list[idx]);
       //TODO: determine whether should be <= or <, <= excludes first sound sample, < includes first sound sample
       if (list[idx] <= volThreshold!) {
         loudEnough = false;

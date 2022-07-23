@@ -205,18 +205,22 @@ class NoteFrequencies {
         } else if (currentTime == maxTime) {
           barList.add([listWithoutLargeNotes[i]]);
         } else {
-          // this is the first part of the note which fills up the rest of the bar
-          List<dynamic> firstPart = [
-            listWithoutLargeNotes[i][0],
-            maxTime - currentTime
-          ];
-          // this is the second part of the note which goes over to the next bar
-          List<dynamic> secondPart = [
-            listWithoutLargeNotes[i][0],
-            listWithoutLargeNotes[i][1] - (maxTime - currentTime)
-          ];
-          barList.last.add(firstPart);
-          barList.add([secondPart]);
+          if (maxTime - currentTime < 0.01) {
+            barList.add([listWithoutLargeNotes[i]]);
+          } else {
+            // this is the first part of the note which fills up the rest of the bar
+            List<dynamic> firstPart = [
+              listWithoutLargeNotes[i][0],
+              maxTime - currentTime
+            ];
+            // this is the second part of the note which goes over to the next bar
+            List<dynamic> secondPart = [
+              listWithoutLargeNotes[i][0],
+              listWithoutLargeNotes[i][1] - (maxTime - currentTime)
+            ];
+            barList.last.add(firstPart);
+            barList.add([secondPart]);
+          }
         }
       }
     }

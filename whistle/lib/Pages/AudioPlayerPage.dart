@@ -155,7 +155,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                           widget.filePath, widget.duration, resolution)
                       .main();
 
-                  print(freq);
+                  //print(freq);
                   //String note = NoteFrequencies().getNote(freq[0]);
                   List<List<dynamic>> notes =
                       NoteFrequencies().getNoteList(freq, resolution);
