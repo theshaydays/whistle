@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whistle/models/HomeModel.dart';
-import 'package:whistle/models/constants.dart';
+import 'package:whistle/models/Constant.dart';
 
 // this is for SignInPage.dart
 class TextFieldWidget extends StatelessWidget {

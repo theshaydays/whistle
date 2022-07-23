@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Notes.dart';
-import 'package:whistle/models/Constants.dart';
+import 'package:whistle/models/Constant.dart';
 
 import 'package:whistle/ScorePainter/ClefImage.dart';
 import 'package:whistle/ScorePainter/Clef.dart';

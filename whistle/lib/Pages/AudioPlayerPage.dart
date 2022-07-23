@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whistle/AlgorithmMethods/FFTAnalysis.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/LoadingPage.dart';
+import 'package:whistle/Pages/MetronomePage.dart';
 import 'package:whistle/Widgets/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Constant.dart';
@@ -379,10 +380,15 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                       color: kPrimaryColor,
                       size: 0.12 * size.width,
                     ),
-                    Icon(
-                      Icons.swap_horiz,
+                    IconButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MetronomeClass(),
+                        ),
+                      ),
+                      icon: Icon(Icons.swap_horiz),
                       color: kLightColor,
-                      size: 0.09 * size.width,
+                      iconSize: 0.09 * size.width,
                     ),
                   ],
                 ),
