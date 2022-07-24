@@ -147,7 +147,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
                         content:
-                            Text('Please input a vlaue between 40 and 250'),
+                            Text('Please input a value between 40 and 250'),
                         actions: <Widget>[
                           TextButton(
                               onPressed: () => Navigator.pop(context, 'Close'),
@@ -372,7 +372,8 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                         showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            content: Text(''),
+                            content: Text(
+                                'Press the analyse button to enter the BPM of your selected audio peice. Afterwhich, press analyse to receive a score sheet of your audio. \n \nTry different BPMs to see which BPM is most accurate for your score! \n \nDo note that analsysis takes about 1.5x longer than your total audio duration. If it takes longer than that, try a different audio peice instead!'),
                             actions: <Widget>[
                               TextButton(
                                   onPressed: () =>
