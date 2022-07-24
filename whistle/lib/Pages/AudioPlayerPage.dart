@@ -125,7 +125,8 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                   valueInt = int.parse(value);
                 });
               },
-              decoration: InputDecoration(hintText: "Key in a number!"),
+              decoration: InputDecoration(
+                  hintText: "Key in a number! (default at 120 BPM)"),
             ),
             actions: <Widget>[
               TextButton(
