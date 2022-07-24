@@ -122,7 +122,9 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
               ],
               onChanged: (value) {
                 setState(() {
-                  valueInt = int.parse(value);
+                  if (value.isNotEmpty) {
+                    valueInt = int.parse(value);
+                  }
                 });
               },
               decoration: InputDecoration(
@@ -367,7 +369,18 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                     PlayButton(_audioPlayer),
                     ElevatedButton.icon(
                       onPressed: () async {
-                        return;
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            content: Text(''),
+                            actions: <Widget>[
+                              TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Close'),
+                                  child: const Text('Close')),
+                            ],
+                          ),
+                        );
                       },
                       icon: Icon(Icons.help),
                       label: Text(' Help  '),
