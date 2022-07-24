@@ -39,19 +39,21 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 100.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Welcome to Whistle!',
-                  style: TextStyle(
-                    color: kSecondaryColor,
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.w900,
+            child: Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    'Welcome to Whistle!',
+                    style: TextStyle(
+                      color: kSecondaryColor,
+                      fontSize: 40.0,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Padding(

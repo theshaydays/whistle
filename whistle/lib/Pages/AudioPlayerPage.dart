@@ -118,7 +118,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
             content: TextField(
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
+                FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: (value) {
                 setState(() {
@@ -140,33 +140,49 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
               TextButton(
                 child: Text('Analyse'),
                 onPressed: () async {
-                  Navigator.of(dialogContext).pop();
-                  setState(() {
-                    selectedBPM = valueInt;
-                  });
-                  if (widget.pathType == 'asset') {
-                    return;
+                  if (valueInt < 40 || valueInt > 250) {
+                    showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        content:
+                            Text('Please input a vlaue between 40 and 250'),
+                        actions: <Widget>[
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, 'Close'),
+                              child: const Text('Close')),
+                        ],
+                      ),
+                    );
+                  } else {
+                    Navigator.of(dialogContext).pop();
+                    setState(() {
+                      selectedBPM = valueInt;
+                    });
+                    if (widget.pathType == 'asset') {
+                      return;
+                    }
+                    await _initImages();
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    double resolution = 60 / selectedBPM! / 2;
+                    List<double> freq = await FFTAnalysis(
+                            widget.filePath, widget.duration, resolution)
+                        .main();
+
+                    //print(freq);
+                    //String note = NoteFrequencies().getNote(freq[0]);
+                    List<List<dynamic>> notes =
+                        NoteFrequencies().getNoteList(freq, resolution);
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ScoreSheetPage(notes, selectedBPM!),
+                      ),
+                    );
+                    setState(() => (_isLoading = false));
                   }
-                  await _initImages();
-                  setState(() {
-                    _isLoading = true;
-                  });
-                  double resolution = 60 / selectedBPM! / 2;
-                  List<double> freq = await FFTAnalysis(
-                          widget.filePath, widget.duration, resolution)
-                      .main();
-
-                  //print(freq);
-                  //String note = NoteFrequencies().getNote(freq[0]);
-                  List<List<dynamic>> notes =
-                      NoteFrequencies().getNoteList(freq, resolution);
-
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => ScoreSheetPage(notes, selectedBPM!),
-                    ),
-                  );
-                  setState(() => (_isLoading = false));
 
                   // old code where a popup would come up with the notes produced by fft
                   // showDialog<String>(
@@ -324,72 +340,46 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
+                    ElevatedButton.icon(
                       onPressed: () async {
                         return _tempBPMDialog(context);
                       },
-                      // onPressed: () async {
-                      //   if (widget.pathType == 'asset') {
-                      //     return;
-                      //   }
-                      //   await _initImages();
-                      //   setState(() => _isLoading = true);
-                      //   List<double> freq =
-                      //       await FFTAnalysis(widget.filePath, widget.duration)
-                      //           .main();
-                      //   double resolution =
-                      //       FFTAnalysis(widget.filePath, widget.duration)
-                      //           .getResolution();
-                      //   print(freq);
-                      //   //String note = NoteFrequencies().getNote(freq[0]);
-                      //   List<List<dynamic>> notes =
-                      //       NoteFrequencies().getNoteList(freq, resolution);
-
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => ScoreSheetPage(notes, 120),
-                      //     ),
-                      //   );
-                      //   setState(() => _isLoading = false);
-
-                      //   // old code where a popup would come up with the notes produced by fft
-                      //   // showDialog<String>(
-                      //   //   context: context,
-                      //   //   builder: (BuildContext context) => AlertDialog(
-                      //   //     content: Text('Your note is ' + notes),
-                      //   //     actions: <Widget>[
-                      //   //       TextButton(
-                      //   //           onPressed: () =>
-                      //   //               Navigator.pop(context, 'Close'),
-                      //   //           child: const Text('Close')),
-                      //   //     ],
-                      //   //   ),
-                      //   // );
-                      // },
                       icon: Icon(Icons.music_note),
-                      color: kLightColor,
-                      iconSize: 0.09 * size.width,
-                    ),
-                    Icon(
-                      Icons.skip_previous,
-                      color: kPrimaryColor,
-                      size: 0.12 * size.width,
-                    ),
-                    PlayButton(_audioPlayer),
-                    Icon(
-                      Icons.skip_next,
-                      color: kPrimaryColor,
-                      size: 0.12 * size.width,
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => MetronomeClass(),
-                        ),
+                      label: Text('Analyse'),
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                        minimumSize:
+                            Size(size.width * 0.0075, size.height * 0.065),
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20),
                       ),
-                      icon: Icon(Icons.swap_horiz),
-                      color: kLightColor,
-                      iconSize: 0.09 * size.width,
+                    ),
+                    // IconButton(
+                    //   onPressed: () async {
+                    //     return _tempBPMDialog(context);
+                    //   },
+                    //   icon: Icon(Icons.music_note),
+                    //   color: kLightColor,
+                    //   iconSize: 0.09 * size.width,
+                    // ),
+                    PlayButton(_audioPlayer),
+                    ElevatedButton.icon(
+                      onPressed: () async {
+                        return;
+                      },
+                      icon: Icon(Icons.help),
+                      label: Text(' Help  '),
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                        minimumSize:
+                            Size(size.width * 0.0075, size.height * 0.065),
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20),
+                      ),
                     ),
                   ],
                 ),
