@@ -11,28 +11,28 @@ class SampleKeyboardPage extends StatefulWidget {
 }
 
 class _SampleKeyboardPageState extends State<SampleKeyboardPage> {
-  AudioPlayer _audioPlayer = AudioPlayer();
+  // AudioPlayer _audioPlayer = AudioPlayer();
+
+  // // @override
+  // // void initState() {
+  // //   super.initState();
+  // //   _audioPlayer.setAsset('audio/Piano_C4.mp3');
+  // // }
 
   // @override
-  // void initState() {
-  //   super.initState();
-  //   _audioPlayer.setAsset('audio/Piano_C4.mp3');
+  // void dispose() {
+  //   _audioPlayer.dispose();
+  //   super.dispose();
   // }
 
-  @override
-  void dispose() {
-    _audioPlayer.dispose();
-    super.dispose();
-  }
-
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
-      // Release the player's resources when not in use. We use "stop" so that
-      // if the app resumes later, it will still remember what position to
-      // resume from.
-      _audioPlayer.stop();
-    }
-  }
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.paused) {
+  //     // Release the player's resources when not in use. We use "stop" so that
+  //     // if the app resumes later, it will still remember what position to
+  //     // resume from.
+  //     _audioPlayer.stop();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +52,15 @@ class _SampleKeyboardPageState extends State<SampleKeyboardPage> {
           onNotePositionTapped: (position) {
             String note = keyboard[position.name] as String;
             print(note);
-            if (_audioPlayer.playing) {
-              AudioPlayer tempPlayer = AudioPlayer();
-              tempPlayer.setAsset('audio/Piano_$note.mp3');
-              tempPlayer.play();
-            } else {
-              _audioPlayer.setAsset('audio/Piano_$note.mp3');
-              _audioPlayer.play();
-            }
+            AudioPlayer _audioPlayer = AudioPlayer();
+            // if (_audioPlayer.playing) {
+            //   AudioPlayer tempPlayer = AudioPlayer();
+            //   tempPlayer.setAsset('audio/Piano_$note.mp3');
+            //   tempPlayer.play();
+            // } else {
+            _audioPlayer.setAsset('audio/Piano_$note.mp3');
+            _audioPlayer.play();
+            // }
             // Use an audio library like flutter_midi to play the sound
           },
         ),
