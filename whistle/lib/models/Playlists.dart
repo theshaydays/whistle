@@ -1,3 +1,5 @@
+import 'package:whistle/models/AlgoTestingNotes.dart';
+
 class Playlist {
   final String playlistName;
   final String image;
@@ -13,12 +15,12 @@ class Playlist {
 List<Playlist> playlists = [
   Playlist(
     id: 1,
-    playlistName: 'Sample 1',
+    playlistName: 'Happy Birthday',
     image: "images/beach photo.jpg",
   ),
   Playlist(
     id: 2,
-    playlistName: 'Sample 2',
+    playlistName: 'Jingle Bells',
     image: "images/flowers.jpg",
   ),
   Playlist(
@@ -32,3 +34,8 @@ List<Playlist> playlists = [
     image: "images/sky.jpeg",
   ),
 ];
+
+var playlistInfo = {
+  'Happy Birthday': ['audio/HappyBdayXylophone.mp3', '48', happyBday, 50],
+  'Jingle Bells': ['audio/JingleBellsXylophone.mp3', '65', jingleBells, 80]
+};

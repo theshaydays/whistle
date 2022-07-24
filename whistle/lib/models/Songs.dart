@@ -14,12 +14,12 @@ class Song {
 List<Song> songs = [
   Song(
       id: 1,
-      songName: 'Sample 1',
+      songName: 'Happy Birthday',
       image: "images/beach photo.jpg",
       artist: 'Whistle'),
   Song(
       id: 2,
-      songName: 'Sample 2',
+      songName: 'Jingle Bells',
       image: "images/flowers.jpg",
       artist: 'Whistle'),
   Song(

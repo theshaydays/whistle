@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whistle/AlgorithmMethods/FFTAnalysis.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/LoadingPage.dart';
-import 'package:whistle/Pages/MetronomePage.dart';
+//import 'package:whistle/Pages/MetronomePage.dart';
 import 'package:whistle/Widgets/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Constant.dart';
@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:whistle/models/Playlists.dart';
 import '../Widgets/Slider.dart';
 
 class AudioPlayerPage extends StatefulWidget {
@@ -160,9 +161,9 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                     setState(() {
                       selectedBPM = valueInt;
                     });
-                    if (widget.pathType == 'asset') {
-                      return;
-                    }
+                    // if (widget.pathType == 'asset') {
+                    //   return;
+                    // }
                     await _initImages();
                     setState(() {
                       _isLoading = true;
@@ -344,7 +345,15 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: () async {
-                        return _tempBPMDialog(context);
+                        if (widget.pathType == 'asset') {
+                          var info = playlistInfo[widget.audioName];
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ScoreSheetPage(
+                                  info![2] as List<List<dynamic>>,
+                                  info[3] as int)));
+                        } else {
+                          return _tempBPMDialog(context);
+                        }
                       },
                       icon: Icon(Icons.music_note),
                       label: Text('Analyse'),
@@ -369,11 +378,18 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                     PlayButton(_audioPlayer),
                     ElevatedButton.icon(
                       onPressed: () async {
+                        String message = '';
+                        if (widget.pathType == 'asset') {
+                          message =
+                              'The analyse button will show the accurate score of this song. If you would like to view the algorithms rendition of this song, simply download the song onto your emulator and create a new project where you can analyse the downloaded song.';
+                        } else {
+                          message =
+                              'Press the analyse button to enter the BPM of your selected audio peice. Afterwhich, press analyse to receive a score sheet of your audio. \n \nTry different BPMs to see which BPM is most accurate for your score! \n \nDo note that analsysis takes about 1.5x longer than your total audio duration. If it takes longer than that, try a different audio peice instead!';
+                        }
                         showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            content: Text(
-                                'Press the analyse button to enter the BPM of your selected audio peice. Afterwhich, press analyse to receive a score sheet of your audio. \n \nTry different BPMs to see which BPM is most accurate for your score! \n \nDo note that analsysis takes about 1.5x longer than your total audio duration. If it takes longer than that, try a different audio peice instead!'),
+                            content: Text(message),
                             actions: <Widget>[
                               TextButton(
                                   onPressed: () =>
