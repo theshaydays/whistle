@@ -8,7 +8,7 @@ class FFTAnalysis {
   final String filePath;
   final String duration;
   final double resolution;
-  static final int accuracy = 10;
+  static final int accuracy = 12;
   double? volThreshold;
 
   FFTAnalysis(this.filePath, this.duration, this.resolution);
@@ -85,9 +85,9 @@ class FFTAnalysis {
       print(list[idx]);
       // ignore: todo
       //TODO: determine whether should be <= or <, <= excludes first sound sample, < includes first sound sample
-      if (list[idx] <= volThreshold!) {
-        loudEnough = false;
-      }
+      // if (list[idx] <= volThreshold!) {
+      //   loudEnough = false;
+      // }
 
       peaks += [idx];
       //print(idx);
