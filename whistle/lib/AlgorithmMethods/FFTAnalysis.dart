@@ -82,7 +82,7 @@ class FFTAnalysis {
         }
       }
 
-      //print(list[idx]);
+      print(list[idx]);
       // ignore: todo
       //TODO: determine whether should be <= or <, <= excludes first sound sample, < includes first sound sample
       if (list[idx] <= volThreshold!) {
