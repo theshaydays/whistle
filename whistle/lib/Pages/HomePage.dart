@@ -203,6 +203,7 @@ Widget _buildPlayListAndSongs(Size size) {
           child: ListView.builder(
             itemCount: playlists.length,
             itemBuilder: (context, index) => _buildSongListItem(
+              context,
               image: songs[index].image,
               title: songs[index].songName,
               subtitle: songs[index].artist,
@@ -214,9 +215,18 @@ Widget _buildPlayListAndSongs(Size size) {
   );
 }
 
-Widget _buildSongListItem(
+Widget _buildSongListItem(BuildContext context,
     {required String image, required String title, required String subtitle}) {
   return ListTile(
+    onTap: (() {
+      if (playlistInfo[title] == null) {
+        return;
+      }
+      List<Object> sampleInfo = playlistInfo[title] as List<Object>;
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => AudioPlayerPage(sampleInfo[0] as String, title,
+              sampleInfo[1] as String, 'asset')));
+    }),
     title: Text(title),
     subtitle: Text(subtitle),
     leading: Container(

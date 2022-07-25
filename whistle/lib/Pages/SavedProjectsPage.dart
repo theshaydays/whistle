@@ -148,7 +148,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
             children: [
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  labelText: "NiceNotes",
+                  labelText: "Nice Notes",
                   labelStyle: TextStyle(color: kWhiteColor),
                   icon: IconButton(
                     icon: Icon(Icons.folder),
@@ -208,7 +208,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               SizedBox(height: 15.0),
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
+                  hintText: "Ode To Joy",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
                     iconSize: 70,
@@ -217,7 +217,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
+                          builder: (context) => ScoreSheetPage(odeToPain, 70),
                         ),
                       );
                     },
@@ -227,7 +227,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               SizedBox(height: 15.0),
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
+                  hintText: "Saints Go Marching On",
                   icon: IconButton(
                     icon: Icon(Icons.folder),
                     iconSize: 70,
@@ -236,83 +236,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.0),
-              TextField(
-                decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
-                  icon: IconButton(
-                    icon: Icon(Icons.folder),
-                    iconSize: 70,
-                    color: kPrimaryColor,
-                    alignment: Alignment.center,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.0),
-              TextField(
-                decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
-                  icon: IconButton(
-                    icon: Icon(Icons.folder),
-                    iconSize: 70,
-                    color: kPrimaryColor,
-                    alignment: Alignment.center,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.0),
-              TextField(
-                decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
-                  icon: IconButton(
-                    icon: Icon(Icons.folder),
-                    iconSize: 70,
-                    color: kPrimaryColor,
-                    alignment: Alignment.center,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.0),
-              TextField(
-                decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
-                  icon: IconButton(
-                    icon: Icon(Icons.folder),
-                    iconSize: 70,
-                    color: kPrimaryColor,
-                    alignment: Alignment.center,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
+                          builder: (context) => ScoreSheetPage(saints, 80),
                         ),
                       );
                     },

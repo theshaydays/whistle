@@ -30,8 +30,8 @@ var notes = {
   'G1': [Note.G, Accidental.None, 1],
   'G#1': [Note.G, Accidental.Sharp, 1],
   'A1': [Note.A, Accidental.None, 1],
-  'A#1': [Note.E, Accidental.None, 1],
-  'B1': [Note.E, Accidental.None, 1],
+  'A#1': [Note.A, Accidental.None, 1],
+  'B1': [Note.B, Accidental.None, 1],
 
   //2nd Octave
   'C2': [Note.C, Accidental.None, 2],
@@ -44,8 +44,8 @@ var notes = {
   'G2': [Note.G, Accidental.None, 2],
   'G#2': [Note.G, Accidental.Sharp, 2],
   'A2': [Note.A, Accidental.None, 2],
-  'A#2': [Note.E, Accidental.None, 2],
-  'B2': [Note.E, Accidental.None, 2],
+  'A#2': [Note.A, Accidental.None, 2],
+  'B2': [Note.B, Accidental.None, 2],
 
   //3rd Octave
   'C3': [Note.C, Accidental.None, 3],
@@ -58,8 +58,8 @@ var notes = {
   'G3': [Note.G, Accidental.None, 3],
   'G#3': [Note.G, Accidental.Sharp, 3],
   'A3': [Note.A, Accidental.None, 3],
-  'A#3': [Note.E, Accidental.None, 3],
-  'B3': [Note.E, Accidental.None, 3],
+  'A#3': [Note.A, Accidental.None, 3],
+  'B3': [Note.B, Accidental.None, 3],
 
   //4th Octave
   'C4': [Note.C, Accidental.None, 4],
@@ -72,8 +72,8 @@ var notes = {
   'G4': [Note.G, Accidental.None, 4],
   'G#4': [Note.G, Accidental.Sharp, 4],
   'A4': [Note.A, Accidental.None, 4],
-  'A#4': [Note.E, Accidental.None, 4],
-  'B4': [Note.E, Accidental.None, 4],
+  'A#4': [Note.A, Accidental.None, 4],
+  'B4': [Note.B, Accidental.None, 4],
 
   //5th Octave
   'C5': [Note.C, Accidental.None, 5],
@@ -86,8 +86,8 @@ var notes = {
   'G5': [Note.G, Accidental.None, 5],
   'G#5': [Note.G, Accidental.Sharp, 5],
   'A5': [Note.A, Accidental.None, 5],
-  'A#5': [Note.E, Accidental.None, 5],
-  'B5': [Note.E, Accidental.None, 5],
+  'A#5': [Note.A, Accidental.None, 5],
+  'B5': [Note.B, Accidental.None, 5],
 
   //6th Octave
   'C6': [Note.C, Accidental.None, 6],
@@ -100,8 +100,8 @@ var notes = {
   'G6': [Note.G, Accidental.None, 6],
   'G#6': [Note.G, Accidental.Sharp, 6],
   'A6': [Note.A, Accidental.None, 6],
-  'A#6': [Note.E, Accidental.None, 6],
-  'B6': [Note.E, Accidental.None, 6],
+  'A#6': [Note.A, Accidental.None, 6],
+  'B6': [Note.B, Accidental.None, 6],
 
   //7th Octave
   'C7': [Note.C, Accidental.None, 7],
@@ -114,8 +114,8 @@ var notes = {
   'G7': [Note.G, Accidental.None, 7],
   'G#7': [Note.G, Accidental.Sharp, 7],
   'A7': [Note.A, Accidental.None, 7],
-  'A#7': [Note.E, Accidental.None, 7],
-  'B7': [Note.E, Accidental.None, 7],
+  'A#7': [Note.A, Accidental.None, 7],
+  'B7': [Note.B, Accidental.None, 7],
 
   //8th Octave
   'C8': [Note.C, Accidental.None, 8],
@@ -128,8 +128,8 @@ var notes = {
   'G8': [Note.G, Accidental.None, 8],
   'G#8': [Note.G, Accidental.Sharp, 8],
   'A8': [Note.A, Accidental.None, 8],
-  'A#8': [Note.E, Accidental.None, 8],
-  'B8': [Note.E, Accidental.None, 8],
+  'A#8': [Note.A, Accidental.None, 8],
+  'B8': [Note.B, Accidental.None, 8],
 };
 
 var keyboard = {

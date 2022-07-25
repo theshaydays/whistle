@@ -5,14 +5,17 @@ import 'package:whistle/models/Constant.dart';
 class LoadingPage extends StatefulWidget {
   final List<String> imagePaths;
   final List<int> randomList;
+  final String audioDuration;
 
-  const LoadingPage(this.imagePaths, this.randomList);
+  const LoadingPage(this.imagePaths, this.randomList, this.audioDuration);
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  late int timeNeeded = (double.parse(widget.audioDuration) * 2).round();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +60,7 @@ class _LoadingPageState extends State<LoadingPage> {
           Positioned(
             bottom: 100,
             child: Text(
-              'Please do not go back (will crash app :( )',
+              'Analysis may take up to $timeNeeded seconds',
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,

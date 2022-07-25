@@ -24,9 +24,12 @@ List<Song> songs = [
       artist: 'Whistle'),
   Song(
       id: 3,
-      songName: 'Sample 3',
+      songName: 'Ode to Joy',
       image: "images/mountain.jpeg",
       artist: 'Whistle'),
   Song(
-      id: 4, songName: 'Sample 4', image: "images/sky.jpeg", artist: 'Whistle'),
+      id: 4,
+      songName: 'Saints Go Marching On',
+      image: "images/sky.jpeg",
+      artist: 'Whistle'),
 ];
