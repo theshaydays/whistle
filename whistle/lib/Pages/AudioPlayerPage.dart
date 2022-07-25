@@ -144,12 +144,12 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                 child: Text('Analyse'),
                 onPressed: () async {
                   _audioPlayer.dispose();
-                  if (valueInt < 40 || valueInt > 250) {
+                  if (valueInt < 40 || valueInt > 220) {
                     showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
                         content:
-                            Text('Please input a value between 40 and 250'),
+                            Text('Please input a value between 40 and 220'),
                         actions: <Widget>[
                           TextButton(
                               onPressed: () => Navigator.pop(context, 'Close'),
@@ -212,7 +212,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     if (_isLoading) {
-      return LoadingPage(images!, randomList!);
+      return LoadingPage(images!, randomList!, widget.duration);
     }
     return WillPopScope(
       onWillPop: () async {
