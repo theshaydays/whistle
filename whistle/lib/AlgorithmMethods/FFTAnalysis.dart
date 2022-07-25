@@ -30,13 +30,14 @@ class FFTAnalysis {
     for (int i = 0; i < numOfSlices; i++) {
       String slicedFilepath = await FFmpegConvert(newFilePath)
           .sliceAudio(i * resolution, (i + 1) * resolution, i);
-      String format = await FFmpegConvert(slicedFilepath).getFileType();
+      String format = await FFmpegConvert(this.filePath).getFileType();
+      print(slicedFilepath);
 
-      print(format);
+      //print(format);
       if (format != 'wav') {
         slicedFilepath = await FFmpegConvert(slicedFilepath).convertFile();
       }
-      print(slicedFilepath);
+      //print(slicedFilepath);
       splicedAudioFilePaths.add(slicedFilepath);
     }
     //print(splicedAudioFilePaths);

@@ -49,5 +49,5 @@ flutter:
 
   assets:
     - images/
-    - audio/
     - images/LoadingScreen/
+    - audio/

@@ -84,8 +84,8 @@ class FFmpegConvert {
     var cmd =
         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
     FFmpegSession sess = await FFmpegKit.execute(cmd);
-    print(path);
-    print(outPath);
+    //print(path);
+    //print(outPath);
     return outPath;
   }
 }

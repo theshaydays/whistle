@@ -5,6 +5,7 @@ import 'package:whistle/AlgorithmMethods/FFmpegConvert.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/AudioPlayerPage.dart';
 import 'package:whistle/Pages/ScoreSheetPage.dart';
+import 'package:whistle/models/AlgoTestingNotes.dart';
 import 'package:whistle/models/Constant.dart';
 
 class SavedProjectsPage extends StatefulWidget {
@@ -147,7 +148,8 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
             children: [
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
+                  labelText: "NiceNotes",
+                  labelStyle: TextStyle(color: kWhiteColor),
                   icon: IconButton(
                     icon: Icon(Icons.folder),
                     iconSize: 70,
@@ -166,7 +168,8 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               SizedBox(height: 15.0),
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
+                  labelText: "Happy Birthday",
+                  labelStyle: TextStyle(color: kWhiteColor),
                   icon: IconButton(
                     icon: Icon(Icons.folder),
                     iconSize: 70,
@@ -175,7 +178,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
+                          builder: (context) => ScoreSheetPage(happyBday, 50),
                         ),
                       );
                     },
@@ -185,7 +188,8 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               SizedBox(height: 15.0),
               TextField(
                 decoration: myDecoratedField.copyWith(
-                  hintText: "Project Title",
+                  labelText: "Jingle Bells",
+                  labelStyle: TextStyle(color: kWhiteColor),
                   icon: IconButton(
                     icon: Icon(Icons.folder),
                     iconSize: 70,
@@ -194,7 +198,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ScoreSheetPage(test, 120),
+                          builder: (context) => ScoreSheetPage(jingleBells, 80),
                         ),
                       );
                     },

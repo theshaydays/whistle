@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whistle/AlgorithmMethods/FFTAnalysis.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/Pages/LoadingPage.dart';
-import 'package:whistle/Pages/MetronomePage.dart';
+//import 'package:whistle/Pages/MetronomePage.dart';
 import 'package:whistle/Widgets/PlayButton.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
 import 'package:whistle/models/Constant.dart';
@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:whistle/models/Playlists.dart';
 import '../Widgets/Slider.dart';
 
 class AudioPlayerPage extends StatefulWidget {
@@ -118,14 +119,17 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
             content: TextField(
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
+                FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: (value) {
                 setState(() {
-                  valueInt = int.parse(value);
+                  if (value.isNotEmpty) {
+                    valueInt = int.parse(value);
+                  }
                 });
               },
-              decoration: InputDecoration(hintText: "Key in a number!"),
+              decoration: InputDecoration(
+                  hintText: "Key in a number! (default at 120 BPM)"),
             ),
             actions: <Widget>[
               TextButton(
@@ -139,33 +143,49 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
               TextButton(
                 child: Text('Analyse'),
                 onPressed: () async {
-                  Navigator.of(dialogContext).pop();
-                  setState(() {
-                    selectedBPM = valueInt;
-                  });
-                  if (widget.pathType == 'asset') {
-                    return;
+                  if (valueInt < 40 || valueInt > 250) {
+                    showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        content:
+                            Text('Please input a value between 40 and 250'),
+                        actions: <Widget>[
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, 'Close'),
+                              child: const Text('Close')),
+                        ],
+                      ),
+                    );
+                  } else {
+                    Navigator.of(dialogContext).pop();
+                    setState(() {
+                      selectedBPM = valueInt;
+                    });
+                    // if (widget.pathType == 'asset') {
+                    //   return;
+                    // }
+                    await _initImages();
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    double resolution = 60 / selectedBPM! / 2;
+                    List<double> freq = await FFTAnalysis(
+                            widget.filePath, widget.duration, resolution)
+                        .main();
+
+                    //print(freq);
+                    //String note = NoteFrequencies().getNote(freq[0]);
+                    List<List<dynamic>> notes =
+                        NoteFrequencies().getNoteList(freq, resolution);
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ScoreSheetPage(notes, selectedBPM!),
+                      ),
+                    );
+                    setState(() => (_isLoading = false));
                   }
-                  await _initImages();
-                  setState(() {
-                    _isLoading = true;
-                  });
-                  double resolution = 60 / selectedBPM! / 2;
-                  List<double> freq = await FFTAnalysis(
-                          widget.filePath, widget.duration, resolution)
-                      .main();
-
-                  print(freq);
-                  //String note = NoteFrequencies().getNote(freq[0]);
-                  List<List<dynamic>> notes =
-                      NoteFrequencies().getNoteList(freq, resolution);
-
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => ScoreSheetPage(notes, selectedBPM!),
-                    ),
-                  );
-                  setState(() => (_isLoading = false));
 
                   // old code where a popup would come up with the notes produced by fft
                   // showDialog<String>(
@@ -323,72 +343,73 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
+                    ElevatedButton.icon(
                       onPressed: () async {
-                        return _tempBPMDialog(context);
+                        if (widget.pathType == 'asset') {
+                          var info = playlistInfo[widget.audioName];
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ScoreSheetPage(
+                                  info![2] as List<List<dynamic>>,
+                                  info[3] as int)));
+                        } else {
+                          return _tempBPMDialog(context);
+                        }
                       },
-                      // onPressed: () async {
-                      //   if (widget.pathType == 'asset') {
-                      //     return;
-                      //   }
-                      //   await _initImages();
-                      //   setState(() => _isLoading = true);
-                      //   List<double> freq =
-                      //       await FFTAnalysis(widget.filePath, widget.duration)
-                      //           .main();
-                      //   double resolution =
-                      //       FFTAnalysis(widget.filePath, widget.duration)
-                      //           .getResolution();
-                      //   print(freq);
-                      //   //String note = NoteFrequencies().getNote(freq[0]);
-                      //   List<List<dynamic>> notes =
-                      //       NoteFrequencies().getNoteList(freq, resolution);
-
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => ScoreSheetPage(notes, 120),
-                      //     ),
-                      //   );
-                      //   setState(() => _isLoading = false);
-
-                      //   // old code where a popup would come up with the notes produced by fft
-                      //   // showDialog<String>(
-                      //   //   context: context,
-                      //   //   builder: (BuildContext context) => AlertDialog(
-                      //   //     content: Text('Your note is ' + notes),
-                      //   //     actions: <Widget>[
-                      //   //       TextButton(
-                      //   //           onPressed: () =>
-                      //   //               Navigator.pop(context, 'Close'),
-                      //   //           child: const Text('Close')),
-                      //   //     ],
-                      //   //   ),
-                      //   // );
-                      // },
                       icon: Icon(Icons.music_note),
-                      color: kLightColor,
-                      iconSize: 0.09 * size.width,
-                    ),
-                    Icon(
-                      Icons.skip_previous,
-                      color: kPrimaryColor,
-                      size: 0.12 * size.width,
-                    ),
-                    PlayButton(_audioPlayer),
-                    Icon(
-                      Icons.skip_next,
-                      color: kPrimaryColor,
-                      size: 0.12 * size.width,
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => MetronomeClass(),
-                        ),
+                      label: Text('Analyse'),
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                        minimumSize:
+                            Size(size.width * 0.0075, size.height * 0.065),
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20),
                       ),
-                      icon: Icon(Icons.swap_horiz),
-                      color: kLightColor,
-                      iconSize: 0.09 * size.width,
+                    ),
+                    // IconButton(
+                    //   onPressed: () async {
+                    //     return _tempBPMDialog(context);
+                    //   },
+                    //   icon: Icon(Icons.music_note),
+                    //   color: kLightColor,
+                    //   iconSize: 0.09 * size.width,
+                    // ),
+                    PlayButton(_audioPlayer),
+                    ElevatedButton.icon(
+                      onPressed: () async {
+                        String message = '';
+                        if (widget.pathType == 'asset') {
+                          message =
+                              'The analyse button will show the accurate score of this song. If you would like to view the algorithms rendition of this song, simply download the song onto your emulator and create a new project where you can analyse the downloaded song.';
+                        } else {
+                          message =
+                              'Press the analyse button to enter the BPM of your selected audio peice. Afterwhich, press analyse to receive a score sheet of your audio. \n \nTry different BPMs to see which BPM is most accurate for your score! \n \nDo note that analsysis takes about 1.5x longer than your total audio duration. If it takes longer than that, try a different audio peice instead!';
+                        }
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            content: Text(message),
+                            actions: <Widget>[
+                              TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Close'),
+                                  child: const Text('Close')),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.help),
+                      label: Text(' Help  '),
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                        minimumSize:
+                            Size(size.width * 0.0075, size.height * 0.065),
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20),
+                      ),
                     ),
                   ],
                 ),

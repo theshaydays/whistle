@@ -251,12 +251,18 @@ class _RecordingPageState extends State<RecordingPage> {
                               }
                               String fileDuration =
                                   await FFmpegConvert(filePath!).getDuration();
-                              Navigator.of(context).push(MaterialPageRoute(
+                              String convertedFilePath =
+                                  await FFmpegConvert(filePath!).convertFile();
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
                                   builder: ((context) => AudioPlayerPage(
-                                      filePath!,
+                                      convertedFilePath,
                                       'recorded audio',
                                       fileDuration,
-                                      'device file'))));
+                                      'device file')),
+                                ),
+                              );
+                              print(filePath);
                               setState(() {});
                             },
                             iconSize: 25,

@@ -131,3 +131,35 @@ var notes = {
   'A#8': [Note.E, Accidental.None, 8],
   'B8': [Note.E, Accidental.None, 8],
 };
+
+var keyboard = {
+  //4th Octave
+  'C4': 'C4',
+  'C♯4': 'Db4',
+  'D4': 'D4',
+  'D♯4': 'Eb4',
+  'E4': 'E4',
+  'F4': 'F4',
+  'F♯4': 'Gb4',
+  'G4': 'G4',
+  'G♯4': 'Ab4',
+  'A4': 'A4',
+  'A♯4': 'Bb4',
+  'B4': 'B4',
+
+  //5th Octave
+  'C5': 'C5',
+  'C♯5': 'Db5',
+  'D5': 'D5',
+  'D♯5': 'Eb5',
+  'E5': 'E5',
+  'F5': 'F5',
+  'F♯5': 'Gb5',
+  'G5': 'G5',
+  'G♯5': 'Ab5',
+  'A5': 'A5',
+  'A♯5': 'Bb5',
+  'B5': 'B5',
+
+  'C6': 'C6'
+};

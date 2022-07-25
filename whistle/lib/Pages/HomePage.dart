@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:whistle/Pages/AudioPlayerPage.dart';
 import 'package:whistle/Pages/SampleKeyboardPage.dart';
 import 'package:whistle/Pages/SavedProjectsPage.dart';
 import 'package:whistle/Pages/NewProjectPage.dart';
@@ -191,7 +192,7 @@ Widget _buildPlayListAndSongs(Size size) {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: playlists.length,
-            itemBuilder: (context, index) => _buildPlayListItem(
+            itemBuilder: (context, index) => _buildPlayListItem(context,
                 image: playlists[index].image,
                 title: playlists[index].playlistName),
           ),
@@ -228,7 +229,8 @@ Widget _buildSongListItem(
   );
 }
 
-Widget _buildPlayListItem({required String title, required String image}) {
+Widget _buildPlayListItem(BuildContext context,
+    {required String title, required String image}) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
     width: 200,
@@ -255,15 +257,27 @@ Widget _buildPlayListItem({required String title, required String image}) {
               ),
             ),
           ),
-          Container(
-            height: 30,
-            width: 30,
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0), color: Colors.white),
-            child: Icon(
-              Icons.play_circle_outline_outlined,
-              color: kPrimaryColor,
+          GestureDetector(
+            onTap: (() {
+              if (playlistInfo[title] == null) {
+                return;
+              }
+              List<Object> sampleInfo = playlistInfo[title] as List<Object>;
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AudioPlayerPage(sampleInfo[0] as String,
+                      title, sampleInfo[1] as String, 'asset')));
+            }),
+            child: Container(
+              height: 30,
+              width: 30,
+              margin: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white),
+              child: Icon(
+                Icons.play_circle_outline_outlined,
+                color: kPrimaryColor,
+              ),
             ),
           )
         ],
