@@ -37,5 +37,6 @@ List<Playlist> playlists = [
 
 var playlistInfo = {
   'Happy Birthday': ['audio/HappyBdayXylophone.mp3', '48', happyBday, 50],
-  'Jingle Bells': ['audio/JingleBellsXylophone.mp3', '65', jingleBells, 80]
+  'Jingle Bells': ['audio/JingleBellsXylophone.mp3', '65', jingleBells, 80],
+  'Ode To Joy': ['audio/OdeToJoyXylophone.mp3', '73', jingleBells, 70],
 };

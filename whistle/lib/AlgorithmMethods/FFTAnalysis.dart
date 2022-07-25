@@ -119,9 +119,9 @@ class FFTAnalysis {
     print('Key frequency is ' + stft.frequency(keyIdx, sampleRate).toString());
     if (loudEnough) {
       return stft.frequency(keyIdx, sampleRate);
-    } else {
-      return 0.00;
-    }
+    } //else {  // if you want to activate loudEnough variable
+    //   return 0.00;
+    // }
   }
 
   //searching for threshold noise value
