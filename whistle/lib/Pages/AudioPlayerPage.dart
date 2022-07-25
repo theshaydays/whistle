@@ -143,6 +143,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
               TextButton(
                 child: Text('Analyse'),
                 onPressed: () async {
+                  _audioPlayer.dispose();
                   if (valueInt < 40 || valueInt > 250) {
                     showDialog<String>(
                       context: context,
@@ -346,6 +347,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                     ElevatedButton.icon(
                       onPressed: () async {
                         if (widget.pathType == 'asset') {
+                          _audioPlayer.dispose();
                           var info = playlistInfo[widget.audioName];
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => ScoreSheetPage(

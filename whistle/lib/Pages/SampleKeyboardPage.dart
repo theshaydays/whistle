@@ -28,7 +28,6 @@ class _SampleKeyboardPageState extends State<SampleKeyboardPage> {
           ]),
           onNotePositionTapped: (position) {
             String note = keyboard[position.name] as String;
-            print(note);
             AudioPlayer _audioPlayer = AudioPlayer();
             _audioPlayer.setAsset('audio/Piano_$note.mp3');
             _audioPlayer.play();

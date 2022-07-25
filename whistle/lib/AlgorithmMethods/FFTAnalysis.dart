@@ -151,7 +151,7 @@ class FFTAnalysis {
         }
       }
 
-      print(list[idx]);
+      // print(list[idx]);
       peaks += [list[idx]];
       //print(idx);
     });

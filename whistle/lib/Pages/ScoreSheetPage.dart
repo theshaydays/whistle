@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:whistle/Pages/HomePage.dart';
 import 'package:whistle/models/NoteFrequencies.dart';
@@ -109,9 +111,9 @@ Widget _buildScore(BuildContext context, noteResults, int BPM) {
   // List<List<List<dynamic>>> splitNotes = getSmallLists(noteResults);
   List<List<List<dynamic>>> splitNotes =
       NoteFrequencies().addBarsAndSplit(noteResults, (60 / BPM) / 2);
-
+  log(noteResults.toString());
   print(splitNotes);
-  print(noteResults);
+
   //to determine how many staves should be printed out
   int stavesRequired = splitNotes.length;
 
