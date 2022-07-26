@@ -42,7 +42,7 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: "images/launcherIcon.png"
+  image_path: "images/LauncherIconBlue.png"
   flutter_lints: ^2.0.0
 
 flutter:

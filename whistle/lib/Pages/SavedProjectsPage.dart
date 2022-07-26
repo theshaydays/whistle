@@ -147,6 +147,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
           child: Column(
             children: [
               TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: myDecoratedField.copyWith(
                   labelText: "Nice Notes",
                   labelStyle: TextStyle(color: kWhiteColor),
@@ -167,6 +168,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               ),
               SizedBox(height: 15.0),
               TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: myDecoratedField.copyWith(
                   labelText: "Happy Birthday",
                   labelStyle: TextStyle(color: kWhiteColor),
@@ -187,6 +189,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               ),
               SizedBox(height: 15.0),
               TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: myDecoratedField.copyWith(
                   labelText: "Jingle Bells",
                   labelStyle: TextStyle(color: kWhiteColor),
@@ -207,6 +210,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               ),
               SizedBox(height: 15.0),
               TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: myDecoratedField.copyWith(
                   hintText: "Ode To Joy",
                   icon: IconButton(
@@ -226,6 +230,7 @@ class _SavedProjectsPageFoldersState extends State<SavedProjectsPage> {
               ),
               SizedBox(height: 15.0),
               TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: myDecoratedField.copyWith(
                   hintText: "Saints Go Marching On",
                   icon: IconButton(

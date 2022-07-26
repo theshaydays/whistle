@@ -38,22 +38,28 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 100.0),
-            child: Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    'Welcome to Whistle!',
-                    style: TextStyle(
-                      color: kSecondaryColor,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.w900,
+            padding: EdgeInsets.only(top: size.height * 0.1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Center(
+                      child: Text(
+                        'Welcome to \nWhistle!',
+                        style: TextStyle(
+                          color: kSecondaryColor,
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Padding(
