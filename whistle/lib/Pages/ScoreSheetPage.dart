@@ -61,7 +61,7 @@ class _ScoreSheetPageState extends State<ScoreSheetPage> {
             leading: BackButton(),
             backgroundColor: kPrimaryColor,
             title: Text(
-              'Score Sheet',
+              'SCORE SHEET',
               style: TextStyle(
                   fontSize: 20.0,
                   color: kSecondaryColor,
